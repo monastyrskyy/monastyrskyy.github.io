@@ -6,3 +6,4 @@ author_profile: true
 header:
   image: "/images/header.jpg"
 ---
+{% include base_path %}
