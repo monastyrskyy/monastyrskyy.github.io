@@ -84,7 +84,6 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
 | Continuous (Numerical)   | Numeric, Integer        | c(3.2, 5.8, 5.5)      |
 
 
-
 ### Further Exploration
 
 1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
