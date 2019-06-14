@@ -40,6 +40,11 @@ x = c(1,2,3)
 print(x)
 ```
 
+Here's some math:
+
+$$z=x+y$$
+
+You can also put it inline $$z=x+y$$
 
 Image:
 <img src="{{ site.url }}{{ site.baseurl }}/images/header.jpg" alt="header">
