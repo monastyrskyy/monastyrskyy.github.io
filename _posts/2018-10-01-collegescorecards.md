@@ -76,22 +76,26 @@ There are few limits to how one can represent statistical data types in R; but t
 
 For each statistical data type, there are numerous ways to map them in R. Below are a few examples.
 
-| **Statistical Data Types**    | **R Data Types**                  | **Example in R**               |
-| ---                          | ----                             | ---                           |
-| Nominal (Categorical)         | Logical, Character, Raw           | c(T,F,T); c(“male”, “female”)  |
-| Ordinal (Categorical)         | Numeric, Integer, Character, Raw  | c(1,2,3); c(“first”, “second”) |
-| Discrete (Numerical)          | Numeric, Integer                  | c(2,6,9,3)                     |
-| Continuous (Numerical)        | Numeric, Integer                  | c(3.2, 5.8, 5.5)               |
-<a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
-
 | Statistical Data Types      | R Data Types | Example in R     |
 | :---       |    :----   |         :--- |
 | Nominal (Categorical)      | Logical, Character, Raw       | c(T,F,T)   |
 | Ordinal (Categorical)   | Numeric, Integer, Character, Raw   | c(1,2,3)     |
 | Discrete (Numerical)      | Numeric, Integer       | c(2,6,9,3)   |
 | Continuous (Numerical)   | Numeric, Integer        | c(3.2, 5.8, 5.5)      |
+<a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
 
-| Syntax      | Description | Test Text     |
-| :---        |    :----:   |          ---: |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |
+### Further Exploration
+
+1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
+  - Type of chart: scatterplot with regression line
+  - Variables used: “degrees_awarded.highest”(x), “earn_10_yrs_after_entry.median”(y), and “academic_year”(optional to make different graphs for each year)
+  - This could be a good starting point for a student who wants to decide which degree to get in order to ensure financial stability in the future. He will need to do further research on the field of study he would like to enter, but “Highest Degree Awarded vs. Median Earnings 10 years after Entry” scatterplot could be a good graph to be aware of when making the decision of which degree to choose.
+  - For further details, we could make 5 different such graphs, one for each year 2012-2016.
+2. What does the retention rate for each university look like over the period 2012 to 2016?
+  - Type of chart: linegraph
+  - Variables: “retention_rate_suppressed.four_year.full_time_pooled”(y), “academic_year”(x), and “name”(to narrow down data to one university)
+  - In each university, the administration could look at the graph of their own university to study the retention rate over time. They could then look into finding reasons for the trends that they see in their retention rates and talk about increasing them.
+3. Is there a relationship between the size of the university and faculty salary?
+  - Type of graph: scatterplot with regression line
+  - Variables: “size”(x), “faculty_salary”(y)
+  - For new university graduates looking for faculty jobs, this could be a useful graph to help them decide whether they want to go to a smaller school or a larger school, assuming there is a relationship. Same as question 1, this is merely a starting point for their job search and is not meant to be comprehensive. Assuming a relationship between size of university and faculty salary exists, it would be useful for the new graduates to be aware of it (e.g. bigger schools tend to pay more). The problem of causation vs correlation should be considered here too.
