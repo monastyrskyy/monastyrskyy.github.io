@@ -85,11 +85,11 @@ For each statistical data type, there are numerous ways to map them in R. Below 
 <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
 
 | Statistical Data Types      | R Data Types | Example in R     |
-| :---:       |    :----:   |         :---: |
-| Nominal (Categorical)      | Logical, Character, Raw       | Here's this   |
-| Ordinal (Categorical)   | Numeric, Integer, Character, Raw   | And       m   ore        |
-| Discrete (Numerical)      | Numeric, Integer       | Here's this   |
-| Continuous (Numerical)   | Numeric, Integer        | And more      |
+| :---       |    :----   |         :--- |
+| Nominal (Categorical)      | Logical, Character, Raw       | c(T,F,T)   |
+| Ordinal (Categorical)   | Numeric, Integer, Character, Raw   | c(1,2,3)     |
+| Discrete (Numerical)      | Numeric, Integer       | c(2,6,9,3)   |
+| Continuous (Numerical)   | Numeric, Integer        | c(3.2, 5.8, 5.5)      |
 
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
