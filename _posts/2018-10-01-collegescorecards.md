@@ -69,3 +69,18 @@ From the plot, it looks like Private for-profit colleges are decreasing in numbe
 While there is a definite dip in the admissions rate in 2015, it is not as exaggerated as the default axis settings in ggplot2 make it appear. The y axis on the graph on the left ranges from 0 to 1, keeping the scale and proportion of relative changes in the Overall Admissions Rate closer to reality than the graph on the right. Even though it may be helpful to zoom in on the datapoints for the sake of clarity, there exists a danger of inappropriately exaggerating the changes. Another danger with the plot on the right is that, visually, the Admissions Rate appears much different from what the numbers say (e.g. in 2012 it looks like the Admissions Rate was nearly 100%!). The implication for potential applicants to UC Davis may be that they may think the Admissions Rate is more volatile than it really is. Another possible implication is that they grow too confident in their chances of getting in because they judge the increase in the Admissions rate from 2015 to 2016 to be much higher than it really is.
 
 In addition to being aware of the dangers of misaligning data, it’s also important to discuss the dip in the admissions rate in 2015. In order to provide broader context, we could look into other colleges (public, CA, only UC, etc.) to see if there is also a dip in their admissions rate. This would bring us closer to the reason for the dip. We could also look into the cost of attendance of these schools for the years 2012 to 2016 to see if there is a spike in costs in 2015. This is beyond the scope of this report, but something that would useful to look into to gain some broader context.
+
+### Data Types
+
+There are few limits to how one can represent statistical data types in R; but there are general guidelines that if followed will result in a smooth-flowing work experience. Statistical data are divided into two types: categorical and numerical, and each type is subdivided into nominal and ordinal for categorical data and discrete and continuous for numerical data. Nominal data is categorical data that doesn’t imply a rank order (e.g. male, female; name of school attended). Ordinal data is categorical data that implies a rank order (e.g. highest level of education). Discrete data is numerical data that has values that can’t be subdivided (e.g. place of finishing a marathon; age in years). Continuous data is numerical data that can be subdivided and doesn’t have any preset values (e.g. height, dimensions of furniture). ([Source](https://towardsdatascience.com/data-types-in-statistics-347e152e8bee)) source<a href="http://www.google.com" target="blank">google</a>
+
+For each statistical data type, there are numerous ways to map them in R. Below are a few examples.
+
+| Statistical Data Types      | R Data Types | Example in R |
+| :---        |    :----   |          :--- |
+| Nominal (Categorical)| Logical, Character, Raw| c(T,F,T); c(“male”, “female”)|
+| Ordinal (Categorical)| Numeric, Integer, Character, Raw| c(1,2,3); c(“first”, “second”)|
+| Discrete (Numerical) | Numeric, Integer | c(2,6,9,3)|
+| Continuous (Numerical) | Numeric, Integer  | c(3.2, 5.8, 5.5)|
+([Source](https://www.tutorialspoint.com/r/r_data_types.htm
+))
