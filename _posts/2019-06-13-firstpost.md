@@ -1,8 +1,21 @@
 ---
 title: "Proof of Concept: First Post"
 date: 2019-06-13
-tags: [academic, work-related, analytics]
+tags: [academic]
 excerpt: "Test post 1st post"
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 ---
 
 # H1 Heading
