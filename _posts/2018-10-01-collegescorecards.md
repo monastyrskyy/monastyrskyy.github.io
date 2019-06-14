@@ -39,7 +39,7 @@ For public schools in the 2014 academic year (see below), there appears to be a 
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div>
 
-
+ 
 For private for-Profit schools in the 2014 academic year (see below), there also appears to be a pattern between the average net price of the school and the median earnings 10 years after entry. The range of the average net price is from $-581 to $74,673 (the negative values could be errors, or a result of
 financial aid). While the lower bound for the average net price of private for-profit schools was slightly higher than that of public schools, the upper bound was over 2 times higher than that of public schools. The
 range of median earnings 10 years after entry is $10,800 to $84,400. This range has the same lower bound as the range for public schools, but the upper bound is $11,200 less than that of public schools. The trend also appears to be upward, slightly more so than the pattern for public schools. Although we cannot be sure that higher prices caused students in those colleges to have higher earnings, we can say that future students should be aware of the relationship because there may be a causal effect. Just like for public schools, the data is mostly clustered together, with a few outliers, meaning that most students tend to have salaries similar to those of their peers.
