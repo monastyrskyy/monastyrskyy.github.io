@@ -77,7 +77,7 @@ There are few limits to how one can represent statistical data types in R; but t
 For each statistical data type, there are numerous ways to map them in R. Below are a few examples.
 
 | Statistical Data Types      | R Data Types | Example in R     |
-| :---       |    :----   |         :--- |
+| :-----       |    :------   |         :----- |
 | Nominal (Categorical)      | Logical, Character, Raw       | c(T,F,T)   |
 | Ordinal (Categorical)   | Numeric, Integer, Character, Raw   | c(1,2,3)     |
 | Discrete (Numerical)      | Numeric, Integer       | c(2,6,9,3)   |
