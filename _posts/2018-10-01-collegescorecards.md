@@ -74,7 +74,7 @@ In addition to being aware of the dangers of misaligning data, it’s also impor
 
 There are few limits to how one can represent statistical data types in R; but there are general guidelines that if followed will result in a smooth-flowing work experience. Statistical data are divided into two types: categorical and numerical, and each type is subdivided into nominal and ordinal for categorical data and discrete and continuous for numerical data. Nominal data is categorical data that doesn’t imply a rank order (e.g. male, female; name of school attended). Ordinal data is categorical data that implies a rank order (e.g. highest level of education). Discrete data is numerical data that has values that can’t be subdivided (e.g. place of finishing a marathon; age in years). Continuous data is numerical data that can be subdivided and doesn’t have any preset values (e.g. height, dimensions of furniture). <a href="https://towardsdatascience.com/data-types-in-statistics-347e152e8bee" target="blank">(Source)</a>
 
-For each statistical data type, there are numerous ways to map them in R. Below are a few examples.
+For each statistical data type, there are numerous ways to map them in R. Below are a few examples.<a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
 
 | Statistical Data Types      | R Data Types | Example in R     |
 | :-----       |    :------   |         :----- |
@@ -82,7 +82,7 @@ For each statistical data type, there are numerous ways to map them in R. Below 
 | Ordinal (Categorical)   | Numeric, Integer, Character, Raw   | c(1,2,3)     |
 | Discrete (Numerical)      | Numeric, Integer       | c(2,6,9,3)   |
 | Continuous (Numerical)   | Numeric, Integer        | c(3.2, 5.8, 5.5)      |
-<a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
+
 
 ### Further Exploration
 
