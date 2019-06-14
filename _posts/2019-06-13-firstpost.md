@@ -1,7 +1,6 @@
 ---
 title: "Proof of Concept: First Post"
 date: 2019-06-13
-tags: [academic, work-related]
 excerpt: "Test post 1st post"
 mathjax: "true"
 
