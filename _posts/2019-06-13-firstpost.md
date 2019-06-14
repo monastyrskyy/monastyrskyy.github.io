@@ -3,7 +3,7 @@ title: "Proof of Concept: First Post"
 date: 2019-06-13
 excerpt: "Test post 1st post"
 mathjax: "true"
-tags: ["academic"]
+tags: [academic]
 defaults:
   # _posts
   - scope:
