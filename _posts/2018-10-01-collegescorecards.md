@@ -23,13 +23,13 @@ defaults:
 
 ### Introduction
 
-The U.S. Department of Education provides the College Scorecards Dataset to prospective students and their families to inform them about the educational outcomes and costs of attending various federally funded colleges and universities. The purpose of the data is to facilitate the process of making decisions about which college or university to attend based on several performance indicators, student success measures, and fees related to the school. The data used to create reports on the [College Scorecard website](https://collegescorecard.ed.gov/) are a subset of the data universities and colleges report to the Integrated Postsecondary Education Data System ([IPEDS](https://nces.ed.gov/ipeds/)).
+The U.S. Department of Education provides the College Scorecards Dataset to prospective students and their families to inform them about the educational outcomes and costs of attending various federally funded colleges and universities. The purpose of the data is to facilitate the process of making decisions about which college or university to attend based on several performance indicators, student success measures, and fees related to the school. The data used to create reports on the <a href="https://collegescorecard.ed.gov/" target="blank">College Scorecard website</a> are a subset of the data universities and colleges report to the Integrated Postsecondary Education Data System <a href="https://nces.ed.gov/ipeds/" target="blank">(IPEDS)</a>.
 
 There are 38,068 rows (observations) in the dataset, representing each college during 5 academic years 2012-2016, inclusive (e.g. Benedict College is featured 5 times, once for each year 2012- 16, inclusive). For year 2012, 7793 colleges were recorded; for year 2013, 7804 colleges were recorded; for year 2014, 7703 colleges were recorded; for year 2015, 7593 colleges are recorded; and for year 2016, 7175 colleges were recorded. The dataset also features 142 columns (variables) such as the name of the university, the location, various SAT/ACT score metrics, etc. that get populated with respective values about each college.
 
 In the dataset, disregarding academic year, the 5 states with the most colleges are California with 3881 colleges, Texas with 2381 colleges, New York with 2317 colleges, Florida with 2176 colleges, and Pennsylvania with 2022 colleges. Similarly, disregarding academic year, the 5 states/territories with the fewest colleges are American Samoa with 5 colleges, Federated States of Micronesia with 5 colleges, Marshall Islands with 5 colleges, Northern Mariana Islands with 5 colleges, and Palau with 5 colleges. When I did this calculation by taking the average amount of colleges per year across the dataset, I got the same results. I also got the same results when I only looked at the most recent year.
 
-I hypothesize that the top 5 states match the top 5 states by population, and similarly the bottom 5 states/territories match the bottom 5 states/territories by population. My hypothesis largely matches reality, with 4 out of 5 most populous states also being in the top 5 by college count ([Pennsylvania is the exception](https://www.census.gov/newsroom/press-releases/2015/cb15-215.html)). The least populated regions in the US are territories, so my hypothesis is supported as well.
+I hypothesize that the top 5 states match the top 5 states by population, and similarly the bottom 5 states/territories match the bottom 5 states/territories by population. My hypothesis largely matches reality, with 4 out of 5 most populous states also being in the top 5 by college count <a href="https://www.census.gov/newsroom/press-releases/2015/cb15-215.html" target="blank">(Pennsylvania is the exception)</a>. The least populated regions in the US are territories, so my hypothesis is supported as well.
 
 ### Average Net Price vs Median Earnings 10 Years After Entry
 
@@ -76,14 +76,13 @@ There are few limits to how one can represent statistical data types in R; but t
 
 For each statistical data type, there are numerous ways to map them in R. Below are a few examples.
 
-| **Statistical Data Types**      | **R Data Types** | **Example in R** |
-| :---        |    :----   |          :--- |
-| Nominal (Categorical)| Logical, Character, Raw| c(T,F,T); c(“male”, “female”)|
-| Ordinal (Categorical)| Numeric, Integer, Character, Raw| c(1,2,3); c(“first”, “second”)|
-| Discrete (Numerical) | Numeric, Integer | c(2,6,9,3)|
-| Continuous (Numerical) | Numeric, Integer  | c(3.2, 5.8, 5.5)|
-([Source](https://www.tutorialspoint.com/r/r_data_types.htm
-))
+| **Statistical Data Types**    | **R Data Types**                  | **Example in R**               |
+| :---                          | :----                             | :---                           |
+| Nominal (Categorical)         | Logical, Character, Raw           | c(T,F,T); c(“male”, “female”)  |
+| Ordinal (Categorical)         | Numeric, Integer, Character, Raw  | c(1,2,3); c(“first”, “second”) |
+| Discrete (Numerical)          | Numeric, Integer                  | c(2,6,9,3)                     |
+| Continuous (Numerical)        | Numeric, Integer                  | c(3.2, 5.8, 5.5)               |
+<a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
 
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
