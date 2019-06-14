@@ -61,11 +61,10 @@ From the plot, it looks like Private for-profit colleges are decreasing in numbe
 
 ### UC Davis Admission Rate and Implications
 
-<div style="text-align:center"><figure class="half">
-    <a href="/images/1.college_scorecards/5a.ucd_admissions.png"><img src="/images/1.college_scorecards/5a.ucd_admissions.png"></a>
-    <a href="/images/1.college_scorecards/5b.ucd_admissions.png"><img src="/images/1.college_scorecards/5b.ucd_admissions.png"></a>
-    <figcaption>UCD admission rate - zoomed out and zoomed in.</figcaption>
-</figure></div><br/>
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both.png" alt="UCD admission rate - zoomed out and zoomed in.">
+  <figcaption>UCD admission rate - zoomed out and zoomed in.</figcaption>
+</div><br/>
 
 While there is a definite dip in the admissions rate in 2015, it is not as exaggerated as the default axis settings in ggplot2 make it appear. The y axis on the graph on the left ranges from 0 to 1, keeping the scale and proportion of relative changes in the Overall Admissions Rate closer to reality than the graph on the right. Even though it may be helpful to zoom in on the datapoints for the sake of clarity, there exists a danger of inappropriately exaggerating the changes. Another danger with the plot on the right is that, visually, the Admissions Rate appears much different from what the numbers say (e.g. in 2012 it looks like the Admissions Rate was nearly 100%!). The implication for potential applicants to UC Davis may be that they may think the Admissions Rate is more volatile than it really is. Another possible implication is that they grow too confident in their chances of getting in because they judge increase in the Admissions rate from 2015 to 2016 to be much higher than it really is.
 
