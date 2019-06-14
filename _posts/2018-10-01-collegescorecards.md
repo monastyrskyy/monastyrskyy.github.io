@@ -86,10 +86,10 @@ For each statistical data type, there are numerous ways to map them in R. Below 
 
 | Statistical Data Types      | R Data Types | Example in R     |
 | :---:       |    :----:   |         :---: |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |
+| Nominal (Categorical)      | Title       | Here's this   |
+| Ordinal (Categorical)   | Text        | And more      |
+| Discrete (Numerical)      | Title       | Here's this   |
+| Continuous (Numerical)   | Text        | And more      |
 
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
