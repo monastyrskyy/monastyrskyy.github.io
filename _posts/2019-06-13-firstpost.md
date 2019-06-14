@@ -3,6 +3,7 @@ title: "Proof of Concept: First Post"
 date: 2019-06-13
 tags: [academic]
 excerpt: "Test post 1st post"
+mathjax: "true"
 
 defaults:
   # _posts
@@ -22,16 +23,16 @@ defaults:
 
 ## H2 Heading
 
-Basic text, *italics*, **bold**, [youtube link](youtube.com)
+Basic text, *italics*, **bold**, [youtube link](https://youtube.com)
 
 List:
 * First
-- seconds
-- third
+- Second
+- Third
 
-1. one
-2. two
-3. three
+1. One
+2. Two
+3. Three
 
 R code block
 ```r
@@ -41,3 +42,4 @@ print(x)
 
 
 Image:
+<img src="{{ site.url }}{{ site.baseurl }}/images/header.jpg" alt="header">
