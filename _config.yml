@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Maksym Monastyrskyy"
   avatar           : "/images/headshot_copy.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Science Portfolio."
+  bio              : "Data Science Portfolio"
   location         : "Greater Sacramento Area, CA"
   email            :
   links:
