@@ -85,7 +85,9 @@ For each statistical data type, there are numerous ways to map them in R. Below 
 <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="blank">(Source)</a>
 
 | Statistical Data Types      | R Data Types | Example in R     |
-| :---        |    :----:   |          ---: |
+| :---:       |    :----:   |         :---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
 | Header      | Title       | Here's this   |
 | Paragraph   | Text        | And more      |
 
