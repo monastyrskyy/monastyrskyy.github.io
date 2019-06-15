@@ -133,7 +133,7 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 <br><br/>
 
 #### Private For-Profit College Price vs Earnings
-
+<br><br/>
 ```r
 #analogous to above
 profit2014 = card[card$academic_year == "2014" &
@@ -147,7 +147,7 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
   xlab("Average Net Price (Private)") +
   ylab("Median Earnings 10 Years After Entry")
 ```
-<br><br/>
+
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div><br/>
 
