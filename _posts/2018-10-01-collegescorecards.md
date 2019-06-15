@@ -4,6 +4,8 @@ date: 2018-10-01
 excerpt: "In this project, I dive into the College Scorecard dataset and examine it for interesting patterns, trends, and insights."
 mathjax: "true"
 tags: [academic]
+header:
+  image: "/images/masthead.png"
 defaults:
   # _posts
   - scope:
