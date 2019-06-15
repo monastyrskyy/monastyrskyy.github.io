@@ -102,7 +102,6 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
   - For new university graduates looking for faculty jobs, this could be a useful graph to help them decide whether they want to go to a smaller school or a larger school, assuming there is a relationship. Same as question 1, this is merely a starting point for their job search and is not meant to be comprehensive. Assuming a relationship between size of university and faculty salary exists, it would be useful for the new graduates to be aware of it (e.g. bigger schools tend to pay more). The problem of causation vs correlation should be considered here too.
 
 
- #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Analysis and Code
 
@@ -110,8 +109,7 @@ In this section, I include the code that I used to create the visualizations see
 
 #### Public College Price vs Earnings
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div><br/>
-
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div>
 ```r
 #all the visualizations in this section use the ggplot2 package
 library("ggplot2")
@@ -133,8 +131,8 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 <br><br/>
 
 #### Private For-Profit College Price vs Earnings
-<br><br/>
 ```r
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div>
 #analogous to above
 profit2014 = card[card$academic_year == "2014" &
                     card$ownership == "Private for-profit" &
@@ -148,9 +146,7 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
   ylab("Median Earnings 10 Years After Entry")
 ```
 
-
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div><br/>
-
+<br><br/>
 
 ### Private Non-Profit College Private vs Earnings
 
