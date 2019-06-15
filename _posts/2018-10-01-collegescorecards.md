@@ -131,8 +131,8 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 <br><br/>
 
 #### Private For-Profit College Price vs Earnings
-```r
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div>
+```r
 #analogous to above
 profit2014 = card[card$academic_year == "2014" &
                     card$ownership == "Private for-profit" &
@@ -148,17 +148,53 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
 
 <br><br/>
 
-### Private Non-Profit College Private vs Earnings
+### Type of Ownership Counts
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/3.private_nonprofit_price_vs_earnings.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div>
+```r
+#fill corresponds to the years
+#scale_fill_discrete changes the name of the legend
+ggplot(card,aes(fill = academic_year, x = ownership)) +
+  geom_bar(position = "dodge", stat = "count") +
+  ggtitle("Grouped College Counts per Year") +
+  xlab("Ownership") +
+  ylab("Count") +
+  scale_fill_discrete(name="Academic Year:")
+```
+<br><br/>
 
-
-
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
-
-
+### UC Davis Admission Rate
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
   <figcaption>UCD admission rate - zoomed out and zoomed in.</figcaption>
-</div><br/>
+</div>
+
+```r
+# this package allows you to put two plots side by side
+library(gridExtra)
+
+ucd = card[card$id == "110644",] #UC Davis code
+
+#scatterplot with line and floating values
+plot1 = ggplot(ucd, aes(x = academic_year, y = admission_rate.overall, group = 1, label = admission_rate.overall)) +
+  geom_line() +
+  geom_point() +
+  geom_text(hjust = 1.1)+
+  ggtitle("UC Davis Admission Rate (closer look)")+
+  xlab("Academic Year")+
+  ylab("Overall Admissions Rate")+
+  scale_y_continuous(position = "right")
+
+plot2 = ggplot(ucd, aes(x = academic_year, y = admission_rate.overall, group = 1, label = admission_rate.overall)) +
+  geom_line() +
+  geom_point() +
+  geom_text(hjust = 0.5, vjust = -1.0) +
+  ylim(0,1)+
+  ggtitle("UC Davis Admission Rate")+
+  xlab("Academic Year")+
+  ylab("Overall Admissions Rate")
+
+#putting the two plots together
+grid.arrange(plot2, plot1, ncol = 2)
+```
