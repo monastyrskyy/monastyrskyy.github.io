@@ -105,6 +105,8 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
 
 In this section, I include the code that I used to create the visualizations seen in the report.
 
+#### Public College Price vs Earnings
+
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div><br/>
 
 ```r
@@ -125,8 +127,13 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
   ylab("Median Earnings 10 Years After Entry")
 ```
 
+<br><br/>
+
+#### Private For-Profit College Price vs Earnings
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div><br/>
 
+
+<br><br/>
 
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/3.private_nonprofit_price_vs_earnings.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
