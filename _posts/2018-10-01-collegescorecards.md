@@ -5,7 +5,7 @@ excerpt: "In this project, I dive into the College Scorecard dataset and examine
 mathjax: "true"
 tags: [academic]
 header:
-  image: "/images/masthead.png"
+  image: "/images/1.college_scorecards/masthead.png"
 defaults:
   # _posts
   - scope:
