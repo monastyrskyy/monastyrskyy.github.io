@@ -100,3 +100,44 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
   - Type of graph: scatterplot with regression line
   - Variables: “size”(x), “faculty_salary”(y)
   - For new university graduates looking for faculty jobs, this could be a useful graph to help them decide whether they want to go to a smaller school or a larger school, assuming there is a relationship. Same as question 1, this is merely a starting point for their job search and is not meant to be comprehensive. Assuming a relationship between size of university and faculty salary exists, it would be useful for the new graduates to be aware of it (e.g. bigger schools tend to pay more). The problem of causation vs correlation should be considered here too.
+
+### Analysis and Code
+
+In this section, I include the code that I used to create the visualizations seen in the report.
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div><br/>
+
+```r
+#all the visualizations in this section use the ggplot2 package
+library("ggplot2")
+
+#creating a subset for public schools in 2014, and removing missing values
+public2014 = card[card$academic_year == "2014" &
+                    card$ownership == "Public" &
+                    !is.na(card$avg_net_price.public) &
+                    !is.na(card$earn_10_yrs_after_entry.median), ]
+
+#plotting price of the school vs earnings 10 years out
+ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.median)) +
+  geom_point() +
+  ggtitle("2014 Public: Price vs. Earnings") +
+  xlab("Average Net Price (Public)") +
+  ylab("Median Earnings 10 Years After Entry")
+```
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div><br/>
+
+
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/3.private_nonprofit_price_vs_earnings.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
+
+
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
+
+
+
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
+  <figcaption>UCD admission rate - zoomed out and zoomed in.</figcaption>
+</div><br/>
