@@ -101,6 +101,9 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
   - Variables: “size”(x), “faculty_salary”(y)
   - For new university graduates looking for faculty jobs, this could be a useful graph to help them decide whether they want to go to a smaller school or a larger school, assuming there is a relationship. Same as question 1, this is merely a starting point for their job search and is not meant to be comprehensive. Assuming a relationship between size of university and faculty salary exists, it would be useful for the new graduates to be aware of it (e.g. bigger schools tend to pay more). The problem of causation vs correlation should be considered here too.
 
+
+ #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Analysis and Code
 
 In this section, I include the code that I used to create the visualizations seen in the report.
@@ -130,11 +133,26 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 <br><br/>
 
 #### Private For-Profit College Price vs Earnings
+
+```r
+#analogous to above
+profit2014 = card[card$academic_year == "2014" &
+                    card$ownership == "Private for-profit" &
+                    !is.na(card$avg_net_price.private) &
+                    !is.na(card$earn_10_yrs_after_entry.median), ]
+
+ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.median)) +
+  geom_point() +
+  ggtitle("2014 Private for-Profit: Price vs. Earnings") +
+  xlab("Average Net Price (Private)") +
+  ylab("Median Earnings 10 Years After Entry")
+```
+<br><br/>
+
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div><br/>
 
 
-<br><br/>
-
+### Private Non-Profit College Private vs Earnings
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/3.private_nonprofit_price_vs_earnings.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
 
