@@ -21,7 +21,8 @@ defaults:
 
 # College Scorecards Analysis and Report Part 2
 
-```r
+Does SQL code show up fine? Amazing, I think it does.
+```SQL
 CREATE TABLE (
   first_column TEXT,
   second_column DECIMAL(2,3)
