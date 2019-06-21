@@ -149,7 +149,7 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
 
 <br><br/>
 
-### Type of Ownership Counts
+#### Type of Ownership Counts
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div>
 ```r
@@ -164,7 +164,7 @@ ggplot(card,aes(fill = academic_year, x = ownership)) +
 ```
 <br><br/>
 
-### UC Davis Admission Rate
+#### UC Davis Admission Rate
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
