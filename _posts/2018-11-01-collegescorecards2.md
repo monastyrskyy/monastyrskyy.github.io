@@ -71,14 +71,19 @@ In the dataset, each university reported the percentage of their students that a
 
 # Tuitions
 
+To examine the differences in tuition across states, I found the mean tuition of each state, and I graphed it against the average number of colleges per state, for the average year (2012-16). The plot below shows that there is a wide range of mean tuitions, averaging from around $4,000 to $27,627 for in-state tuition per year. There is also a wide range of schools per state, ranging from 1 to 780, on average across the years 2012 to 2016. I chose to take the average of all values relevant to this plot across the years because in previous questions, we established that there is not a big difference in characteristics among the years. The plot above shows that states with slightly higher number of colleges tend to have higher tuitions as well (Adjusted R^2 = 0.07). One possible explanation for this is that a state that supports more schools has more expenses as well such as cost on infrastructure, cost of housing, cost of hiring enough professors and staff, and for this reason, there are higher costs associated with states that have more schools. As with any rule, some exceptions such as Rhode Island (upper left most point on the plot), that only has 26 schools but an average tuition of $27,627. It is possible that the schools in Rhode Island are more expensive because of the circumstances of Rhode Island such as most of the schools being private, less government funding for the education system, etc.
+
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="Graduate vs Undergraduate Populations">
-  <figcaption>The blue line is only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
-**graphs go here, say the line is only for direction of correlation** the assumptions are not met for anything more
+The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
 
-To examine the differences in tuition across states, I found the mean tuition of each state, and I graphed it against the average number of colleges per state, on an average year. The plot shows that there is a wide range of mean tuitions, averaging from around $4,000 to $27,627 for in-state tuition per year. There is also a wide range of schools per state, ranging from 1 to 780, on average across the years 2012 to 2016. I chose to take the average of all values relevant to this plot across the years because in previous questions, we established that there is not a big difference in characteristics among the years. The plot above shows that states with slightly higher number of colleges tend to have higher tuitions as well (Adjusted R^2 = 0.07). One possible explanation for this is that a state that supports more schools has more expenses as well such as cost on infrastructure, cost of housing, cost of hiring enough professors and staff, and for this reason, there are higher costs associated with states that have more schools. As with any rule, some exceptions such as Rhode Island (upper left most point on the plot), that only has 26 schools but an average tuition of $27,627. It is possible that the schools in Rhode Island are more expensive because of the circumstances of Rhode Island such as most of the schools being private, less government funding for the education system, etc. The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3b.out_of_state_tuition.png" alt="Graduate vs Undergraduate Populations">
+  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+</div><br/>
 
 ### Diversity
 
