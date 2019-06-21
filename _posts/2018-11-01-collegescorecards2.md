@@ -21,7 +21,7 @@ defaults:
 
 # College Scorecards Analysis and Report Part 2
 
-This report is a continuation of the report titled “College Scorecards Analysis and Report”. In this report I take a deeper dive into the College Scorecards dataset and answer questions about missing data, demographics data, salary data, among others.
+This report is a continuation of the report titled “College Scorecards Analysis and Report”. In this report I take a deeper dive into the College Scorecards dataset and answer questions about missing data, demographics data, and salary data, among others.
 
 ### Missing data
 
