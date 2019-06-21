@@ -28,15 +28,15 @@ This report is a continuation of the report titled “College Scorecards Analysi
 ### Missing data
 
 Although there were a lot of missing values in the dataset, there are some variables that had **no missing** values.
-  1. id, ope8_id, ope6_id, name, city, state, degrees_awarded.predominant, degrees_awarded.highest, ownership, main_campus, branches, institutional_characteristics.level, zip, and academic_year had no missing values.
+  - id, ope8_id, ope6_id, name, city, state, degrees_awarded.predominant, degrees_awarded.highest, ownership, main_campus, branches, institutional_characteristics.level, zip, and academic_year had no missing values.
 
 Some variables had **all missing** values.
-  2. Minority_serving.historically_black, minority_serving.predominantly_black, minority_serving.annh, minority_serving.tribal, minority_serving.aanipi, minority_serving.hispanic, minority_serving.nant, men_only, women_only, operating had all missing values.
+  - Minority_serving.historically_black, minority_serving.predominantly_black, minority_serving.annh, minority_serving.tribal, minority_serving.aanipi, minority_serving.hispanic, minority_serving.nant, men_only, women_only, operating had all missing values.
 
 *perhaps* the reason these are missing is because all the demographics information is kept in other columns of the data.
 
 Some variables had **mostly missing** values (8,000 to 30,000 missing values).
-  3. retention_rate_suppressed.four_year.part_time_pooled, religious_affiliation, act_scores.75th_percentile.writing, act_scores.midpoint.writing, act_scores.25th_percentile.writing, retention_rate_suppressed.lt_four_year.part_time_pooled had mostly missing values.
+  - retention_rate_suppressed.four_year.part_time_pooled, religious_affiliation, act_scores.75th_percentile.writing, act_scores.midpoint.writing, act_scores.25th_percentile.writing, retention_rate_suppressed.lt_four_year.part_time_pooled had mostly missing values.
 
   These are just a few examples of the many columns that had mostly missing values. From visually observing the columns with many missing values, they tend to sort themselves into several categories: ACT/SAT subsection scores and related columns, cost of attending the school as adjusted by income level, retention information and debt information. Perhaps the reason for all the missing data in the ACT/SAT score category is due to College Board not sharing all the information with universities, only giving them the overall scores rather than breakdowns. Because there are a lot of columns that do
   computation on the test score data, they all have to be missing too.
@@ -46,7 +46,7 @@ Some variables had **mostly missing** values (8,000 to 30,000 missing values).
   Misc. “under_investagion”, “school_url”. These are some of the miscellaneous categories that have mostly missing values and aren’t explained by either of the above two reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values are missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Perhaps when colleges reported their data, they weren’t asked to provide their URL.
 
 Relatively **few missing** values (0 to 8,000 missing values)
-  4. demographics.age_entry, default_rate_3_yr, pell_grant_rate, federal_loan_rate, part_time_share, program_percentage.agriculture, program_percentage.resources, program_percentage.architecture
+  - demographics.age_entry, default_rate_3_yr, pell_grant_rate, federal_loan_rate, part_time_share, program_percentage.agriculture, program_percentage.resources, program_percentage.architecture
 
   These missing values sort themselves into categories that most universities would keep records of financial aid information, program percentages, and demographics data. All universities keep records of their financial aid information, so it is expected that there will be relatively few missing values in the columns that are related to financial aid, which is what we see in the data. Universities also keep a close record of the programs that they offer and how many students are enrolled in such programs. We would expect to see no missing values in columns related to university programs, yet we still see some. This is perhaps due to the fact that universities didn’t report anything for programs they don’t offer and they values got marked down as missing, whereas they should have been zeros.
 
