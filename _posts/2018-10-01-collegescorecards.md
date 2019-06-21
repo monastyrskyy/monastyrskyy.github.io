@@ -5,6 +5,7 @@ excerpt: "In this project, I dive into the College Scorecard dataset and examine
 mathjax: "true"
 tags: [academic]
 classes: wide # frontmatter that should make the page wider.
+toc: true
 
 defaults:
   # _posts
