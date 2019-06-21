@@ -110,7 +110,7 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
 
 In this section, I include the code that I used to create the visualizations seen in the report.
 
-#### Public College Price vs Earnings
+**Public College Price vs Earnings**
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/1.public_price_vs_earnings.png" alt="2014 Public Price vs Earnings"></div>
 ```r
@@ -133,7 +133,7 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 
 <br><br/>
 
-#### Private For-Profit College Price vs Earnings
+**Private For-Profit College Price vs Earnings**
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div>
 ```r
 #analogous to above
@@ -151,7 +151,7 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
 
 <br><br/>
 
-#### Type of Ownership Counts
+**Type of Ownership Counts**
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div>
 ```r
@@ -166,7 +166,7 @@ ggplot(card,aes(fill = academic_year, x = ownership)) +
 ```
 <br><br/>
 
-##### UC Davis Admission Rate
+**UC Davis Admission Rate**
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
