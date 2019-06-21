@@ -61,10 +61,11 @@ Overall, the graphs mostly look the same across the years, so it is safe for us 
 
 **TABLES GO HERE**
 
-**UNDERGRAD VS GRAD POP** goes Here
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad.png" alt="Graduate vs Undergraduate Populations"></div><br/>
+
 To dive a little deeper into the data, we will now explore the relationship between graduate and undergraduate populations at each school. The graph on the left explores the relationship between undergraduate and graduate student populations. It appears that the two measures tend to be positively correlated, or in other words, schools with higher populations of undergraduates tend to have higher populations of graduate students. Overall, there are about 5.5 times more undergraduates than graduate students across all schools and all 5 years 2012-2016. As expected, despite there being more undergraduate students than graduate students on average, there are some schools that are the opposite. Urshan Graduate School of Theology, Charlotte School of Law, Daoist Traditions College of Chinese Medical Arts are some of the schools that have more graduate students than undergraduate students. The trend appears to be that professional and graduate only schools have more graduate students than undergraduate.
 
-### programs
+### Programs
 
 In the dataset, each university reported the percentage of their students that are enrolled each program in the dataset (disregarding NAs). Following this logic, the percentage total for each university should be 1, or 100%, and after checking several random universities, this appears to be true. In order to get the several most and least popular programs, I added up the program_percentage columns across all universities and years. Perhaps this way of calculating the totals is not good for getting an accurate count of students enrolled in each program, but it makes sense to use it just to get the relative size or ranking of the programs by popularity within each university. The top 5 are: Health, Personal Culinary, Business Marketing, Humanities, and Visual and Performing Arts. The 5 least popular ones are: Library (Science), Military (Studies), Science/Technology, Ethnic Cultural Gender (Studies), and Architecture. When I divided the data by year and calculated the most and least popular programs for each year, the same programs were in the top 5 as in the bottom 5, and in the same order.
 
