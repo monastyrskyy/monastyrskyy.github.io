@@ -4,7 +4,8 @@ date: 2018-10-01
 excerpt: "In this project, I continue exploring the College Scorecard dataset and examine it for interesting patterns, trends, and insights."
 mathjax: "true"
 tags: [academic]
-classes: wide # frontmatter that should make the page wider.
+#classes: wide # frontmatter that should make the page wider.
+toc: true
 
 defaults:
   # _posts
