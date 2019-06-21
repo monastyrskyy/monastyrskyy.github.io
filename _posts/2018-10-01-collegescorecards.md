@@ -6,6 +6,7 @@ mathjax: "true"
 tags: [academic]
 # classes: wide # frontmatter that should make the page wider.
 toc: true # adding a table of contents
+toc_label: "Table of Contents"
 
 defaults:
   # _posts
