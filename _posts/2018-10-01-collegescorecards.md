@@ -7,6 +7,8 @@ tags: [academic]
 # classes: wide # frontmatter that should make the page wider.
 toc: true # adding a table of contents
 toc_label: "Table of Contents"
+toc_min_header: 1
+toc_max_header: 3
 
 defaults:
   # _posts
