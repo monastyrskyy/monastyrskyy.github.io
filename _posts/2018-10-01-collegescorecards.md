@@ -166,7 +166,7 @@ ggplot(card,aes(fill = academic_year, x = ownership)) +
 ```
 <br><br/>
 
-#### UC Davis Admission Rate
+##### UC Davis Admission Rate
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
