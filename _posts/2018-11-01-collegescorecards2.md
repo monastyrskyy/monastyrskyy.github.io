@@ -30,10 +30,12 @@ This report is a continuation of the report titled “College Scorecards Analysi
 Although there were a lot of missing values in the dataset, there are some variables that had **no missing** values.
   - id, ope8_id, ope6_id, name, city, state, degrees_awarded.predominant, degrees_awarded.highest, ownership, main_campus, branches, institutional_characteristics.level, zip, and academic_year had no missing values.
 
+Some identifying fields need to be filled in for every college such as its name, location, and other basic information.
+
 Some variables had **all missing** values.
   - Minority_serving.historically_black, minority_serving.predominantly_black, minority_serving.annh, minority_serving.tribal, minority_serving.aanipi, minority_serving.hispanic, minority_serving.nant, men_only, women_only, operating had all missing values.
 
-*perhaps* the reason these are missing is because all the demographics information is kept in other columns of the data.
+Perhaps the reason these are missing is because all the demographics information is kept in other columns of the data, namely the "demographics.(wildcard)" varaibles.
 
 Some variables had **mostly missing** values (8,000 to 30,000 missing values).
   - retention_rate_suppressed.four_year.part_time_pooled, religious_affiliation, act_scores.75th_percentile.writing, act_scores.midpoint.writing, act_scores.25th_percentile.writing, retention_rate_suppressed.lt_four_year.part_time_pooled had mostly missing values.
@@ -98,7 +100,7 @@ The above boxplots represent the distributions of the 3 ethnicities across the s
 As for the specific universities that comprise this list, there are 150 in total, in 2016. I analyzed the year 2016 because it has proven to be fairly similar to the other years and the average across years on many calculations in the previous questions. For the sake of brevity of this report, here are several examples of such colleges: College of Alameda, American Career College-Los Angeles, Bethesda University, California State University-East Bay, and Sofia University.
 
 
-## Answering Questions in part 1 (link here)
+## <a href="https://monastyrskyy.github.io/collegescorecards/" target="blank">Solutions to the Questions from Part 1</a>
 
   1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
 
@@ -125,3 +127,5 @@ wanted to explore this question because I was wondering what kind of diversity t
   2. Is there a difference in Median earnings 10 years after entry for majority female (65%+) and majority male (65%+) schools?
 
 From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900. All in all, it would be great to figure out the causes behind these differences and decide a course of action from there.
+
+## Analysis and Code

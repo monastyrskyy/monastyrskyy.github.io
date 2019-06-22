@@ -24,10 +24,7 @@ defaults:
       related: true
 ---
 
-# College Scorecards Analysis and Report
-
-
-### Introduction
+## Introduction
 
 The U.S. Department of Education provides the College Scorecards Dataset to prospective students and their families to inform them about the educational outcomes and costs of attending various federally funded colleges and universities. The purpose of the data is to facilitate the process of making decisions about which college or university to attend based on several performance indicators, student success measures, and fees related to the school. The data used to create reports on the <a href="https://collegescorecard.ed.gov/" target="blank">College Scorecard website</a> are a subset of the data universities and colleges report to the Integrated Postsecondary Education Data System (<a href="https://nces.ed.gov/ipeds/" target="blank">IPEDS</a>).
 
@@ -37,7 +34,7 @@ In the dataset, disregarding academic year, the 5 states with the most colleges 
 
 I hypothesize that the top 5 states match the top 5 states by population, and similarly the bottom 5 states/territories match the bottom 5 states/territories by population. My hypothesis largely matches reality, with 4 out of 5 most populous states also being in the top 5 by college count (<a href="https://www.census.gov/newsroom/press-releases/2015/cb15-215.html" target="blank">Pennsylvania is the exception</a>). The least populated regions in the US are territories, so my hypothesis is supported as well.
 
-### Average Net Price vs Median Earnings 10 Years After Entry
+## Average Net Price vs Median Earnings 10 Years After Entry
 
 I calculated both of these ranges by finding the minimum and maximum values of each of column separately, and removing all “NA” values. I graphed the values by removing all rows that had “NA” values in either Average Net Price or Median Earnings 10 Years After Entry or both. It’s important to note that the calculated ranges may be broader than what is shown on the graph because the graph excludes more rows than the ranges do.
 
@@ -57,13 +54,13 @@ Overall, in all cases there seems to be a positive correlation between the avera
 
 **Note:** *In the analysis of plots and ranges for Public, Private For-Profit, and Private Nonprofit colleges, I excluded all rows of data that had missing values in any of the following: Median earnings after 10 years, Average net price Public, Average net price Private. I did this at the cost of potentially excluding valuable data, but for the reason of staying as sure and conservative as possible with plots, assumptions, and insights.*
 
-### College Counts Analysis
+## College Counts Analysis
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div><br/>
 
 From the plot, it looks like Private for-profit colleges are decreasing in number. This could be true, or perhaps less private for-profit colleges are receiving federal financial aid. The drop is rather steep in years 2014-2016, where the number went from just over 3500 to just over 3000. There also is a slight general increase in the number of private nonprofit and public colleges Again, this could be because more such colleges are receiving federal financial aid, or because they are actually increasing in number. Despite the increase, the number of each type of college is right around 2000 for each year.
 
-### UC Davis Admission Rate and Implications
+## UC Davis Admission Rate and Implications
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/5.ucd_admissions_both_v2.png" alt="UCD admission rate - zoomed out and zoomed in.">
@@ -74,7 +71,7 @@ While there is a definite dip in the admissions rate in 2015, it is not as exagg
 
 In addition to being aware of the dangers of misaligning data, it’s also important to discuss the dip in the admissions rate in 2015. In order to provide broader context, we could look into other colleges (public, CA, only UC, etc.) to see if there is also a dip in their admissions rate. This would bring us closer to the reason for the dip. We could also look into the cost of attendance of these schools for the years 2012 to 2016 to see if there is a spike in costs in 2015. This is beyond the scope of this report, but something that would useful to look into to gain some broader context.
 
-### Data Types
+## Data Types
 
 There are few limits to how one can represent statistical data types in R; but there are general guidelines that if followed will result in a smooth-flowing work experience. Statistical data are divided into two types: categorical and numerical, and each type is subdivided into nominal and ordinal for categorical data and discrete and continuous for numerical data. Nominal data is categorical data that doesn’t imply a rank order (e.g. male, female; name of school attended). Ordinal data is categorical data that implies a rank order (e.g. highest level of education). Discrete data is numerical data that has values that can’t be subdivided (e.g. place of finishing a marathon; age in years). Continuous data is numerical data that can be subdivided and doesn’t have any preset values (e.g. height, dimensions of furniture). (<a href="https://towardsdatascience.com/data-types-in-statistics-347e152e8bee" target="blank">Source</a>)
 
@@ -88,7 +85,7 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
 | Continuous (Numerical)   | Numeric, Integer        | c(3.2, 5.8, 5.5)      |
 
 
-### Further Exploration
+## Further Exploration
 
 1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
   - Type of chart: scatterplot with regression line
@@ -106,7 +103,7 @@ For each <a href="https://www.tutorialspoint.com/r/r_data_types.htm" target="bla
 
 
 
-### Analysis and Code
+## Analysis and Code
 
 In this section, I include the code that I used to create the visualizations seen in the report.
 
