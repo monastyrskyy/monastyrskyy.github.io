@@ -159,15 +159,13 @@ card_box = card %>%
 card_box_melt = melt(card_box, id = c("id", "academic_year"))
 
 
-
 # Calculating the average ethnicity value for each college across the years
 card_box_melt = card_box_melt %>%
   group_by(id, variable)%>%
   summarize(value = mean(value))
 
 
-#Graphing
-
+# Graphing the boxplots
 ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
   geom_boxplot(color = "#535a6d", aes(fill=variable)) +
   labs(x = "",
@@ -176,7 +174,7 @@ ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
        caption = "Aggregate data 2012-16") +
   theme_hc()+
   theme(legend.position = "right") +
-  scale_fill_discrete(name = "Ethnicity", 
+  scale_fill_discrete(name = "Ethnicity",
                       # Changing the order to be alphabetical
                       breaks = c("demographics.race_ethnicity.asian",
                                  "demographics.race_ethnicity.black",
