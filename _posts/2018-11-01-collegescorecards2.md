@@ -114,7 +114,7 @@ I thought asking this question could help a potential student decide what kind o
   2. Is there a relationship between the size of the university and faculty salary?
 
   <div style="text-align:center">
-    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/5.faculty_salary_vs_size.png" alt="Diversity Boxplots">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/6.faculty_salary_vs_size.png" alt="Faculty Salary vs College Size">
   </div><br/>
 
 To answer this question, I will focus on the most recent year, as it contains the most up-to-date information. In the year 2016, there seems to be a positive correlation between the size of the school and monthly faculty salary. The regression line was added simply to show the positive relationship between the variables, and is not meant to be analyzed further (it may break assumptions). This graph could help students who are looking to become faculty to decide what size of school to apply to based on the salary. Despite the apparent positive relationship between the two variables, it's important to note the cluster of colleges in the lower right corner of the graph that seem to be the exceptions. They are some of the largest colleges, but have relatively low faculty salaries. On the other hand, in the upper left hand corner, there are a few colleges that have some of the highest faculty salaries but are quite small in size.
@@ -273,7 +273,7 @@ degree = as.data.frame(aggregate(card$earn_10_yrs_after_entry.median,
                                  by=list(card$degrees_awarded.highest),
                                  data = card, mean, na.rm = TRUE))
 ```
-Resulting dataframe
+The resulting data frame is shown below. "Group.1" is the highest degree awarded, and "x" is the average of the median earnings 10 years after entry for all colleges across all years within each group of highest degree awarded.
 
 |Group.1   |     x|
 |:-----:     |    :------:|
@@ -284,7 +284,7 @@ Resulting dataframe
 |Non-degree-granting | 33516.12|
 
 ```r
-# Graphing
+# Graphing the plot above
 ggplot(degree, aes(x = reorder(Group.1, x), y = x)) +
   geom_bar(stat="identity", fill="#535a6d") +
   labs(
