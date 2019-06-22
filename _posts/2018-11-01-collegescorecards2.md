@@ -95,7 +95,7 @@ The question of diversity is a rather big question to analyze because there are 
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/4.diversity_boxplots.png" alt="Diversity Boxplots">
 </div><br/>
 
-
+**fix these numbers below, and I analyzed the whole dataset not just 2016**
 The above boxplots represent the distributions of the 3 ethnicities across the schools that have at least 10% of each group. The median for the Black population is 17.99%, 14.95% for the Asian population and 24.02% for the Hispanic. The data range from 10.02% across the groups to a biggest max value of 69.81%. The data for each group seems to be fairly spread out, meaning there are schools where each group is a majority of the population and the other two groups still comprise at least 10% each. The middle 50% of the data is the least spread out for the Asian group, with an IQR of only 7.73%, as compared to 15.69% for the Black population, and for 14.99% the Hispanic.
 
 As for the specific universities that comprise this list, there are 150 in total, in 2016. I analyzed the year 2016 because it has proven to be fairly similar to the other years and the average across years on many calculations in the previous questions. For the sake of brevity of this report, here are several examples of such colleges: College of Alameda, American Career College-Los Angeles, Bethesda University, California State University-East Bay, and Sofia University.
