@@ -146,10 +146,9 @@ library(reshape2)
 # Filtering the original "card" dataset to only include diverse schools
 # Selecting only the school id, academic year, and the ethnicity columns
 card_box = card %>%
-
-  filter(demographics.race_ethnicity.black > 0.10 & demographics.race_ethnicity.asian > 0.10
-         & demographics.race_ethnicity.hispanic > 0.10) %>%
-
+  filter(demographics.race_ethnicity.black > 0.10 &
+         demographics.race_ethnicity.asian > 0.10 &
+         demographics.race_ethnicity.hispanic > 0.10) %>%
   select(id, academic_year,
          demographics.race_ethnicity.black,
          demographics.race_ethnicity.asian,
@@ -171,19 +170,20 @@ card_box_melt = card_box_melt %>%
 
 ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
   geom_boxplot(color = "#535a6d", aes(fill=variable)) +
-  labs(
-    x = "",
-    y = "% of Student Population",
-    title = "% of Each Ethnicity in Diverse Colleges",
-    caption = "Aggregate data 2012-16"
-    ) +
+  labs(x = "",
+       y = "% of Student Population",
+       title = "% of Each Ethnicity in Diverse Colleges",
+       caption = "Aggregate data 2012-16") +
   theme_hc()+
   theme(legend.position = "right") +
-  scale_fill_discrete(name = "Ethnicity",
+  scale_fill_discrete(name = "Ethnicity", 
+                      # Changing the order to be alphabetical
                       breaks = c("demographics.race_ethnicity.asian",
                                  "demographics.race_ethnicity.black",
-                                 "demographics.race_ethnicity.hispanic"),    # Changing the order to be alphabetical
-                      labels = c("Asian", "Black", "Hispanic")) +            # Renaming the legend
-  scale_x_discrete(labels = c("Asian", "Black", "Hispanic"))                 # Renaming each plot
+                                 "demographics.race_ethnicity.hispanic"),
+                      # Renaming the legend
+                      labels = c("Asian", "Black", "Hispanic")) +
+  # Renaming each plot
+  scale_x_discrete(labels = c("Asian", "Black", "Hispanic"))
 
 ```
