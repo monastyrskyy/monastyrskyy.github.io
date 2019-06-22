@@ -21,11 +21,11 @@ defaults:
       related: true
 ---
 
-# College Scorecards Analysis and Report Part 2
+## Introduction
 
 This report is a continuation of the report titled “College Scorecards Analysis and Report”. In this report I take a deeper dive into the College Scorecards dataset and answer questions about missing data, demographics data, and salary data, among others.
 
-### Missing data
+## Missing data
 
 Although there were a lot of missing values in the dataset, there are some variables that had **no missing** values.
   - id, ope8_id, ope6_id, name, city, state, degrees_awarded.predominant, degrees_awarded.highest, ownership, main_campus, branches, institutional_characteristics.level, zip, and academic_year had no missing values.
@@ -52,24 +52,24 @@ Relatively **few missing** values (0 to 8,000 missing values)
 
   Almost all university applications prompt the applicants to disclose their demographics information, so we expect to see few missing values in those columns. The potential explanations for missing values in the data is perhaps because a lot of applicants didn’t disclose their demographics data and were marked down as “unknown” and were not reported.
 
-### Student Populations
+## Student Populations
 
 In order to get an accurate measure of total student populations for each school, I added the “size” and “grad_student” fields together, because the data dictionary defines “size” as the total population of undergrads at each school. The student populations for each year are skewed right and have a median (~450 students) and mean (~2300 students) that are quite low compared to the max value (100,000+ students). Since the data are skewed right, it is important to look at both the mean and the median because the median is more representative of the smaller schools with low enrollment, and the mean is representative of the larger schools. The minimum value for each year is 0, which leads me to believe that it must have been a mistake or the school had zero students in that year. Upon further review, all the colleges that had zero students enrolled are real colleges that usually have very low enrollment (East West College of Natural Medicine, American Conservatory Theater, both with 0 students enrolled). The max value for each year seems to be awfully high as well, but upon further inspection, the schools that tend to be have high enrollment are online schools that don’t have any limitation in terms of capacity like the University of Phoenix – Online Campus (205,286 enrolled).
 
 Overall, the graphs mostly look the same across the years, so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year.
 
 
-**TABLES GO HERE**
+**TABLES GO HERE see blue note 6/21 in planner**
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad_v2.png" alt="Graduate vs Undergraduate Populations"></div><br/>
 
 To dive a little deeper into the data, we will now explore the relationship between graduate and undergraduate populations at each school. The graph on the left explores the relationship between undergraduate and graduate student populations. It appears that the two measures tend to be positively correlated, or in other words, schools with higher populations of undergraduates tend to have higher populations of graduate students. Overall, there are about 5.5 times more undergraduates than graduate students across all schools and all 5 years 2012-2016. As expected, despite there being more undergraduate students than graduate students on average, there are some schools that are the opposite. Urshan Graduate School of Theology, Charlotte School of Law, Daoist Traditions College of Chinese Medical Arts are some of the schools that have more graduate students than undergraduate students. The trend appears to be that professional and graduate only schools have more graduate students than undergraduate.
 
-### Programs
+## Programs
 
 In the dataset, each university reported the percentage of their students that are enrolled each program in the dataset (disregarding NAs). Following this logic, the percentage total for each university should be 1, or 100%, and after checking several random universities, this appears to be true. In order to get the several most and least popular programs, I added up the program_percentage columns across all universities and years. Perhaps this way of calculating the totals is not good for getting an accurate count of students enrolled in each program, but it makes sense to use it just to get the relative size or ranking of the programs by popularity within each university. The top 5 are: Health, Personal Culinary, Business Marketing, Humanities, and Visual and Performing Arts. The 5 least popular ones are: Library (Science), Military (Studies), Science/Technology, Ethnic Cultural Gender (Studies), and Architecture. When I divided the data by year and calculated the most and least popular programs for each year, the same programs were in the top 5 as in the bottom 5, and in the same order.
 
-# Tuitions
+## Tuitions
 
 To examine the differences in tuition across states, I found the mean tuition of each state, and I graphed it against the average number of colleges per state, for the average year (2012-16). The plot below shows that there is a wide range of mean tuitions, averaging from around $4,000 to $27,627 for in-state tuition per year. There is also a wide range of schools per state, ranging from 1 to 780, on average across the years 2012 to 2016. I chose to take the average of all values relevant to this plot across the years because in previous questions, we established that there is not a big difference in characteristics among the years. The plot above shows that states with slightly higher number of colleges tend to have higher tuitions as well (Adjusted R^2 = 0.07). One possible explanation for this is that a state that supports more schools has more expenses as well such as cost on infrastructure, cost of housing, cost of hiring enough professors and staff, and for this reason, there are higher costs associated with states that have more schools. As with any rule, some exceptions such as Rhode Island (upper left most point on the plot), that only has 26 schools but an average tuition of $27,627. It is possible that the schools in Rhode Island are more expensive because of the circumstances of Rhode Island such as most of the schools being private, less government funding for the education system, etc.
 
@@ -85,7 +85,7 @@ The trend for out of state tuition is very similar, with the same positive corre
   <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
-### Diversity
+## Diversity
 
 The question of diversity is a rather big question to analyze because there are so many ways to define and measure diversity. Many scholars have spent decades researching this topic, and I want to distinguish my work from theirs by saying that my analysis is rather rudimentary and for the sake of the length of report, simple in approach. From experience, when I hear diversity being defined, it is usually defined along racial and ethnic lines, and measured by how much each race makes up the population of each university. I will approach diversity in a similar way – by defining diverse schools as those that are made up of at least 10% each: Black, Asian, and Hispanic.
 
@@ -98,7 +98,7 @@ The above boxplots represent the distributions of the 3 ethnicities across the s
 As for the specific universities that comprise this list, there are 150 in total, in 2016. I analyzed the year 2016 because it has proven to be fairly similar to the other years and the average across years on many calculations in the previous questions. For the sake of brevity of this report, here are several examples of such colleges: College of Alameda, American Career College-Los Angeles, Bethesda University, California State University-East Bay, and Sofia University.
 
 
-### Answering Questions in part 1 (link here)
+## Answering Questions in part 1 (link here)
 
   1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
 
@@ -114,7 +114,7 @@ In the year 2016, there seems to be a positive correlation between the size of t
 
 The above two questions showed some interesting results and confirmed my existing suspicions. It seems to be fair that students who attend a school with a higher degree than other schools will also earn more money later on. It also seems correct that bigger schools will pay their faculty more because there is more to do, and perhaps more money for the school to spend. As mentioned several times, these graphs that attempt to answer the questions I posed only show correlation, as it is very hard to show causation in an observational study. Correlations are not meaningless however, and they can be great starting points for further exploration, as was my intention.
 
-### Additional Questions
+## Additional Questions
 
   1. Across all years, what does the gender distribution look like for the universities in the dataset?
 
