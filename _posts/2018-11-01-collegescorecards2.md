@@ -105,7 +105,9 @@ As for the specific universities that comprise this list, there are 150 in total
 
   1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
 
-**picture**
+  <div style="text-align:center">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/5.degree_vs_earnings.png" alt="Diversity Boxplots">
+  </div><br/>
 
 I thought asking this question could help a potential student decide what kind of degree he wanted to get in order to secure his future. To help answer this question, I took the average Median Earnings 10 years after Entry across the highest degrees each university offered. The salaries ranged from $24,036 for universities offering Associate’s Degrees as their highest degree to $45,232 for universities offering a Graduate degree as their highest degree. The median for the data is right around $33,516. Of course, it is important to be aware that correlation doesn’t always equal causation, and for this reason, the potential student shouldn’t simply jump at the first opportunity to attend a university offering graduate degrees. There could be confounding variables, like the program itself, the student’s work ethic, and the student’s past academic success, among others. Despite this, the bar graph above should help the potential student, at least start his research into what programs to apply to and give him a data-based foundation of the relationship between earnings and the highest degree offered at a school.
 
@@ -253,3 +255,46 @@ ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
 ```
 
 <br><br/>
+
+**Highest Awarded Degree vs Earnings**
+
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/5.degree_vs_earnings.png" alt="Diversity Boxplots">
+</div>
+```r
+# Making a subset of the full "card" dataset to just show highest degree
+# and the average of the "earn_10_yrs_after_entry.median" for colleges with
+# each respective highest degree
+degree = as.data.frame(aggregate(card$earn_10_yrs_after_entry.median,
+                                 by=list(card$degrees_awarded.highest),
+                                 data = card, mean, na.rm = TRUE))
+```
+Resulting dataframe
+Group.1   |     x
+:-----:     |    :------:
+Associate degree | 29466.71
+Bachelor's degree | 35212.20
+Certificate degree | 24036.35
+Graduate degree | 45232.35
+Non-degree-granting | 33516.12
+
+```r
+# Graphing
+ggplot(degree, aes(x = reorder(Group.1, x), y = x)) +
+  geom_bar(stat="identity", fill="#535a6d") +
+  labs(
+    x = "Highest Degree Awarded",
+    y = "Avg. Median Earnings 10 Yrs Post Entry ($)",
+    title = "Degree vs Earnings",
+    caption = "Aggregate data 2012-16")+
+  theme_hc() +
+  # Giving the title some breathing room
+  theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm")),
+        axis.title.y = element_text(margin = unit(c(0, 5, 0, 0), "mm")))+
+  # Remaning the bars
+  scale_x_discrete(labels = c("Certificate", "Associate",
+                              "Non-Granting", "Bachelor's", "Graduate")) +
+  # Adding the earnings on top of each bar
+  geom_text(aes(label=round(x,1)), vjust = -0.5) +
+  ylim(c(NA, 50000))
+```
