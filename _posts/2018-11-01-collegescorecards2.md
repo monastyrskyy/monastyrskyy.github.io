@@ -61,7 +61,7 @@ In order to get an accurate measure of total student populations for each school
 Overall, the graphs mostly look the same across the years, so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year.
 
 
-**TABLES GO HERE see blue note 6/21 in planner**
+**TABLES GO HERE see #5d73af note 6/21 in planner**
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad_v2.png" alt="Graduate vs Undergraduate Populations"></div><br/>
 
@@ -77,14 +77,14 @@ To examine the differences in tuition across states, I found the mean tuition of
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="Graduate vs Undergraduate Populations">
-  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+  <figcaption>The #5d73af line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
 The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610 to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3b.out_of_state_tuition.png" alt="Graduate vs Undergraduate Populations">
-  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+  <figcaption>The #5d73af line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
 ## Diversity
@@ -113,9 +113,13 @@ I thought asking this question could help a potential student decide what kind o
 
   2. Is there a relationship between the size of the university and faculty salary?
 
-**picture**
+  <div style="text-align:center">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/5.faculty_salary_vs_size.png" alt="Diversity Boxplots">
+  </div><br/>
 
-In the year 2016, there seems to be a positive correlation between the size of the school and faculty salary. The regression line was added simply to show the positive relationship between the variables, and is not meant to be analyzed further (it may break assumptions). This graph could help students who are looking to become faculty to decide what size of school to apply to based on the salary. The range of the salaries is from $216 (perhaps a stipend) to $27,570, which seems off, but that’s because not every college reported their faculty salaries. The range for the size of the colleges ranges from 0 (small private trade schools) to 100,011. As mentioned above, despite the positive relationship between school size and faculty salary, correlation is not always causation, and select faculty may make more money at a smaller school. This graph is only meant to be a starting point to further research.
+To answer this question, I will focus on the most recent year, as it contains the most up-to-date information. In the year 2016, there seems to be a positive correlation between the size of the school and monthly faculty salary. The regression line was added simply to show the positive relationship between the variables, and is not meant to be analyzed further (it may break assumptions). This graph could help students who are looking to become faculty to decide what size of school to apply to based on the salary. Despite the apparent positive relationship between the two variables, it's important to note the cluster of colleges in the lower right corner of the graph that seem to be the exceptions. They are some of the largest colleges, but have relatively low faculty salaries. On the other hand, in the upper left hand corner, there are a few colleges that have some of the highest faculty salaries but are quite small in size.
+
+The average monthly faculty salaries range from $216 (perhaps a stipend) to $27,570. The range for the size of the colleges ranges from 0 (small private trade schools) to 100,011. As mentioned above, despite the positive relationship between school size and faculty salary, correlation is not always causation, and select faculty may make more money at a smaller school. This graph is only meant to be a starting point to further research.
 
 The above two questions showed some interesting results and confirmed my existing suspicions. It seems to be fair that students who attend a school with a higher degree than other schools will also earn more money later on. It also seems correct that bigger schools will pay their faculty more because there is more to do, and perhaps more money for the school to spend. As mentioned several times, these graphs that attempt to answer the questions I posed only show correlation, as it is very hard to show causation in an observational study. Correlations are not meaningless however, and they can be great starting points for further exploration, as was my intention.
 
@@ -162,7 +166,7 @@ ggplot(card, aes(x = size, y = grad_students)) +
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="Graduate vs Undergraduate Populations">
-  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+  <figcaption>The #5d73af line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div>
 ```r
 # Making a data frame of the average in-state tuition per state
@@ -191,7 +195,7 @@ ggplot(data = tuition_agg1, aes(x = x_axis1, y = tuition)) +
   theme(axis.line.x = element_line(color="light gray", size = .25),
         axis.line.y = element_line(color="light gray", size = .25))+
   theme_hc()+
-  geom_abline(slope = 11.07, intercept = 10991.14, color = "blue")
+  geom_abline(slope = 11.07, intercept = 10991.14, color = "#5d73af")
 
 # To get the slope and intercept above
 lm(tuition_agg1$tuition~x_axis1)
@@ -270,13 +274,14 @@ degree = as.data.frame(aggregate(card$earn_10_yrs_after_entry.median,
                                  data = card, mean, na.rm = TRUE))
 ```
 Resulting dataframe
-Group.1   |     x
-:-----:     |    :------:
-Associate degree | 29466.71
-Bachelor's degree | 35212.20
-Certificate degree | 24036.35
-Graduate degree | 45232.35
-Non-degree-granting | 33516.12
+
+|Group.1   |     x|
+|:-----:     |    :------:|
+|Associate degree | 29466.71|
+|Bachelor's degree | 35212.20|
+|Certificate degree | 24036.35|
+|Graduate degree | 45232.35|
+|Non-degree-granting | 33516.12|
 
 ```r
 # Graphing
