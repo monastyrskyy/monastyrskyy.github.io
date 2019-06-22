@@ -133,7 +133,7 @@ ggplot(public2014, aes(x = avg_net_price.public, y = earn_10_yrs_after_entry.med
 **Private For-Profit College Price vs Earnings**
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/2.private_price_vs_earnings.png" alt="2014 Private Price vs Earnings"></div>
 ```r
-#analogous to above
+# Analogous to above
 profit2014 = card[card$academic_year == "2014" &
                     card$ownership == "Private for-profit" &
                     !is.na(card$avg_net_price.private) &
@@ -152,7 +152,7 @@ ggplot(profit2014, aes(x=avg_net_price.private, y = earn_10_yrs_after_entry.medi
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/1.college_scorecards/4.ownership_vs_count.png" alt="2014 Private Non Profit Price vs Earnings"></div>
 ```r
-#fill corresponds to the years
+# Fill corresponds to the years
 #scale_fill_discrete changes the name of the legend
 ggplot(card,aes(fill = academic_year, x = ownership)) +
   geom_bar(position = "dodge", stat = "count") +
@@ -171,12 +171,12 @@ ggplot(card,aes(fill = academic_year, x = ownership)) +
 </div>
 
 ```r
-# this package allows you to put two plots side by side
+# This package allows you to put two plots side by side
 library(gridExtra)
 
 ucd = card[card$id == "110644",] #UC Davis code
 
-#scatterplot with line and floating values
+# Scatterplot with line and floating values
 plot1 = ggplot(ucd, aes(x = academic_year, y = admission_rate.overall, group = 1, label = admission_rate.overall)) +
   geom_line() +
   geom_point() +
@@ -195,6 +195,6 @@ plot2 = ggplot(ucd, aes(x = academic_year, y = admission_rate.overall, group = 1
   xlab("Academic Year")+
   ylab("Overall Admissions Rate")
 
-#putting the two plots together
+# Putting the two plots together
 grid.arrange(plot2, plot1, ncol = 2)
 ```

@@ -40,7 +40,7 @@ Perhaps the reason these are missing is because all the demographics information
 Some variables had **mostly missing** values (8,000 to 30,000 missing values).
   - retention_rate_suppressed.four_year.part_time_pooled, religious_affiliation, act_scores.75th_percentile.writing, act_scores.midpoint.writing, act_scores.25th_percentile.writing, retention_rate_suppressed.lt_four_year.part_time_pooled had mostly missing values.
 
-  These are just a few examples of the many columns that had mostly missing values. From visually observing the columns with many missing values, they tend to sort themselves into several categories: ACT/SAT subsection scores and related columns, cost of attending the school as adjusted by income level, retention information and debt information. Perhaps the reason for all the missing data in the ACT/SAT score category is due to College Board not sharing all the information with universities, only giving them the overall scores rather than breakdowns. Because there are a lot of columns that do computation on the test score data, they all have to be missing too. An additional reason that could account for the missing data is the fact that not all colleges require its applicants to take the SAT or ACT. Because the dataset is comprehensive, it invariably includes all the public junior colleges and community colleges that don't require standardized testing.
+  These are just a few examples of the many columns that had mostly missing values. From visually observing the columns with many missing values, they tend to sort themselves into several categories: ACT/SAT subsection scores and related columns, cost of attending the school as adjusted by income level, retention information and debt information. A reason that could account for the missing data is the fact that not all colleges require its applicants to take the SAT or ACT. Because the dataset is comprehensive, it invariably includes all the public junior colleges and community colleges that don't require standardized testing.
 
   The cost of attendance as adjusted by income level may be missing because this is a hard and not objective measure to calculate. Each university may have their own formulas for calculating this value, and many may not even be interested in the cost of attendance by income level. Also because of the sensitivity of the data, universities may not always share it. Debt information and retention information also has mostly missing values for what I assume is the same reason.
 
@@ -129,3 +129,60 @@ wanted to explore this question because I was wondering what kind of diversity t
 From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900. All in all, it would be great to figure out the causes behind these differences and decide a course of action from there.
 
 ## Analysis and Code
+
+
+**Diversity Boxplots**
+
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/4.diversity_boxplots.png" alt="Diversity Boxplots">
+</div>
+```r
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+
+
+# Filtering the original "card" dataset to only include diverse schools
+# Selecting only the school id, academic year, and the ethnicity columns
+card_box = card %>%
+
+  filter(demographics.race_ethnicity.black > 0.10 & demographics.race_ethnicity.asian > 0.10
+         & demographics.race_ethnicity.hispanic > 0.10) %>%
+
+  select(id, academic_year,
+         demographics.race_ethnicity.black,
+         demographics.race_ethnicity.asian,
+         demographics.race_ethnicity.hispanic)
+
+
+# Melting the data into a ggplot2-friendly format (tidy data)
+card_box_melt = melt(card_box, id = c("id", "academic_year"))
+
+
+
+# Calculating the average ethnicity value for each college across the years
+card_box_melt = card_box_melt %>%
+  group_by(id, variable)%>%
+  summarize(value = mean(value))
+
+
+#Graphing
+
+ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
+  geom_boxplot(color = "#535a6d", aes(fill=variable)) +
+  labs(
+    x = "",
+    y = "% of Student Population",
+    title = "% of Each Ethnicity in Diverse Colleges",
+    caption = "Aggregate data 2012-16"
+    ) +
+  theme_hc()+
+  theme(legend.position = "right") +
+  scale_fill_discrete(name = "Ethnicity",
+                      breaks = c("demographics.race_ethnicity.asian",
+                                 "demographics.race_ethnicity.black",
+                                 "demographics.race_ethnicity.hispanic"),    # Changing the order to be alphabetical
+                      labels = c("Asian", "Black", "Hispanic")) +            # Renaming the legend
+  scale_x_discrete(labels = c("Asian", "Black", "Hispanic"))                 # Renaming each plot
+
+```
