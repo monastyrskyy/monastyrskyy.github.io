@@ -35,17 +35,16 @@ Some identifying fields need to be filled in for every college such as its name,
 Some variables had **all missing** values.
   - Minority_serving.historically_black, minority_serving.predominantly_black, minority_serving.annh, minority_serving.tribal, minority_serving.aanipi, minority_serving.hispanic, minority_serving.nant, men_only, women_only, operating had all missing values.
 
-Perhaps the reason these are missing is because all the demographics information is kept in other columns of the data, namely the "demographics.(wildcard)" varaibles.
+Perhaps the reason these are missing is because all the demographics information is stored in other variables of the data, namely the *demographics.wildcard* variables.
 
 Some variables had **mostly missing** values (8,000 to 30,000 missing values).
   - retention_rate_suppressed.four_year.part_time_pooled, religious_affiliation, act_scores.75th_percentile.writing, act_scores.midpoint.writing, act_scores.25th_percentile.writing, retention_rate_suppressed.lt_four_year.part_time_pooled had mostly missing values.
 
-  These are just a few examples of the many columns that had mostly missing values. From visually observing the columns with many missing values, they tend to sort themselves into several categories: ACT/SAT subsection scores and related columns, cost of attending the school as adjusted by income level, retention information and debt information. Perhaps the reason for all the missing data in the ACT/SAT score category is due to College Board not sharing all the information with universities, only giving them the overall scores rather than breakdowns. Because there are a lot of columns that do
-  computation on the test score data, they all have to be missing too.
+  These are just a few examples of the many columns that had mostly missing values. From visually observing the columns with many missing values, they tend to sort themselves into several categories: ACT/SAT subsection scores and related columns, cost of attending the school as adjusted by income level, retention information and debt information. Perhaps the reason for all the missing data in the ACT/SAT score category is due to College Board not sharing all the information with universities, only giving them the overall scores rather than breakdowns. Because there are a lot of columns that do computation on the test score data, they all have to be missing too. An additional reason that could account for the missing data is the fact that not all colleges require its applicants to take the SAT or ACT. Because the dataset is comprehensive, it invariably includes all the public junior colleges and community colleges that don't require standardized testing.
 
-  The cost of attendance as adjusted by income level may be missing because this is a hard and not objective measure to calculate. Each university may have their own formulas for calculating this value, and many may not even be interested. Also because of the sensitivity of the data, universities may not always share it. Debt information and retention information also has mostly missing values for what I assume is the same reason.
+  The cost of attendance as adjusted by income level may be missing because this is a hard and not objective measure to calculate. Each university may have their own formulas for calculating this value, and many may not even be interested in the cost of attendance by income level. Also because of the sensitivity of the data, universities may not always share it. Debt information and retention information also has mostly missing values for what I assume is the same reason.
 
-  Misc. “under_investagion”, “school_url”. These are some of the miscellaneous categories that have mostly missing values and aren’t explained by either of the above two reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values are missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Perhaps when colleges reported their data, they weren’t asked to provide their URL.
+  Misc. “under_investagion”, “school_url” are some of the categories that have mostly missing values and aren’t explained by the above reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values could be missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Perhaps when colleges reported their data, they weren’t asked to provide their URL.
 
 Relatively **few missing** values (0 to 8,000 missing values)
   - demographics.age_entry, default_rate_3_yr, pell_grant_rate, federal_loan_rate, part_time_share, program_percentage.agriculture, program_percentage.resources, program_percentage.architecture
@@ -80,7 +79,7 @@ To examine the differences in tuition across states, I found the mean tuition of
   <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
-The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
+The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610 to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3b.out_of_state_tuition.png" alt="Graduate vs Undergraduate Populations">
@@ -91,8 +90,9 @@ The trend for out of state tuition is very similar, with the same positive corre
 
 The question of diversity is a rather big question to analyze because there are so many ways to define and measure diversity. Many scholars have spent decades researching this topic, and I want to distinguish my work from theirs by saying that my analysis is rather rudimentary and for the sake of the length of report, simple in approach. From experience, when I hear diversity being defined, it is usually defined along racial and ethnic lines, and measured by how much each race makes up the population of each university. I will approach diversity in a similar way – by defining diverse schools as those that are made up of at least 10% each: Black, Asian, and Hispanic.
 
-**Diversity boxplots here**
-
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/4.diversity_boxplots.png" alt="Diversity Boxplots">
+</div><br/>
 
 
 The above boxplots represent the distributions of the 3 ethnicities across the schools that have at least 10% of each group. The median for the Black population is 17.99%, 14.95% for the Asian population and 24.02% for the Hispanic. The data range from 10.02% across the groups to a biggest max value of 69.81%. The data for each group seems to be fairly spread out, meaning there are schools where each group is a majority of the population and the other two groups still comprise at least 10% each. The middle 50% of the data is the least spread out for the Asian group, with an IQR of only 7.73%, as compared to 15.69% for the Black population, and for 14.99% the Hispanic.
