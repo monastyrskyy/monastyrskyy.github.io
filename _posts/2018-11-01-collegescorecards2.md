@@ -131,6 +131,73 @@ From these two boxplots, comparing the median salaries for colleges that are at 
 
 ## Analysis and Code
 
+In this section, I include the code that I used to create the visualizations seen in the report.
+
+**Graduate vs Undergraduate Populations**
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad_v2.png" alt="Graduate vs Undergraduate Populations"></div>
+```r
+library(ggplot2)
+library(ggthemes) # Cool themes
+
+ggplot(card, aes(x = size, y = grad_students)) +
+  geom_point(color = "#535a6d", size = 1) +
+  labs(
+    x = "Undergraduate Population",
+    y = "Graduate Student Population",
+    title = "Graduate vs Undergraduate Populations",
+    subtitle = "Colleges with large undergrad populations also tend to have large grad populations.",
+    caption = "Aggregate data 2012-16"
+  ) +
+  theme_hc()+
+  # adding y-axis
+  theme(axis.line.y = element_line(color="light gray", size = .25))
+```
+
+<br><br/>
+
+**In-State Tuition vs Number of Colleges**
+
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="Graduate vs Undergraduate Populations">
+  <figcaption>The blue line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
+</div>
+```r
+# Making a data frame of the average in-state tuition per state
+tuition_agg1 = aggregate(card$tuition.in_state, by=list(card$state), data = card, mean, na.rm = TRUE)
+tuition_agg1 = as.data.frame(tuition_agg1)
+
+
+# Getting the avg. count of colleges per state per year (avg. of years 2012-16)
+x_axis1 = round(as.numeric(as.character(unlist(as.data.frame(table(card$state))["Freq"])))/5)
+
+
+# Adding the counts to the tuition df; changing colname to "tuition"
+tuition_agg1$x_axis = x_axis1
+colnames(tuition_agg1)[colnames(tuition_agg1) == "x"] = "tuition"
+
+
+# Plotting a scatterplot with a regression line to show direction of correlation only
+# Assumptions are not met to regress the data
+ggplot(data = tuition_agg1, aes(x = x_axis1, y = tuition)) +
+  geom_point(color = "#535a6d", size = 1.5) +
+  labs(x = "Number of Colleges Per State",
+       y = "Avg. Tuition Per State ($)",
+       title = "Average In-State Tuition vs Number of Universities per State",
+       subtitle = "There is a positive correlation between number of colleges in a state and average tuition.",
+       caption = "Aggregate data 2012-16")+
+  theme(axis.line.x = element_line(color="light gray", size = .25),
+        axis.line.y = element_line(color="light gray", size = .25))+
+  theme_hc()+
+  geom_abline(slope = 11.07, intercept = 10991.14, color = "blue")
+
+# To get the slope and intercept above
+lm(tuition_agg1$tuition~x_axis1)
+
+# Out of state tuition is done in a directly analogous way.
+```
+
+<br><br/>
 
 **Diversity Boxplots**
 
@@ -138,7 +205,6 @@ From these two boxplots, comparing the median salaries for colleges that are at 
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/4.diversity_boxplots.png" alt="Diversity Boxplots">
 </div>
 ```r
-library(ggplot2)
 library(dplyr)
 library(reshape2)
 
@@ -185,3 +251,5 @@ ggplot(card_box_melt, aes(y = 100*value, x = variable)) +
   scale_x_discrete(labels = c("Asian", "Black", "Hispanic"))
 
 ```
+
+<br><br/>
