@@ -60,7 +60,7 @@ In order to get an accurate measure of total student populations for each school
 
 Overall, the 5 number summaries look the similar across the years (see below), so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year. Below is the histogram representing total number of students in 2016.
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/1aa.student_pop_hist.png" alt="Graduate vs Undergraduate Populations"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/1aa.2016_student_pop_hist.png" alt="2016 Student Populations"></div><br/>
 
 |Year   |    Summary   | | |Year   |    Summary   | | |Year   |    Summary     |
 |---    |---:   |:---    | |---    |---:   |:---    | |---    |---:   |:---    |
