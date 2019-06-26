@@ -45,20 +45,33 @@ Some variables had **mostly missing** values (8,000 to 30,000 missing values).
 
   The cost of attendance as adjusted by income level may be missing because this is a hard and not objective measure to calculate. Each university may have their own formulas for calculating this value, and many may not even be interested in the cost of attendance by income level. Also because of the sensitivity of the data, universities may not always share it. Debt information and retention information also has mostly missing values for what I assume is the same reason.
 
-  Misc. “under_investagion”, “school_url” are some of the categories that have mostly missing values and aren’t explained by the above reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values could be missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Perhaps when colleges reported their data, they weren’t asked to provide their URL.
+  Misc. “under_investagion”, “school_url” are some of the categories that have mostly missing values and aren’t explained by the above reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values could be missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Also, perhaps when colleges reported their data, they weren’t asked to provide their URL.
 
 Relatively **few missing** values (0 to 8,000 missing values)
   - demographics.age_entry, default_rate_3_yr, pell_grant_rate, federal_loan_rate, part_time_share, program_percentage.agriculture, program_percentage.resources, program_percentage.architecture
 
-  These missing values sort themselves into categories that most universities would keep records of financial aid information, program percentages, and demographics data. All universities keep records of their financial aid information, so it is expected that there will be relatively few missing values in the columns that are related to financial aid, which is what we see in the data. Universities also keep a close record of the programs that they offer and how many students are enrolled in such programs. We would expect to see no missing values in columns related to university programs, yet we still see some. This is perhaps due to the fact that universities didn’t report anything for programs they don’t offer and they values got marked down as missing, whereas they should have been zeros.
+  These missing values sort themselves into categories that most universities would keep records of, namely - financial aid information, program percentages, and demographics data. All universities keep records of their financial aid information, so it is expected that there will be relatively few missing values in the columns that are related to financial aid, which is what we see in the data. Universities also keep a close record of the programs that they offer and how many students are enrolled in such programs. We would expect to see no missing values in columns related to university programs, yet we still see some. This is perhaps due to the fact that universities didn’t report anything for programs they don’t offer, and the values got marked down as missing.
 
-  Almost all university applications prompt the applicants to disclose their demographics information, so we expect to see few missing values in those columns. The potential explanations for missing values in the data is perhaps because a lot of applicants didn’t disclose their demographics data and were marked down as “unknown” and were not reported.
+  Almost all university applications prompt the applicants to disclose their demographics information, so we expect to see few missing values in these columns. The potential explanations for missing values in the data is perhaps because a lot of applicants didn’t disclose their demographics data and were marked down as “unknown” and were not reported.
 
 ## Student Populations
 
-In order to get an accurate measure of total student populations for each school, I added the “size” and “grad_student” fields together, because the data dictionary defines “size” as the total population of undergrads at each school. The student populations for each year are skewed right and have a median (~450 students) and mean (~2300 students) that are quite low compared to the max value (100,000+ students). Since the data are skewed right, it is important to look at both the mean and the median because the median is more representative of the smaller schools with low enrollment, and the mean is representative of the larger schools. The minimum value for each year is 0, which leads me to believe that it must have been a mistake or the school had zero students in that year. Upon further review, all the colleges that had zero students enrolled are real colleges that usually have very low enrollment (East West College of Natural Medicine, American Conservatory Theater, both with 0 students enrolled). The max value for each year seems to be awfully high as well, but upon further inspection, the schools that tend to be have high enrollment are online schools that don’t have any limitation in terms of capacity like the University of Phoenix – Online Campus (205,286 enrolled).
+In order to get an accurate measure of total student populations for each school, I added the “size” and “grad_student” fields together, because the data dictionary defines “size” as the total population of undergrads at each school. The student populations for each year are skewed right and have a median (~450 students) and mean (~2300 students) that are quite low compared to the max value (100,000+ students). Since the data are skewed right, it is important to look at both the mean and the median because the median is more representative of the smaller schools with low enrollment, and the mean is representative of the larger schools. The minimum value for each year is 0, which leads me to believe that it must have been a mistake or the school had zero students in that year. Upon further review, all the colleges that had zero students enrolled are real colleges that usually have very low enrollment (East West College of Natural Medicine, American Conservatory Theater, both with 0 students enrolled). The max value for each year seems to be awfully high as well, but upon further inspection, the schools that tend to be have high enrollment are online schools like the University of Phoenix – Online Campus (205,286 enrolled) that don't have any limitations in terms of capacity.
 
-Overall, the graphs mostly look the same across the years, so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year.
+Overall, the 5 number summaries look the similar across the years (see below), so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year. Below is the histogram representing total number of students in 2016.
+
+
+
+|Year   |Summary         |
+|---    |---:   |:---    |
+|2012   |Min    |0       |
+|       |1st Q. |127     |
+|       |Median |452     |
+|       |Mean   |2377    |
+|       |3rd Q. |1992    |
+|       |Max    |205286  |
+|       |NA's   |706     |
+
 
 
 **TABLES GO HERE see #5d73af note 6/21 in planner**
@@ -127,11 +140,15 @@ The above two questions showed some interesting results and confirmed my existin
 
   1. Across all years, what does the gender distribution look like for the universities in the dataset?
 
-**picture**
+  <div style="text-align:center">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/7.females_vs_years.png" alt="% Females Across Years">
+  </div><br/>
 
-wanted to explore this question because I was wondering what kind of diversity there was in terms of gender across universities. From this graph, it looks like the percent of females is right around 64% across all school across all years. While this is a simple graph, it accurately portrays percentage as the y-axis ranges from 0 to 1. There also don’t appear to be any changes in the number, nor any spikes or valleys worth exploring.
+I wanted to explore this question because I was wondering what kind of diversity there was in terms of gender across universities. From this graph, it looks like the percent of females is right around 65% across all school across all years. While this is a simple graph, it accurately portrays percentage as the y-axis ranges from 0 to 1. There also don’t appear to be any changes in the number, nor any spikes or valleys worth exploring.
 
-  2. Is there a difference in Median earnings 10 years after entry for majority female (65%+) and majority male (65%+) schools?
+  2. Is there a difference in Median earnings 10 years after entry for predominantly female (65%+) and predominantly male (65%+) schools?
+
+**picture here**
 
 From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900. All in all, it would be great to figure out the causes behind these differences and decide a course of action from there.
 
