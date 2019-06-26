@@ -64,6 +64,7 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 <tr><th>Table 1 Heading 1 </th><th>Table 1 Heading 2</th></tr>
 <tr><td>
 
+
 |Year   |    Summary     |
 |---    |---:   |:---    |
 |2012   |Min    |0       |
@@ -74,7 +75,9 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |Max    |205286  |
 |       |NA's   |706     |
 
+
 </td><td>
+
 
 |Year   |    Summary     |
 |---    |---:   |:---    |
@@ -85,6 +88,7 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |3rd Q. |1922    |
 |       |Max    |166816  |
 |       |NA's   |713     |
+
 
 </td></tr> </table>
 
