@@ -63,7 +63,7 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/1aa.2016_student_pop_hist.png" alt="2016 Student Populations"></div><br/>
 
 |Year   |    Summary   | | |Year   |    Summary   | | |Year   |    Summary     |
-|---    |---:   |:---    |--- |---    |---:   |:---    |--- |---    |---:   |:---    |
+|---    |---:   |:---    | |---    |---:   |:---    | |---    |---:   |:---    |
 |2012   |Min    |0       | |2013   |Min    |0       | |2014   |Min    |0       |
 |       |1st Q. |127     | |       |1st Q. |121     | |       |1st Q. |116     |
 |       |Median |452     | |       |Median |431     | |       |Median |406     |
@@ -74,8 +74,8 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 
 
 
-|Year   |    Summary     | |Year   |    Summary     |
-|---    |---:   |:---    |--- |---    |---:   |:---    |
+|Year   |    Summary   | | |Year   |    Summary     |
+|---    |---:   |:---    | |---    |---:   |:---    |
 |2015   |Min    |0       | |2016   |Min    |0       |
 |       |1st Q. |109     | |       |1st Q. |109     |
 |       |Median |377     | |       |Median |395     |
@@ -85,10 +85,6 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |NA's   |734     | |       |NA's   |728     |
 
 
-
-
-
-**TABLES GO HERE see #5d73af note 6/21 in planner**
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad_v2.png" alt="Graduate vs Undergraduate Populations"></div><br/>
 
