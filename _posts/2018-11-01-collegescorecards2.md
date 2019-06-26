@@ -60,8 +60,7 @@ In order to get an accurate measure of total student populations for each school
 
 Overall, the 5 number summaries look the similar across the years (see below), so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year. Below is the histogram representing total number of students in 2016.
 
-
-
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/1aa.student_pop_hist.png" alt="Graduate vs Undergraduate Populations"></div><br/>
 
 |Year   |    Summary   | | |Year   |    Summary   | | |Year   |    Summary     |
 |---    |---:   |:---    | |---    |---:   |:---    | |---    |---:   |:---    |
@@ -73,46 +72,19 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |Max    |205286  | |       |Max    |166816  | |       |Max    |151558  |
 |       |NA's   |706     | |       |NA's   |713     | |       |NA's   |713     |
 
-|Year   |    Summary     |
-|---    |---:   |:---    |
-|2013   |Min    |0       |
-|       |1st Q. |121     |
-|       |Median |431     |
-|       |Mean   |2333    |
-|       |3rd Q. |1922    |
-|       |Max    |166816  |
-|       |NA's   |713     |
 
 
-|Year   |    Summary     |
-|---    |---:   |:---    |
-|2014   |Min    |0       |
-|       |1st Q. |116     |
-|       |Median |406     |
-|       |Mean   |2332    |
-|       |3rd Q. |1890    |
-|       |Max    |151558  |
-|       |NA's   |713     |
+|Year   |    Summary     | |Year   |    Summary     |
+|---    |---:   |:---    | |---    |---:   |:---    |
+|2015   |Min    |0       | |2016   |Min    |0       |
+|       |1st Q. |109     | |       |1st Q. |109     |
+|       |Median |377     | |       |Median |395     |
+|       |Mean   |2319    | |       |Mean   |2424    |
+|       |3rd Q. |1856    | |       |3rd Q. |2000    |
+|       |Max    |129615  | |       |Max    |100011  |
+|       |NA's   |734     | |       |NA's   |728     |
 
-|Year   |    Summary     |
-|---    |---:   |:---    |
-|2015   |Min    |0       |
-|       |1st Q. |109     |
-|       |Median |377     |
-|       |Mean   |2319    |
-|       |3rd Q. |1856    |
-|       |Max    |129615  |
-|       |NA's   |734     |
 
-|Year   |    Summary     |
-|---    |---:   |:---    |
-|2016   |Min    |0       |
-|       |1st Q. |109     |
-|       |Median |395     |
-|       |Mean   |2424    |
-|       |3rd Q. |2000    |
-|       |Max    |100011  |
-|       |NA's   |728     |
 
 
 
