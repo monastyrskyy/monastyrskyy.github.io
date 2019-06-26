@@ -60,7 +60,9 @@ In order to get an accurate measure of total student populations for each school
 
 Overall, the 5 number summaries look the similar across the years (see below), so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year. Below is the histogram representing total number of students in 2016.
 
-
+<table>
+<tr><th>Table 1 Heading 1 </th><th>Table 1 Heading 2</th></tr>
+<tr><td>
 
 |Year   |    Summary     |
 |---    |---:   |:---    |
@@ -72,6 +74,8 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |Max    |205286  |
 |       |NA's   |706     |
 
+</td><td>
+
 |Year   |    Summary     |
 |---    |---:   |:---    |
 |2013   |Min    |0       |
@@ -81,6 +85,10 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |3rd Q. |1922    |
 |       |Max    |166816  |
 |       |NA's   |713     |
+
+</td></tr> </table>
+
+
 
 |Year   |    Summary     |
 |---    |---:   |:---    |
