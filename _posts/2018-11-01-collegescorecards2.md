@@ -63,15 +63,15 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 
 
 
-|Year   |    Summary     | |Year   |    Summary     |
-|---    |---:   |:---    | |---    |---:   |:---    |
-|2012   |Min    |0       | |2013   |Min    |0       |
-|       |1st Q. |127     | |       |1st Q. |121     |
-|       |Median |452     | |       |Median |431     |
-|       |Mean   |2377    | |       |Mean   |2333    |
-|       |3rd Q. |1992    | |       |3rd Q. |1922    |
-|       |Max    |205286  | |       |Max    |166816  |
-|       |NA's   |706     | |       |NA's   |713     |
+|Year   |    Summary   | | |Year   |    Summary   | | |Year   |    Summary     |
+|---    |---:   |:---    | |---    |---:   |:---    | |---    |---:   |:---    |
+|2012   |Min    |0       | |2013   |Min    |0       | |2014   |Min    |0       |
+|       |1st Q. |127     | |       |1st Q. |121     | |       |1st Q. |116     |
+|       |Median |452     | |       |Median |431     | |       |Median |406     |
+|       |Mean   |2377    | |       |Mean   |2333    | |       |Mean   |2332    |
+|       |3rd Q. |1992    | |       |3rd Q. |1922    | |       |3rd Q. |1890    |
+|       |Max    |205286  | |       |Max    |166816  | |       |Max    |151558  |
+|       |NA's   |706     | |       |NA's   |713     | |       |NA's   |713     |
 
 |Year   |    Summary     |
 |---    |---:   |:---    |
