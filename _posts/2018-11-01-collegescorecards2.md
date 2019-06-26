@@ -62,7 +62,7 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 
 
 
-|Year   |Summary         |
+|Year   |    Summary     |
 |---    |---:   |:---    |
 |2012   |Min    |0       |
 |       |1st Q. |127     |
@@ -71,6 +71,46 @@ Overall, the 5 number summaries look the similar across the years (see below), s
 |       |3rd Q. |1992    |
 |       |Max    |205286  |
 |       |NA's   |706     |
+
+|Year   |    Summary     |
+|---    |---:   |:---    |
+|2013   |Min    |0       |
+|       |1st Q. |121     |
+|       |Median |431     |
+|       |Mean   |2333    |
+|       |3rd Q. |1922    |
+|       |Max    |166816  |
+|       |NA's   |713     |
+
+|Year   |    Summary     |
+|---    |---:   |:---    |
+|2014   |Min    |0       |
+|       |1st Q. |116     |
+|       |Median |406     |
+|       |Mean   |2332    |
+|       |3rd Q. |1890    |
+|       |Max    |151558  |
+|       |NA's   |713     |
+
+|Year   |    Summary     |
+|---    |---:   |:---    |
+|2015   |Min    |0       |
+|       |1st Q. |109     |
+|       |Median |377     |
+|       |Mean   |2319    |
+|       |3rd Q. |1856    |
+|       |Max    |129615  |
+|       |NA's   |734     |
+
+|Year   |    Summary     |
+|---    |---:   |:---    |
+|2016   |Min    |0       |
+|       |1st Q. |109     |
+|       |Median |395     |
+|       |Mean   |2424    |
+|       |3rd Q. |2000    |
+|       |Max    |100011  |
+|       |NA's   |728     |
 
 
 
