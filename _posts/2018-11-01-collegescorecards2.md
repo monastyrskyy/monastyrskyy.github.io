@@ -148,7 +148,7 @@ The above two questions showed some interesting results and confirmed my existin
 
 ## Additional Questions
 
-  1. Across all years, what does the gender distribution look like for the universities in the dataset?
+  - Across all years, what does the gender distribution look like for the universities in the dataset?
 
   <div style="text-align:center">
     <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/7.females_vs_years.png" alt="% Females Across Years">
@@ -156,7 +156,7 @@ The above two questions showed some interesting results and confirmed my existin
 
 I wanted to explore this question because I was wondering what kind of diversity there was in terms of gender across universities. From this graph, it looks like the percent of females is right around 65% across all school across all years. While this is a simple graph, it accurately portrays percentage as the y-axis. There also don’t appear to be any changes in the number, nor any spikes or valleys worth exploring.
 
-  2. Is there a difference in Median earnings 10 years after entry for predominantly female (65%+) and predominantly male (65%+) schools?
+  - Is there a difference in Median earnings 10 years after entry for predominantly female (65%+) and predominantly male (65%+) schools?
 
   <div style="text-align:center">
     <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male1.png" alt="Female vs Male Earnings 10 Years after Entry.">
