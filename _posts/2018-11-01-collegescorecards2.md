@@ -159,7 +159,7 @@ I wanted to explore this question because I was wondering what kind of diversity
   2. Is there a difference in Median earnings 10 years after entry for predominantly female (65%+) and predominantly male (65%+) schools?
 
   <div style="text-align:center">
-    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male.png" alt="Female vs Male Earnings 10 Years after Entry.">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male1.png" alt="Female vs Male Earnings 10 Years after Entry.">
   </div><br/>
 
 From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900.
@@ -338,7 +338,7 @@ ggplot(degree, aes(x = reorder(Group.1, x), y = x)) +
 **Predominantly Male vs Female Colleges**
 
 <div style="text-align:center">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male.png" alt="Female vs Male Earnings 10 Years after Entry.">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male1.png" alt="Female vs Male Earnings 10 Years after Entry.">
 </div>
 ```r
 # Defining colleges of interest
