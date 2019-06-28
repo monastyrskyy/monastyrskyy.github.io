@@ -24,4 +24,6 @@ defaults:
 
 Hello this is a test post, I don't want it to show up yet because it's not done.
 
+$$
 \[\hat{X}_{t} = Y_{t}-\hat{m}_{t}\]
+$$
