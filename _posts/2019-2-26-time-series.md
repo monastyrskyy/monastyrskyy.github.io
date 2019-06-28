@@ -22,6 +22,8 @@ defaults:
       related: true
 ---
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
 Hello this is a test post, I don't want it to show up yet because it's not done.
 
 $$
