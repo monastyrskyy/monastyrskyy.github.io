@@ -27,11 +27,14 @@ defaults:
 Hello this is a test post, I don't want it to show up yet because it's not done.
 
 Mine:
-$$ hat{X}_{t} = Y_{t}-\hat{m}_{t} $$
+$$ hat{X}_{t} = Y_{t}-\hat{m}_{t}
+\\
+$$
 $$ R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}} $$
 
 
 Example:
+
 $$
 RSS(\beta) = \sum_{j = 1}^N ( \hat{y_j} - y_j)^2
 \\
