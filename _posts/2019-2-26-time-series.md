@@ -27,9 +27,20 @@ defaults:
 Hello this is a test post, I don't want it to show up yet because it's not done.
 
 Mine:
-$$ \hat{X}_{t} = Y_{t}-\hat{m}_{t}
+
+$$
+\[{
+\hat{X}_{t} = Y_{t}-\hat{m}_{t}
 \\
-\ R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}} $$
+\ R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}}
+}\]
+$$
+
+$$
+\[{
+  span = {{2q+1}\over{n}}
+}\]
+$$
 
 
 ## Introduction
@@ -60,6 +71,17 @@ The data has two columns: Date, and Prod. Prod is a monthly measurement of the n
 ```
 
 ## Analysis
+
+The scope of my analysis is to fit a model to the data that visually looks like a good fit. I will use the LOESS method (local polynomial regression). LOESS works by fitting a linear model across a subset of the data around a particular x and then predicting a y value at that x. This is referred to as the $span$ (defined below). It then does the same for all points of the data, with the exception of both endpoints.
+
+$$
+\[{
+  span = {{2q+1}\over{n}}
+}\]
+$$
+
+Although there are many ways of picking a span value such as Cross Validation, for the purposes of this report, I will pick the value of 0.25 after visually analyzing the fit of the model with various spans.
+
 **original data**
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/1.loess_span_0.25_V1.png" alt="Original data with loess span = 0.25"></div><br/>
 
