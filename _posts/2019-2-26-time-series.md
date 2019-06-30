@@ -82,7 +82,7 @@ $$
 
 Although there are many ways of picking a span value such as Cross Validation, for the purposes of this report, I will pick the value of 0.25 after visually analyzing the fit of the model with various spans.
 
-**original data**
+**original data -**
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/1.loess_span_0.25_V1.png" alt="Original data with loess span = 0.25"></div><br/>
 
 *residuals*
