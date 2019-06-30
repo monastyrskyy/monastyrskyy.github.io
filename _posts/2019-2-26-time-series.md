@@ -36,11 +36,9 @@ $$
 }\]
 $$
 
-$$
-\[{
-  span = {2q+1}\over{n}
-}\]
-$$
+
+-- span = {2q+1}\over{n}
+
 
 
 ## Introduction
@@ -74,11 +72,9 @@ The data has two columns: Date, and Prod. Prod is a monthly measurement of the n
 
 The scope of my analysis is to fit a model to the data that visually looks like a good fit. I will use the LOESS method (local polynomial regression). LOESS works by fitting a linear model across a subset of the data around a particular x and then predicting a y value at that x. This is referred to as the $span$ (defined below). It then does the same for all points of the data, with the exception of both endpoints.
 
-$$
-\[{
-  span = {{2q+1}\over{n}}
-}\]
-$$
+
+--span = {{2q+1}\over{n}}
+
 
 Although there are many ways of picking a span value such as Cross Validation, for the purposes of this report, I will pick the value of 0.25 after visually analyzing the fit of the model with various spans.
 
