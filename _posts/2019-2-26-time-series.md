@@ -1,7 +1,7 @@
 ---
 title: "Time Series Case Study - Oil Production"
 date: 2019-2-26
-excerpt: "I analyze some historical oil data using time series methods such as data transformation, loess modeling, polynomial modeling, ACF and PACF analysis, and others."
+excerpt: "I analyze some historical oil data using time series methods such as data transformation, loess modeling, trend analysis, and more."
 mathjax: "true"
 tags: [academic]
 #classes: wide # frontmatter that should make the page wider.
