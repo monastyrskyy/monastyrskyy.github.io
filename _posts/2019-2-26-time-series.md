@@ -78,7 +78,7 @@ $$
  R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}}
 $$
 
--- Residuals
+
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/2.residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
 
 **Log of Original Data**
@@ -89,7 +89,12 @@ One way to test if it's possible to get a better fit for the model is by transfo
 
 The R^2 value is 0.9828, which is only 0.0006 higher than the R^2 value for the original data. This further confirms that a transformation is not necessary as it doesn't produce significantly better results.
 
--- Residuals
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/4.log_residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
 
 ## Results
+
+Even though from the graphs it looked like fitting a loess model over the natural log of the original data was produced a better fit, from the R^2 values, we can see that there is not a significant difference between the two. The R^2 value for the original data is 0.9822, and for the log of the original data it's 0.9828 . This is not a significant difference, so for the sake of simplicity, it's best to go with the original data.
+
+## Conclusion
+
+In this project I familiarized myself with several key concepts in time series analysis. By looking at Historical Oil Production Data, I first found the trend using a loess model with a span of 0.25. As mentioned above, in future projects, I will use more reliable techniques for selecting the span such as cross validation. Cross validating the data would allow me to test the model on the existing data that I have and not have to wait for future data points to come out. I then transformed the data using a log transformation in order to see if fitting the transformed data yielded better results. Again, I chose this transformation visually for this project, but in the future I will try to select a transformation more objectively, perhaps by analyzing the lambda of a power transformation. All in all, the purpose of this project was fulfilled as I gained a practical application of some fundamental time series concepts.
