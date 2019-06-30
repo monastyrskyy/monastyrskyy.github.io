@@ -24,13 +24,6 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-Hello this is a test post, I don't want it to show up yet because it's not done.
-
-Mine:
-
-$$
-\hat{X}_{t} = Y_{t}-\hat{m}_{t}
-$$
 
 ## Introduction
 The goal of this project is to serve as a first glance into the world of time series data analysis. I will analyze US oil production across the years and model the data using a loess model. I will then look at the residuals and decide if a transformation of the data is necessary. Upon performing the transformation, I will compare the two models and pick the one that most closely resembles its data.
@@ -75,10 +68,14 @@ Although there are many ways of picking a span value such as Cross Validation, f
 To get a better idea of whether this model was a good fit, I will analyze the residuals graph (equation shown below) to see if the errors appear to have constant variance and are centered around zero.
 
 $$
- R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}}
+\hat{X}_{t} = Y_{t}-\hat{m}_{t}
 $$
 
-From the plot below it looks like the residuals are centered around zero, but there also appears to be a "fanning out" effect for the variance. This leads me to believe that the variance may not be exactly constant, but given the limitations of the scope of this project, this may be the closest estimate.
+From the plot below it looks like the residuals are centered around zero, but there also appears to be a "fanning out" effect for the variance. This leads me to believe that the variance may not be exactly constant, but given the limitations of the scope of this project, this may be the closest estimate. The Corresponding R^2 value (equation shown below) is 0.9822 .
+
+$$
+ R^2 = 1 - {\sum_{t = 1}^N \Big( Y_{t}-\hat{m}_{t} \Big)^2 \over {\sum_{t = 1}^N \Big( Y_{t}-\overline{Y} \Big)^2}}
+$$
 
 *Residuals*
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/2.residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
@@ -88,6 +85,8 @@ One way to test if it's possible to get a better fit for the model is by transfo
 
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/3.log_loess_span_0.25_V1.png" alt="Original data with loess span = 0.25"></div><br/>
+
+The R^2 value is 0.9828, which is only 0.0006 higher than the R^2 value for the original data. This further confirms that a transformation is not necessary as it doesn't produce significantly better results.
 
 *residuals*
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/4.log_residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
