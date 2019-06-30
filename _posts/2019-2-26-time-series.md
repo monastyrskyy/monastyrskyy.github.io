@@ -29,7 +29,7 @@ defaults:
 The goal of this project is to serve as a first glance into the world of time series data analysis. I will analyze US oil production across the years and model the data using a loess model. I will then look at the residuals and decide if a transformation of the data is necessary. Upon performing the transformation, I will compare the two models and pick the one that most closely resembles its data.
 
 ## Data Overview
-I will be using the <a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=pet&s=mcrfpus2&f=m" target="blank">Oil Production in the US dataset</a>, provided by the <a href="https://www.eia.gov/" target="blank">US Energy Information Administration</a>. The dataset ranges from the year 1920 to the year 2019 and contains information on US oil production. The dataset has two columns: Date, and Prod. Prod is a monthly measurement of the number of barrels of oil that were produced in the US, in thousands of barrels, and Date is the date when the measurement was taken. Below is a snippet of the data.
+I will be using the <a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=pet&s=mcrfpus2&f=m" target="blank">the US Oil Production dataset</a>, provided by the <a href="https://www.eia.gov/" target="blank">US Energy Information Administration</a>. The dataset ranges from the year 1920 to the year 2019 and contains information on US oil production. The dataset has two columns: Date, and Prod. Prod is a monthly measurement of the number of barrels of oil that were produced in the US, in thousands of barrels, and Date is the date when the measurement was taken. Below is a snippet of the data.
 
 ```text
          Date  Prod
@@ -54,7 +54,7 @@ I will be using the <a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?
 
 ## Analysis
 
-The scope of my analysis is to fit a model to the data that visually looks like a good fit. I will use the LOESS method (local polynomial regression). LOESS works by fitting a linear model across a subset of the data around a particular x and then predicting a y value at that x. This is referred to as the $span$ (defined below). It then does the same for all points of the data, with the exception of both endpoints.
+The scope of my analysis is to fit a model to the data that can be used for prediction and estimation of US oil production. I will use the LOESS method (local polynomial regression), which works by fitting a linear model across a subset of the data around a particular x and then predicting a y value at that x. It then does the same for all points of the data, with the exception of both endpoints. The resulting curve is plotted by taking all the fitted values from all the regions and connecting them. Span is defined below.
 
 $$
 span = {2q+1}/{n}
@@ -103,10 +103,60 @@ In this project I familiarized myself with several key concepts in time series a
 
 # Analysis and Code
 
-``````
-laskdjf;lskdfj
-slfkfd
-from blamk
-selcet Black
+In this section, I include the code that I used to create the visualizations seen in the report.
 
+**Loess Trend for Original Data**
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/1.loess_span_0.25_V1.png" alt="Original data with loess span = 0.25"></div><br/>
+```r
+# Loading the data and changing the column names for ease of use
+oil = read.csv("US_oil_prod.csv")
+colnames(oil) = c("Date", "Prod")
+
+# Defining the y variable as oil production
+y = oil$Prod
+
+# Defining the x (time) variable for every month
+time = 1:length(y)
+
+# LOESS model with span = 0.25
+loesstrend = loess(y~time, span = 0.25)
+
+# Plotting the data with a thicker line and different color
+plot(time, y, type = "l", lty = 1, col = "#868fa6", lwd = 1.5,
+  xlab = "Time (Monthly Ranging from Jan 1920 to Mar 2019)",
+  ylab = "Avg. Oil Barrel Production per Day (in 1000s)",
+  main = "Oil Prod. Series with Loess Trend, span = 0.25")
+
+# Adding the loess model as a red dashed line  
+points(time, loesstrend$fit, type = "l", lty = 2, col = "red", lwd = 1.5)
+
+# Specifying the legend location and content
+legend(1,10000, c("{Yt}","Loess"),
+  lty = c(1,2), col = c("#868fa6", "red"), bty = "n", lwd = 1.5)
+```
+
+<br><br/>
+
+**Residuals for Original Data**
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/2.residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
+```r
+# Plotting the residuals in a similar style to the above graph
+plot(time, loesstrend$residuals, type = "l", lty = 1, lwd = 1.5, col ="#868fa6",
+  xlab = "Time",
+  ylab = "{Xt} (rough part)",
+  main = "Residuals Plot: {Xt} vs Time")
+
+# Adding horizontal line at y = 0
+abline(h=0, lty = 3, col = "#828899")
+```
+
+<br><br/>
+
+
+**Graphs of Log(Orignal Data)**
+The code to produce the graphs is the same, but log(original data) has to be used now, as defined below.
+```r
+log_loesstrend = loess(log(y)~time, span = 0.25)
 ```
