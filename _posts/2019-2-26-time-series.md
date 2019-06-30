@@ -29,7 +29,7 @@ defaults:
 The goal of this project is to serve as a first glance into the world of time series data analysis. I will analyze US oil production across the years and model the data using a loess model. I will then look at the residuals and decide if a transformation of the data is necessary. Upon performing the transformation, I will compare the two models and pick the one that most closely resembles its data.
 
 ## Data Overview
-The data has two columns: Date, and Prod. Prod is a monthly measurement of the number of barrels of oil that were produced in the US, in thousands of barrels, and Date is the date when the measurement was taken. Below is a snippet of the data.
+I will be using the <a href="https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=pet&s=mcrfpus2&f=m" target="blank">Oil Production in the US dataset</a>, provided by the <a href="https://www.eia.gov/" target="blank">US Energy Information Administration</a>. The dataset ranges from the year 1920 to the year 2019 and contains information on US oil production. The dataset has two columns: Date, and Prod. Prod is a monthly measurement of the number of barrels of oil that were produced in the US, in thousands of barrels, and Date is the date when the measurement was taken. Below is a snippet of the data.
 
 ```text
          Date  Prod
@@ -100,3 +100,13 @@ Even though from the graphs it looked like fitting a loess model over the natura
 ## Conclusion
 
 In this project I familiarized myself with several key concepts in time series analysis. By looking at Historical Oil Production Data, I first found the trend using a loess model with a span of 0.25. As mentioned above, in future projects, I will use more reliable techniques for selecting the span such as cross validation. Cross validating the data would allow me to test the model on the existing data that I have and not have to wait for future data points to come out. I then transformed the data using a log transformation in order to see if fitting the transformed data yielded better results. Again, I chose this transformation visually for this project, but in the future I will try to select a transformation more objectively, perhaps by analyzing the lambda of a power transformation. All in all, the purpose of this project was fulfilled as I gained a practical application of some fundamental time series concepts.
+
+# Analysis and Code
+
+``````
+laskdjf;lskdfj
+slfkfd
+from blamk
+selcet Black
+
+```
