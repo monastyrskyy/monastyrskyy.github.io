@@ -61,6 +61,7 @@ span = {2q+1}/{n}
 $$
 
 **Original Data**
+
 Although there are many ways of picking a span value such as Cross Validation; for the purposes of this report, I will pick the value of 0.25 after visually analyzing the fit of the model with various spans. Below is a line graph of the original data, with a loess model with a span of 0.25 fit in red. The model looks like a good fit as it stays close to the underlying data, while at the same time doesn't get very jagged. For estimation of values close to the outside the range of the data, this model seems like a good fit.
 
 
@@ -82,6 +83,7 @@ $$
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/4.time_series_oil/2.residuals_V1.png" alt="Original data with loess span = 0.25"></div><br/>
 
 **Log of Original Data**
+
 One way to test if it's possible to get a better fit for the model is by transforming the underlying data and getting a loess curve to the transformed data. As with picking the value for the span, there are many ways to pick a transformation. In this section I will transform the original data by taking its natural log. In the graph below it looks like the model is a closer fit to the log of the original data, which is a promising result for the transformation. But to be sure, I will also analyze the residuals as well as the R^2 value.
 
 
