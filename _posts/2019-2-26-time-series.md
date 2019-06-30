@@ -101,7 +101,7 @@ Even though from the graphs it looked like fitting a loess model over the natura
 
 In this project I familiarized myself with several key concepts in time series analysis. By looking at Historical Oil Production Data, I first found the trend using a loess model with a span of 0.25. As mentioned above, in future projects, I will use more reliable techniques for selecting the span such as cross validation. Cross validating the data would allow me to test the model on the existing data that I have and not have to wait for future data points to come out. I then transformed the data using a log transformation in order to see if fitting the transformed data yielded better results. Again, I chose this transformation visually for this project, but in the future I will try to select a transformation more objectively, perhaps by analyzing the lambda of a power transformation. All in all, the purpose of this project was fulfilled as I gained a practical application of some fundamental time series concepts.
 
-# Analysis and Code
+## Analysis and Code
 
 In this section, I include the code that I used to create the visualizations seen in the report.
 
