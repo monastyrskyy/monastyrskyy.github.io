@@ -156,6 +156,7 @@ abline(h=0, lty = 3, col = "#828899")
 
 
 **Graphs of Log(Orignal Data)**
+
 The code to produce the graphs is the same, but log(original data) has to be used now, as defined below.
 ```r
 log_loesstrend = loess(log(y)~time, span = 0.25)
