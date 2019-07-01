@@ -24,8 +24,9 @@ defaults:
 
 
 **ER Diagram Final**
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg" alt="ER Diagram"></div><br/>
-
+<figure>
+  <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg" alt="ER Diagram"></div>
+</figure>
 
 **Below is all the code that I used to make the database.**
 
