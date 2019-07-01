@@ -22,8 +22,8 @@ defaults:
       related: true
 
 gallery:
-  - url: {{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg
-    image_path: {{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg
+  - url: /images/3.college_scorecards_mysql/1.er_diagram_final.jpg
+    image_path: /images/3.college_scorecards_mysql/1.er_diagram_final.jpg
     alt: "placeholder image 1"
     title: "Image 1 title caption"
 ---
