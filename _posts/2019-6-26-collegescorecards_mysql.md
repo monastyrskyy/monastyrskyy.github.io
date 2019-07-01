@@ -20,6 +20,12 @@ defaults:
       comments: true
       share: true
       related: true
+
+gallery:
+  - url: /assets/images/3.college_scorecards_mysql/1.er_diagram_final.jpg
+    image_path: /assets/images/3.college_scorecards_mysql/1.er_diagram_final.jpg
+    alt: "placeholder image 1"
+    title: "Image 1 title caption"
 ---
 
 
@@ -32,6 +38,10 @@ Small image?
 Full image?
 ![try2]({{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg)
 {: .full}
+
+gallery?
+
+{% include gallery caption="This is a sample gallery with **Markdown support**." %}
 **Below is all the code that I used to make the database.**
 
 ```text
