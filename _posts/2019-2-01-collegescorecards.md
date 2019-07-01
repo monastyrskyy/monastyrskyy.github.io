@@ -1,6 +1,6 @@
 ---
 title: "College Scorecard Analysis"
-date: 2019-4-01
+date: 2019-2-01
 excerpt: "In this project, I dive into the College Scorecard dataset and examine it for interesting patterns, trends, and insights."
 mathjax: "true"
 tags: [academic]
