@@ -24,10 +24,14 @@ defaults:
 
 
 **ER Diagram Final**
+Small image?
 <figure>
   <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg" alt="ER Diagram"></div>
 </figure>
 
+Full image?
+![try2]({{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg)
+{: .full}
 **Below is all the code that I used to make the database.**
 
 ```text
