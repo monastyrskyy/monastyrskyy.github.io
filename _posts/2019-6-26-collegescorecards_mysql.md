@@ -37,7 +37,7 @@ The U.S. Department of Education provides the College Scorecards Dataset to pros
 
 There are 38,068 rows (observations) in the dataset, representing each college during 5 academic years 2012-2016, inclusive (e.g. Benedict College is featured 5 times, once for each year 2012- 16, inclusive). For year 2012, 7793 colleges were recorded; for year 2013, 7804 colleges were recorded; for year 2014, 7703 colleges were recorded; for year 2015, 7593 colleges are recorded; and for year 2016, 7175 colleges were recorded. The dataset also features 142 columns (variables) such as the name of the university, the location, various SAT/ACT score metrics, etc. that get populated with respective values about each college.
 
-```TEXT
+```text
 "id"                                                      "ope8_id"                                                
 "ope6_id"                                                 "name"                                                   
 "city"                                                    "state"                                                  
