@@ -1,5 +1,5 @@
 ---
-title: "College Scorecards Data - Conversion to Relational MySQL Server"
+title: "College Scorecards Data - Conversion to Relational Database"
 date: 2019-6-26
 excerpt: "In this project, I organize the College Scorecards Dataset into a relational database hosted on a MySQL Server. The purpose of this conversion is increased readability, easier permission granting, and to get me familiar with SQL."
 mathjax: "true"
@@ -36,6 +36,7 @@ In this project, I organize the College Scorecards Dataset into a relational dat
 The U.S. Department of Education provides the College Scorecards Dataset to prospective students and their families to inform them about the educational outcomes and costs of attending various federally funded colleges and universities. The purpose of the data is to facilitate the process of making decisions about which college or university to attend based on several performance indicators, student success measures, and fees related to the school. The data used to create reports on the <a href="https://collegescorecard.ed.gov/" target="blank">College Scorecard website</a> are a subset of the data universities and colleges report to the Integrated Postsecondary Education Data System (<a href="https://nces.ed.gov/ipeds/" target="blank">IPEDS</a>).
 
 There are 38,068 rows (observations) in the dataset, representing each college during 5 academic years 2012-2016, inclusive (e.g. Benedict College is featured 5 times, once for each year 2012- 16, inclusive). For year 2012, 7793 colleges were recorded; for year 2013, 7804 colleges were recorded; for year 2014, 7703 colleges were recorded; for year 2015, 7593 colleges are recorded; and for year 2016, 7175 colleges were recorded. The dataset also features 142 columns (variables) such as the name of the university, the location, various SAT/ACT score metrics, etc. that get populated with respective values about each college.
+
 ```TEXT
 [1] "id"                                                      "ope8_id"                                                
 [3] "ope6_id"                                                 "name"                                                   
