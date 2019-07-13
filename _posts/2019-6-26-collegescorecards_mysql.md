@@ -152,8 +152,6 @@ First, I imported the full original dataset. SQL requires you to create a table 
 
 I then created sub-tables, each with a common theme. Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
-<center>
-
 |Variable themes|
 ---|---|
 1.|identifying information|
@@ -161,8 +159,6 @@ I then created sub-tables, each with a common theme. Luckily, the dataset has se
 3.|program percentages|
 4.|demographics|
 5.|net price|
-
-</center>
 
 <br><br/>
 
