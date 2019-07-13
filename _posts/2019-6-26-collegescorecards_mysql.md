@@ -116,8 +116,7 @@ There are 38,068 rows (observations) in the dataset, representing each college d
 ## Data onboarding
 In this section, I go into the process and code behind creating a relational database using the CollegeScorcards dataset. The goal of this section is to further explain the benefits of a relational database as well as show step by step how I made mine.
 
-1. I imported the full original dataset.
-  - SQL requires a table which then is populated by the data.
+First, I imported the full original dataset. SQL requires you to create a table which then is populated by the data.
 
   ```text
   -- Importing the full dataset into mySQL database
@@ -150,18 +149,18 @@ In this section, I go into the process and code behind creating a relational dat
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES;
   ```
-  
-2. I then created sub-tables, each with a common theme.
-  - Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
-  |Variable "themes"|
-  |---|
-  |identifying information|
-  |test scores|
-  |program percentages|
-  |demographics|
-  |net price|
+I then created sub-tables, each with a common theme. Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
+  |Variable themes|
+  ---|---|
+  1.|identifying information|
+  2.|test scores|
+  3.|program percentages|
+  4.|demographics|
+  5.|net price|
+
+**First sub-table: test scores**
 
 ```text
 -- Creating the first sub-table - test scores
@@ -201,18 +200,9 @@ sat_scores_75th_percentile_math,
 sat_scores_25th_percentile_writing,
 sat_scores_75th_percentile_writing,
 sat_scores_midpoint_critical_reading,
-sat_scores_midpoint_math,
-sat_scores_midpoint_writing,
-act_scores_25th_percentile_cumulative,
-act_scores_75th_percentile_cumulative,
-act_scores_25th_percentile_english,
-act_scores_75th_percentile_english,
-act_scores_25th_percentile_math,
-act_scores_75th_percentile_math,
-act_scores_25th_percentile_writing,
-act_scores_75th_percentile_writing,
-act_scores_midpoint_cumulative,
-act_scores_midpoint_english,
+.
+.
+.
 act_scores_midpoint_math,
 act_scores_midpoint_writing,
 sat_scores_average_overall,
@@ -220,12 +210,13 @@ sat_scores_average_by_ope_id
 FROM college_full;
 
 -- Making the id column a foreign key
-
 ALTER TABLE test_scores
 ADD CONSTRAINT test_fkey FOREIGN KEY (id) REFERENCES college_small (id);
+```
 
+**Second sub-table: program percentages**
 
-
+```text
 -- Next table - program percentages
 CREATE TABLE major_percentages (
 	id VARCHAR(12),
@@ -278,30 +269,9 @@ program_percentage_architecture	,
 program_percentage_ethnic_cultural_gender	,
 program_percentage_communication	,
 program_percentage_communications_technology	,
-program_percentage_computer	,
-program_percentage_personal_culinary	,
-program_percentage_education	,
-program_percentage_engineering	,
-program_percentage_engineering_technology	,
-program_percentage_language	,
-program_percentage_family_consumer_science	,
-program_percentage_legal	,
-program_percentage_english	,
-program_percentage_humanities	,
-program_percentage_library	,
-program_percentage_biological	,
-program_percentage_mathematics	,
-program_percentage_military	,
-program_percentage_multidiscipline	,
-program_percentage_parks_recreation_fitness	,
-program_percentage_philosophy_religious	,
-program_percentage_theology_religious_vocation	,
-program_percentage_physical_science	,
-program_percentage_science_technology	,
-program_percentage_psychology	,
-program_percentage_security_law_enforcement	,
-program_percentage_public_administration_social_service	,
-program_percentage_social_science	,
+.
+.
+.
 program_percentage_construction	,
 program_percentage_mechanic_repair_technology	,
 program_percentage_precision_production	,
@@ -315,8 +285,11 @@ FROM college_full;
 -- Making id the foreign key
 ALTER TABLE major_percentages
 ADD CONSTRAINT major_fkey FOREIGN KEY (id) REFERENCES college_small (id);
+```
 
--- Race demographics table
+**Third sub-table: demographics**
+
+```text
 CREATE TABLE demographics (
 	id VARCHAR(12),
 	demographics_race_ethnicity_white	DECIMAL(5,4),
@@ -358,7 +331,11 @@ FROM college_full;
 -- Making id the foreign key
 ALTER TABLE demographics
 ADD CONSTRAINT demographics_fkey FOREIGN KEY (id) REFERENCES college_small (id);
+```
 
+**Fourth sub-table: net_price**
+
+```text
 -- Making price table
 
 CREATE TABLE net_price (
@@ -396,7 +373,11 @@ FROM college_full;
 -- Making id the foreign key
 ALTER TABLE net_price
 ADD CONSTRAINT price_fkey FOREIGN KEY (id) REFERENCES college_small (id);
+```
 
+
+
+```text
 -- Making shorter college table
 CREATE TABLE college_small (
 	id VARCHAR(12) PRIMARY KEY,
