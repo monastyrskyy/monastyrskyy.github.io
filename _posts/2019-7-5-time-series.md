@@ -1,7 +1,7 @@
 ---
 title: "Time Series Case Study - Oil Production"
 date: 2019-7-5
-excerpt: "I analyze some historical oil data using time series methods such as data transformation, loess modeling, trend analysis, and more."
+excerpt: "In this project, I analyze some historical oil data using time series methods such as data transformation, loess modeling, trend analysis, and more."
 mathjax: "true"
 tags: [academic, r]
 #classes: wide # frontmatter that should make the page wider.
