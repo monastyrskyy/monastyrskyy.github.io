@@ -152,13 +152,19 @@ First, I imported the full original dataset. SQL requires you to create a table 
 
 I then created sub-tables, each with a common theme. Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
-  |Variable themes|
-  ---|---|
-  1.|identifying information|
-  2.|test scores|
-  3.|program percentages|
-  4.|demographics|
-  5.|net price|
+<div style="text-align:center">
+
+|Variable themes|
+---|---|
+1.|identifying information|
+2.|test scores|
+3.|program percentages|
+4.|demographics|
+5.|net price|
+
+</div>
+
+<br><br/>
 
 **First sub-table: test scores**
 
@@ -213,6 +219,8 @@ FROM college_full;
 ALTER TABLE test_scores
 ADD CONSTRAINT test_fkey FOREIGN KEY (id) REFERENCES college_small (id);
 ```
+
+<br><br/>
 
 **Second sub-table: program percentages**
 
@@ -287,6 +295,8 @@ ALTER TABLE major_percentages
 ADD CONSTRAINT major_fkey FOREIGN KEY (id) REFERENCES college_small (id);
 ```
 
+<br><br/>
+
 **Third sub-table: demographics**
 
 ```text
@@ -333,6 +343,8 @@ ALTER TABLE demographics
 ADD CONSTRAINT demographics_fkey FOREIGN KEY (id) REFERENCES college_small (id);
 ```
 
+<br><br/>
+
 **Fourth sub-table: net_price**
 
 ```text
@@ -375,7 +387,9 @@ ALTER TABLE net_price
 ADD CONSTRAINT price_fkey FOREIGN KEY (id) REFERENCES college_small (id);
 ```
 
+<br><br/>
 
+With all the tables created and populated, I will create a main table to which all the sub-tables connect through a foreign key. This table will have all the misc. identifying information for each college.
 
 ```text
 -- Making shorter college table
