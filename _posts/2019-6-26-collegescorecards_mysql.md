@@ -157,7 +157,7 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 ```
-1. teswt as;ldfk
+1. 
 2. I then created sub-tables, each with a common theme.
   - Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
