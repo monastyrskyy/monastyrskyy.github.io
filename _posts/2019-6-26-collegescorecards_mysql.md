@@ -113,7 +113,7 @@ There are 38,068 rows (observations) in the dataset, representing each college d
 
 
 
-## Data onboarding
+## Data Onboarding
 In this section, I go into the process and code behind creating a relational database using the CollegeScorcards dataset. The goal of this section is to further explain the benefits of a relational database as well as show step by step how I made mine.
 
 First, I imported the full original dataset. SQL requires you to create a table which then is populated by the data.
