@@ -20,12 +20,6 @@ defaults:
       comments: true
       share: true
       related: true
-
-gallery:
-  - url: /images/3.college_scorecards_mysql/1.er_diagram_final.jpg
-    image_path: /images/3.college_scorecards_mysql/1.er_diagram_final.jpg
-    alt: "placeholder image 1"
-    title: "Image 1 title caption"
 ---
 ## Introduction
 
@@ -124,7 +118,7 @@ In this section, I go into the process and code behind creating a relational dat
 
 1. I imported the full original dataset.
   - SQL requires a table which then is populated by the data.
-  
+
   ```text
   -- Importing the full dataset into mySQL database
   -- Creating a table to contain the data, specifying the name and datatype of the column
@@ -156,6 +150,7 @@ In this section, I go into the process and code behind creating a relational dat
   LINES TERMINATED BY '\n'
   IGNORE 1 LINES;
   ```
+  
 2. I then created sub-tables, each with a common theme.
   - Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
