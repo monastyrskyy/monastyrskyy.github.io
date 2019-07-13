@@ -116,22 +116,17 @@ There are 38,068 rows (observations) in the dataset, representing each college d
 "demographics.women"                                      "academic_year"  
 ```
 
-**ER Diagram**
-
-![try2]({{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg)
-{: .full}
 
 
+
+## Data onboarding
+In this section, I go into the process and code behind creating a relational database using the CollegeScorcards dataset. The goal of this section is to further explain the benefits of a relational database as well as show step by step how I made mine.
+
+1. I imported the full original dataset.
+  - SQL requires a table which then is populated by the data.
 ```text
-
-LOAD DATA LOCAL INFILE 'C:/.../college_scorecards.csv'
-INTO TABLE college_sample
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
-
-
--- The first sample was successful, so now let's import the whole dataset
+-- Importing the full dataset into mySQL database
+-- Creating a table to contain the data, specifying the name and datatype of the column
 CREATE TABLE college_full (
 	id VARCHAR(12) PRIMARY KEY,
 	name TEXT,
@@ -141,121 +136,9 @@ CREATE TABLE college_full (
 	price_calculator_url TEXT,
 	under_investigation INT,
 	degrees_awarded_predominant TEXT,
-	degrees_awarded_highest TEXT,
-	ownership TEXT,
-	locale TEXT,
-	religious_affiliation TEXT,
-	sat_scores_25th_percentile_critical_reading SMALLINT,
-	sat_scores_75th_percentile_critical_reading SMALLINT,
-	sat_scores_25th_percentile_math SMALLINT,
-	sat_scores_75th_percentile_math SMALLINT,
-	sat_scores_25th_percentile_writing SMALLINT,
-	sat_scores_75th_percentile_writing	SMALLINT,
-	sat_scores_midpoint_critical_reading	SMALLINT,
-	sat_scores_midpoint_math	SMALLINT,
-	sat_scores_midpoint_writing	SMALLINT,
-	act_scores_25th_percentile_cumulative	TINYINT,
-	act_scores_75th_percentile_cumulative	TINYINT,
-	act_scores_25th_percentile_english	TINYINT,
-	act_scores_75th_percentile_english	TINYINT,
-	act_scores_25th_percentile_math	TINYINT,
-	act_scores_75th_percentile_math	TINYINT,
-	act_scores_25th_percentile_writing	TINYINT,
-	act_scores_75th_percentile_writing	TINYINT,
-	act_scores_midpoint_cumulative	TINYINT,
-	act_scores_midpoint_english	TINYINT,
-	act_scores_midpoint_math	TINYINT,
-	act_scores_midpoint_writing	TINYINT,
-	sat_scores_average_overall	SMALLINT,
-	sat_scores_average_by_ope_id	SMALLINT,
-	program_percentage_agriculture	DECIMAL(5,4),
-	program_percentage_resources	DECIMAL(5,4),
-	program_percentage_architecture	DECIMAL(5,4),
-	program_percentage_ethnic_cultural_gender	DECIMAL(5,4),
-	program_percentage_communication	DECIMAL(5,4),
-	program_percentage_communications_technology	DECIMAL(5,4),
-	program_percentage_computer	DECIMAL(5,4),
-	program_percentage_personal_culinary	DECIMAL(5,4),
-	program_percentage_education	DECIMAL(5,4),
-	program_percentage_engineering	DECIMAL(5,4),
-	program_percentage_engineering_technology	DECIMAL(5,4),
-	program_percentage_language	DECIMAL(5,4),
-	program_percentage_family_consumer_science	DECIMAL(5,4),
-	program_percentage_legal	DECIMAL(5,4),
-	program_percentage_english	DECIMAL(5,4),
-	program_percentage_humanities	DECIMAL(5,4),
-	program_percentage_library	DECIMAL(5,4),
-	program_percentage_biological	DECIMAL(5,4),
-	program_percentage_mathematics	DECIMAL(5,4),
-	program_percentage_military	DECIMAL(5,4),
-	program_percentage_multidiscipline	DECIMAL(5,4),
-	program_percentage_parks_recreation_fitness	DECIMAL(5,4),
-	program_percentage_philosophy_religious	DECIMAL(5,4),
-	program_percentage_theology_religious_vocation	DECIMAL(5,4),
-	program_percentage_physical_science	DECIMAL(5,4),
-	program_percentage_science_technology	DECIMAL(5,4),
-	program_percentage_psychology	DECIMAL(5,4),
-	program_percentage_security_law_enforcement	DECIMAL(5,4),
-	program_percentage_public_administration_social_service	DECIMAL(5,4),
-	program_percentage_social_science	DECIMAL(5,4),
-	program_percentage_construction	DECIMAL(5,4),
-	program_percentage_mechanic_repair_technology	DECIMAL(5,4),
-	program_percentage_precision_production	DECIMAL(5,4),
-	program_percentage_transportation	DECIMAL(5,4),
-	program_percentage_visual_performing	DECIMAL(5,4),
-	program_percentage_health	DECIMAL(5,4),
-	program_percentage_business_marketing	DECIMAL(5,4),
-	program_percentage_history	DECIMAL(5,4),
-	online_only	VARCHAR(5),
-	college_size	INT,
-	demographics_race_ethnicity_white	DECIMAL(5,4),
-	demographics_race_ethnicity_black	DECIMAL(5,4),
-	demographics_race_ethnicity_hispanic	DECIMAL(5,4),
-	demographics_race_ethnicity_asian	DECIMAL(5,4),
-	demographics_race_ethnicity_aian	DECIMAL(5,4),
-	demographics_race_ethnicity_nhpi	DECIMAL(5,4),
-	demographics_race_ethnicity_two_or_more	DECIMAL(5,4),
-	demographics_race_ethnicity_non_resident_alien	DECIMAL(5,4),
-	demographics_race_ethnicity_unknown DECIMAL(5,4),
-	part_time_share	DECIMAL(5,4),
-	avg_net_price_public INT,
-	avg_net_price_private INT,
-	net_price_public_by_income_level_0_to_30000	INT,
-	net_price_public_by_income_level_30001_to_48000	INT,
-	net_price_public_by_income_level_48001_to_75000	INT,
-	net_price_public_by_income_level_75001_to_110000	INT,
-	net_price_public_by_income_level_110001_to_plus	INT,
-	net_price_private_by_income_level_0_to_30000	INT,
-	net_price_private_by_income_level_30001_to_48000	INT,
-	net_price_private_by_income_level_48001_to_75000	INT,
-	net_price_private_by_income_level_75001_to_110000	INT,
-	net_price_private_by_income_level_110001_to_plus	INT,
-	pell_grant_rate	DECIMAL(5,4),
-	federal_loan_rate	DECIMAL(5,4),
-	share_25_older	DECIMAL(5,4),
-	earn_10_yrs_after_entry_median	INT,
-	median_debt_suppressed_completers_overall	DECIMAL(6,1),
-	median_debt_suppressed_completers_monthly_payments	DECIMAL(10,5),
-	repayment_suppressed_3_yr_overall	DECIMAL(6,5),
-	rate_suppressed_lt_four_year_150percent	DECIMAL(5,4),
-	rate_suppressed_four_year	DECIMAL(5,4),
-	retention_rate_suppressed_four_year_full_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_lt_four_year_full_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_four_year_part_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_lt_four_year_part_time_pooled	DECIMAL(5,4),
-	main_campus	VARCHAR(5),
-	branches	INT,
-	institutional_characteristics_level	TEXT,
-	zip	TEXT,
-	grad_students	INT,
-	tuition_in_state	INT,
-	tuition_out_of_state	INT,
-	tuition_revenue_per_fte	INT,
-	instructional_expenditure_per_fte	INT,
-	faculty_salary	INT,
-	ft_faculty_rate	DECIMAL(5,4),
-	admission_rate_overall	DECIMAL(5,4),
-	demographics_median_family_income	DECIMAL(7,1),
+  .
+  .
+  .
 	default_rate_3_yr	DECIMAL(5,4),
 	demographics_age_entry	DECIMAL(4,2),
 	demographics_veteran	DECIMAL(5,4),
@@ -265,7 +148,27 @@ CREATE TABLE college_full (
 	academic_year INT
 );
 
+-- Populating the table above
+LOAD DATA LOCAL INFILE 'C:/.../college_scorecards.csv'
+INTO TABLE college_full
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+```
 
+2. I then created sub-tables, each with a common theme.
+  - Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
+
+  |Variable "themes"|
+  |---|
+  |identifying information|
+  |test scores|
+  |program percentages|
+  |demographics|
+  |net price|
+
+
+```text
 -- Creating the first sub-table - test scores
 CREATE TABLE test_scores (
 	id VARCHAR(12),
@@ -327,7 +230,8 @@ ALTER TABLE test_scores
 ADD CONSTRAINT test_fkey FOREIGN KEY (id) REFERENCES college_small (id);
 
 
--- Next table - major percentages
+
+-- Next table - program percentages
 CREATE TABLE major_percentages (
 	id VARCHAR(12),
 	program_percentage_agriculture	DECIMAL(5,4),
@@ -503,130 +407,9 @@ CREATE TABLE college_small (
 	id VARCHAR(12) PRIMARY KEY,
 	name TEXT,
 	city TEXT,
-	state CHAR(2),
-	school_url TEXT,
-	price_calculator_url TEXT,
-	under_investigation INT,
-	degrees_awarded_predominant TEXT,
-	degrees_awarded_highest TEXT,
-	ownership TEXT,
-	locale TEXT,
-	religious_affiliation TEXT,
-	sat_scores_25th_percentile_critical_reading SMALLINT,
-	sat_scores_75th_percentile_critical_reading SMALLINT,
-	sat_scores_25th_percentile_math SMALLINT,
-	sat_scores_75th_percentile_math SMALLINT,
-	sat_scores_25th_percentile_writing SMALLINT,
-	sat_scores_75th_percentile_writing	SMALLINT,
-	sat_scores_midpoint_critical_reading	SMALLINT,
-	sat_scores_midpoint_math	SMALLINT,
-	sat_scores_midpoint_writing	SMALLINT,
-	act_scores_25th_percentile_cumulative	TINYINT,
-	act_scores_75th_percentile_cumulative	TINYINT,
-	act_scores_25th_percentile_english	TINYINT,
-	act_scores_75th_percentile_english	TINYINT,
-	act_scores_25th_percentile_math	TINYINT,
-	act_scores_75th_percentile_math	TINYINT,
-	act_scores_25th_percentile_writing	TINYINT,
-	act_scores_75th_percentile_writing	TINYINT,
-	act_scores_midpoint_cumulative	TINYINT,
-	act_scores_midpoint_english	TINYINT,
-	act_scores_midpoint_math	TINYINT,
-	act_scores_midpoint_writing	TINYINT,
-	sat_scores_average_overall	SMALLINT,
-	sat_scores_average_by_ope_id	SMALLINT,
-	program_percentage_agriculture	DECIMAL(5,4),
-	program_percentage_resources	DECIMAL(5,4),
-	program_percentage_architecture	DECIMAL(5,4),
-	program_percentage_ethnic_cultural_gender	DECIMAL(5,4),
-	program_percentage_communication	DECIMAL(5,4),
-	program_percentage_communications_technology	DECIMAL(5,4),
-	program_percentage_computer	DECIMAL(5,4),
-	program_percentage_personal_culinary	DECIMAL(5,4),
-	program_percentage_education	DECIMAL(5,4),
-	program_percentage_engineering	DECIMAL(5,4),
-	program_percentage_engineering_technology	DECIMAL(5,4),
-	program_percentage_language	DECIMAL(5,4),
-	program_percentage_family_consumer_science	DECIMAL(5,4),
-	program_percentage_legal	DECIMAL(5,4),
-	program_percentage_english	DECIMAL(5,4),
-	program_percentage_humanities	DECIMAL(5,4),
-	program_percentage_library	DECIMAL(5,4),
-	program_percentage_biological	DECIMAL(5,4),
-	program_percentage_mathematics	DECIMAL(5,4),
-	program_percentage_military	DECIMAL(5,4),
-	program_percentage_multidiscipline	DECIMAL(5,4),
-	program_percentage_parks_recreation_fitness	DECIMAL(5,4),
-	program_percentage_philosophy_religious	DECIMAL(5,4),
-	program_percentage_theology_religious_vocation	DECIMAL(5,4),
-	program_percentage_physical_science	DECIMAL(5,4),
-	program_percentage_science_technology	DECIMAL(5,4),
-	program_percentage_psychology	DECIMAL(5,4),
-	program_percentage_security_law_enforcement	DECIMAL(5,4),
-	program_percentage_public_administration_social_service	DECIMAL(5,4),
-	program_percentage_social_science	DECIMAL(5,4),
-	program_percentage_construction	DECIMAL(5,4),
-	program_percentage_mechanic_repair_technology	DECIMAL(5,4),
-	program_percentage_precision_production	DECIMAL(5,4),
-	program_percentage_transportation	DECIMAL(5,4),
-	program_percentage_visual_performing	DECIMAL(5,4),
-	program_percentage_health	DECIMAL(5,4),
-	program_percentage_business_marketing	DECIMAL(5,4),
-	program_percentage_history	DECIMAL(5,4),
-	online_only	VARCHAR(5),
-	college_size	INT,
-	demographics_race_ethnicity_white	DECIMAL(5,4),
-	demographics_race_ethnicity_black	DECIMAL(5,4),
-	demographics_race_ethnicity_hispanic	DECIMAL(5,4),
-	demographics_race_ethnicity_asian	DECIMAL(5,4),
-	demographics_race_ethnicity_aian	DECIMAL(5,4),
-	demographics_race_ethnicity_nhpi	DECIMAL(5,4),
-	demographics_race_ethnicity_two_or_more	DECIMAL(5,4),
-	demographics_race_ethnicity_non_resident_alien	DECIMAL(5,4),
-	demographics_race_ethnicity_unknown DECIMAL(5,4),
-	part_time_share	DECIMAL(5,4),
-	avg_net_price_public INT,
-	avg_net_price_private INT,
-	net_price_public_by_income_level_0_to_30000	INT,
-	net_price_public_by_income_level_30001_to_48000	INT,
-	net_price_public_by_income_level_48001_to_75000	INT,
-	net_price_public_by_income_level_75001_to_110000	INT,
-	net_price_public_by_income_level_110001_to_plus	INT,
-	net_price_private_by_income_level_0_to_30000	INT,
-	net_price_private_by_income_level_30001_to_48000	INT,
-	net_price_private_by_income_level_48001_to_75000	INT,
-	net_price_private_by_income_level_75001_to_110000	INT,
-	net_price_private_by_income_level_110001_to_plus	INT,
-	pell_grant_rate	DECIMAL(5,4),
-	federal_loan_rate	DECIMAL(5,4),
-	share_25_older	DECIMAL(5,4),
-	earn_10_yrs_after_entry_median	INT,
-	median_debt_suppressed_completers_overall	DECIMAL(6,1),
-	median_debt_suppressed_completers_monthly_payments	DECIMAL(10,5),
-	repayment_suppressed_3_yr_overall	DECIMAL(6,5),
-	rate_suppressed_lt_four_year_150percent	DECIMAL(5,4),
-	rate_suppressed_four_year	DECIMAL(5,4),
-	retention_rate_suppressed_four_year_full_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_lt_four_year_full_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_four_year_part_time_pooled	DECIMAL(5,4),
-	retention_rate_suppressed_lt_four_year_part_time_pooled	DECIMAL(5,4),
-	main_campus	VARCHAR(5),
-	branches	INT,
-	institutional_characteristics_level	TEXT,
-	zip	TEXT,
-	grad_students	INT,
-	tuition_in_state	INT,
-	tuition_out_of_state	INT,
-	tuition_revenue_per_fte	INT,
-	instructional_expenditure_per_fte	INT,
-	faculty_salary	INT,
-	ft_faculty_rate	DECIMAL(5,4),
-	admission_rate_overall	DECIMAL(5,4),
-	demographics_median_family_income	DECIMAL(7,1),
-	default_rate_3_yr	DECIMAL(5,4),
-	demographics_age_entry	DECIMAL(4,2),
-	demographics_veteran	DECIMAL(5,4),
-	demographics_first_generation	DECIMAL(5,4),
+  .
+  .
+  .
 	demographics_men	DECIMAL(5,4),
 	demographics_women	DECIMAL(5,4),
 	academic_year INT
@@ -741,3 +524,12 @@ DROP 	net_price_private_by_income_level_110001_to_plus;
 
 
 ```
+
+## Results
+
+**Final ER Diagram**
+
+![try2]({{ site.url }}{{ site.baseurl }}/images/3.college_scorecards_mysql/1.er_diagram_final.jpg)
+{: .full}
+
+The resulting database is sorted by theme and is joined by the college's ID. As mentioned before, I tweaked the initial dataset to have unique ID's for each row, not for each college to make sure that the combination of college and year have an identifying column, and not just college alone.
