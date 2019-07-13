@@ -124,6 +124,8 @@ In this section, I go into the process and code behind creating a relational dat
 
 1. I imported the full original dataset.
   - SQL requires a table which then is populated by the data.
+
+
 ```text
 -- Importing the full dataset into mySQL database
 -- Creating a table to contain the data, specifying the name and datatype of the column
