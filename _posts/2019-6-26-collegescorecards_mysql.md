@@ -122,40 +122,40 @@ There are 38,068 rows (observations) in the dataset, representing each college d
 ## Data onboarding
 In this section, I go into the process and code behind creating a relational database using the CollegeScorcards dataset. The goal of this section is to further explain the benefits of a relational database as well as show step by step how I made mine.
 
-```text
--- Importing the full dataset into mySQL database
--- Creating a table to contain the data, specifying the name and datatype of the column
-CREATE TABLE college_full (
-	id VARCHAR(12) PRIMARY KEY,
-	name TEXT,
-	city TEXT,
-	state CHAR(2),
-	school_url TEXT,
-	price_calculator_url TEXT,
-	under_investigation INT,
-	degrees_awarded_predominant TEXT,
-  .
-  .
-  .
-	default_rate_3_yr	DECIMAL(5,4),
-	demographics_age_entry	DECIMAL(4,2),
-	demographics_veteran	DECIMAL(5,4),
-	demographics_first_generation	DECIMAL(5,4),
-	demographics_men	DECIMAL(5,4),
-	demographics_women	DECIMAL(5,4),
-	academic_year INT
-);
-
--- Populating the table above
-LOAD DATA LOCAL INFILE 'C:/.../college_scorecards.csv'
-INTO TABLE college_full
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
-```
 1. I imported the full original dataset.
   - SQL requires a table which then is populated by the data.
   
+  ```text
+  -- Importing the full dataset into mySQL database
+  -- Creating a table to contain the data, specifying the name and datatype of the column
+  CREATE TABLE college_full (
+  	id VARCHAR(12) PRIMARY KEY,
+  	name TEXT,
+  	city TEXT,
+  	state CHAR(2),
+  	school_url TEXT,
+  	price_calculator_url TEXT,
+  	under_investigation INT,
+  	degrees_awarded_predominant TEXT,
+    .
+    .
+    .
+  	default_rate_3_yr	DECIMAL(5,4),
+  	demographics_age_entry	DECIMAL(4,2),
+  	demographics_veteran	DECIMAL(5,4),
+  	demographics_first_generation	DECIMAL(5,4),
+  	demographics_men	DECIMAL(5,4),
+  	demographics_women	DECIMAL(5,4),
+  	academic_year INT
+  );
+
+  -- Populating the table above
+  LOAD DATA LOCAL INFILE 'C:/.../college_scorecards.csv'
+  INTO TABLE college_full
+  FIELDS TERMINATED BY ','
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES;
+  ```
 2. I then created sub-tables, each with a common theme.
   - Luckily, the dataset has several groups of variables that share a common theme. I will use this to my advantage and divide up the data according to theme.
 
