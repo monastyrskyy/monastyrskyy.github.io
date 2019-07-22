@@ -3,7 +3,7 @@ title: "College Scorecards Data - Conversion to Relational Database"
 date: 2019-6-26
 excerpt: "In this project, I organize the College Scorecards Dataset into a relational database hosted on a MySQL Server. The purpose of this conversion is increased readability, easier permission granting, and to get me familiar with SQL."
 mathjax: "true"
-tags: [academic]
+tags: [academic, sql]
 #classes: wide # frontmatter that should make the page wider.
 toc: true
 toc_label: "Table of Contents"
