@@ -76,22 +76,23 @@ I hypothesize that the top 5 states match the top 5 states by population, and si
 ## Modeling
 
 ### No Imputation
-### LM
-### GLM
-### GLMNet
+### LM/GLM/GLMNet
 
 ### Imputation
 ### LotFrontage imputed with mice
 
 ### Changed all factors into numeric dummy variables
 
-## Random Forest
+What I would like to do differently next time is change all the data to dummy variables and then use mice to impute lot frontage. This way, it doesn't have to deal with factor variables and has nice tidy numbers to work with. Also works great for when a new factor level is introduced in the test dataset.
+
+### Random Forest
+
+### XGBoost
+  great, probably reached a local maximum
 
 ## Taking out multicollinearity with value above 0.75
 
-## XGBoost
-  great, probably reached a local maximum
-
+I would like to try to make several processed datasets, with various threshold levels for removing columns such as .50, .75, .90 to see which gives the best results.
 
 ## Conclusion
 
@@ -103,16 +104,13 @@ As mentioned before, I think the reason why a more tuned XGBoost model did not y
 
 Although this may seem like a reasonable approach at first, there are two sources that may introduce error. The first is that I originally picked arbitrary parameter ranges. The issue with doing this is that it's possible to be optimizing the model to a local maximum instead of the absolute maximum. In other words, steps 2 and 3 may actually be improving the model, but because of the initial placement of parameter ranges, it's not optimizing the model as much as it could. See the graphic below for a visual representation of this idea.
 
-*Tableau visualization of the concept above*
-
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/5.kaggle_real_estate/1.parameter_tuning_fallacy.png" alt="Local Maximum Fallacy"></div><br/>
 
-**revise this**
+
 The second source of error arises because I optimized for one parameter at a time, while thinking I was optimizing them all. To explain this further, I optimized parameter X, given parameter Y and Z stayed the same, while the problem was to optimize them all to get the most optimal model. I then optimized parameter Y, given parameter X and Z stayed the same, and then parameter Z, given X and Y stayed the same. Because the initial parameter values were arbitrarily chosen, we have no confidence, that they will yield the best possible results. This doesn't necessarily produce the optimal solution to the combination of the parameters, but rather a single parameter, given that all others stay the same.
 
-One solution for this is to randomly choose a set amount of parameter combination which, with enough random parameter values, would get rid of the issue of optimizing for a local maximum, as the visualization below shows. We could then use this information to hone in on the parameters that produce the best results, and make more guesses around them. To get rid of the second source of error, we could optimize for all the parameters at the same time. This would be more computationally expensive, but it would guard us against optimizing for one parameter, given that all the others stay the same.
+One solution for this is to randomly choose a set amount of parameter combination which, with enough random parameter values, would get rid of the issue of optimizing for a local maximum, as the visualization below shows. We could then use this information to hone in on the parameters that produce the best results, and make more guesses around them. To get rid of the second source of error, we could optimize for all the parameters at the same time. This would be more computationally expensive, but it would guard us against optimizing for one parameter, given that all the others stay the same. To avoid optimizing for a local maximum, we can initially choose several random parameter values and then optimize using the one that yields the highest model accuracy. As mentioned above, in practice, this would be done with a combination of all the parameters of the model, but for the sake of simplicity, it's illustrated with one parameter. For more information on this topic, please see   <a href="http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf" target="blank">this in-depth paper on Random Grid Tuning</a>.
 
-*Tableau visualization of the concept above*
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/5.kaggle_real_estate/2.random_initial_guesses.png" alt="Random Guesses to get rid of Local Maximum Fallacy"></div><br/>
 
