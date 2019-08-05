@@ -71,11 +71,14 @@ In the dataset, disregarding academic year, the 5 states with the most colleges 
 I hypothesize that the top 5 states match the top 5 states by population, and similarly the bottom 5 states/territories match the bottom 5 states/territories by population. My hypothesis largely matches reality, with 4 out of 5 most populous states also being in the top 5 by college count (<a href="https://www.census.gov/newsroom/press-releases/2015/cb15-215.html" target="blank">Pennsylvania is the exception</a>). The least populated regions in the US are territories, so my hypothesis is supported as well.
 
 
-## Data Wrangling
+## Initial Data Wrangling
+To set a baseline result, I wanted to run a simple linear regression using all the available predictors that contained at least 90% non-missing values. To do this, I changed all the text fields to factors and took out any columns that had over 90% missing values. Additionally, I did no imputation nor dummy variable assignment.
 
-To set a baseline result, I wanted to run a simple linear regression using all the available predictors that contained at least 90% non-missing values. To do this, I changed all the text fields to factors and made the prediction. Because of all the missing values, the `lm()` function could not predict all the rows, so for the rows that it couldn't predict, I took the average value of all the other predictions and imputed the missing predictions with the average. I then did the same with `glm()` and `glmnet()` functions and compared the results.
+## Initial Modeling
+### LM/GLM/GLMNet
+Because of all the missing values, the `lm()` function could not predict all the rows, so for the rows that it couldn't predict, I took the average value of all the other predictions and imputed the missing predictions with the average. I then did the same with `glm()` and `glmnet()` functions and compared the results.
 
-The results are calculated as follows:
+The results are calculated as follows, and are shown below for the three methodologies discussed.
 
 $$
  RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big({log(predicted_i) - log(actual_i)}\Big)^2}}
@@ -88,11 +91,11 @@ $$
 |glm()|0.47581|
 |glmnet()|0.47183|
 
-## Modeling
 
-### No Imputation
-### LM/GLM/GLMNet
 
+
+
+## Secondary Data Wrangling
 ### Imputation
 ### LotFrontage imputed with mice
 
@@ -100,6 +103,7 @@ $$
 
 What I would like to do differently next time is change all the data to dummy variables and then use mice to impute lot frontage. This way, it doesn't have to deal with factor variables and has nice tidy numbers to work with. Also works great for when a new factor level is introduced in the test dataset.
 
+## Modeling
 ### Random Forest
 
 ### XGBoost
@@ -109,7 +113,24 @@ What I would like to do differently next time is change all the data to dummy va
 
 I would like to try to make several processed datasets, with various threshold levels for removing columns such as .50, .75, .90 to see which gives the best results.
 
+
+
 ## Conclusion
+
+What I did:
+1. Change all text to factors.
+2. Impute the factors based on the data dictionary.
+3. Impute the missing numerical data.
+4. Change the factors to numeric dummy variables.
+5. Model accounting for multicollinearity, etc.
+
+My first workflow approach was a shot in the dark to get myself familiar with the project and get a reasonable prediction out. It was a good base, and it taught me a lot about the dataset and machine learning workflows in general. Taking the lessons that I learned from my first attempt, I now know that there are several point where I'm losing accuracy solely based on the order of my workflow. For example, when I impute a numerical variable by using factors instead of dummy numerical variables. The follow-up to this post will use an improved new workflow.
+
+What I will do in the future
+1. Change all text to numeric dummy variables.
+2. Fill in missing factor levels based on the data dictionary.
+3. Impute the missing numerical data with mice.
+4. Model accounting for multicollinearity, etc.
 
 ## Further Steps
 As mentioned before, I think the reason why a more tuned XGBoost model did not yield as good results as the model with default parameters is because of my process of selecting parameters. My process was as follows:
