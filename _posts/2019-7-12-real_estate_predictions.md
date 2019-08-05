@@ -25,6 +25,8 @@ defaults:
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 **Think about dividing this up into several posts and have one single one at the end that summarizes and references each part of this post.**
+**Add an executive summary**
+
 
 ## Introduction
 In this project I take a dive into real estate data with the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="blank">House Prices: Advanced Regression Techniques</a> competition on Kaggle. This competition serves as a first step for beginners to "get their feet wet" with advanced regression and machine learning by predicting real estate prices based on a combination of qualitative and quantitative predictors.
@@ -92,14 +94,46 @@ $$
 |glmnet()|0.47183|
 
 
-
-
-
 ## Secondary Data Wrangling
+
+Now that a baseline was set, the real work could begin. I went through all the variables in the dataset and cross-referenced them with the data dictionary to see if the data dictionary could provide any insight into the nature of the data and more specifically, the missing values. Evidently, most of the missing values in the dataset were intentional and actually carried information. For a lot of the factor variables, a missing value meant the lack of a feature, as exemplified by variables such as BsmtQual, BsmtCond, FireplaceQu, and others, where an NA value means that the feature was missing.
+
 ### Imputation
+
+This discovery, however, doesn't mean that some of the NA values were mistakes. For example, if BsmtQual was not missing, but BsmtCond was, then we know that that can't be because they are related and if one is not missing, then the other must not be missing as well. In these cases, which were few and far between, I imputed the missing value with my best estimate for the specific house. For example, if I had to impute BsmtCond, I looked to other condition related variables for the house, such as overall condition, pool condition, conditions of various rooms, etc. Because there cases of missing factor variables were few and far between I found that manual imputation was the best way of dealing with these missing variables.
+
 ### LotFrontage imputed with mice
 
-### Changed all factors into numeric dummy variables
+The one numeric variable that I had to impute was LotFrontage, which describes the length of property that has contact with a main road. A lot of these values were missing, and I could not manually impute them because they were numeric. To solve this issue I looked to a solution offered by the <a href="https://cran.r-project.org/web/packages/mice/index.html" target="blank">mice package</a>. This package imputes missing data based on several methods including random forests, which is what I will use. Below is the code chunk showcasing the imputation of missing data. Note, mice imputes all the missing data in the dataset, but for our purposes I will only need the LotFrontage variable.
+
+```r
+# Performing mice imputation, based on random forests.
+miceMod <- mice(train[ , !names(train) %in% c("SalePrice")], method="rf")
+
+miceOutput <- complete(miceMod)  # generate the complete imputed data.
+
+# Next step is to input miceOutput into train (omitted)
+```
+
+
+### Factors -> Numeric Dummy Variables
+
+After some research I realized that even though `lm(), glm(), glmnet()` can process categorical data, they work better with numeric-only data. To amend this, I changed all the factor variables into numeric, by assigning each factor level to a number. To avoid overfitting, I grouped certain factor levels together and assigned them to a single number. Also, I made sure that there is no dummy variable that had a low amount of observations (under ~30). Below is an example of this concept:
+
+```r
+# HouseStyle Variable Assignment
+# Made a new train_v1 dataframe to populate with the new data
+
+train_v1$HouseStyle[train$HouseStyle %in% c("2.5Fin", "2Story")] <- 2
+train_v1$HouseStyle[train$HouseStyle %in% c("1Story", "SLvl")] <- 1
+train_v1$HouseStyle[!train$HouseStyle %in% c("2.5Fin", "2Story", "1Story", "SLvl")] <- 0
+
+# How many observations in each variable?
+table(train_processed_v1$HouseStyle)
+```
+Dummy Variable|0 |1 |2 |
+|:---:|:---:|:---:|:---:|
+|Observation Count|216 |791 |453 |
 
 What I would like to do differently next time is change all the data to dummy variables and then use mice to impute lot frontage. This way, it doesn't have to deal with factor variables and has nice tidy numbers to work with. Also works great for when a new factor level is introduced in the test dataset.
 
