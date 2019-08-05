@@ -73,12 +73,12 @@ I hypothesize that the top 5 states match the top 5 states by population, and si
 
 ## Data Wrangling
 
-To set a baseline result, I wanted to run a simple linear regression using all the available predictors that contained at least 90% non-missing values. To do this, I changed all the text fields to factors and made the prediction. Because of all the missing values, the `r lm()` function could not predict all the rows, so for the rows that it couldn't predict, I took the average value of all the other predictions and imputed the missing predictions with the average. I then did the same with `r glm()` and `r glmnet()` functions and compared the results.
+To set a baseline result, I wanted to run a simple linear regression using all the available predictors that contained at least 90% non-missing values. To do this, I changed all the text fields to factors and made the prediction. Because of all the missing values, the `lm()` function could not predict all the rows, so for the rows that it couldn't predict, I took the average value of all the other predictions and imputed the missing predictions with the average. I then did the same with `glm()` and `glmnet()` functions and compared the results.
 
 The results are calculated as follows:
 
 $$
- RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(\frac{predicted_i - actual_i}{\sigma_i}\Big)^2}}
+ RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big({log(predicted_i) - log(actual_i)}\Big)^2}}
 $$
 
 |Results|
