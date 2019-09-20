@@ -140,7 +140,7 @@ What I would like to do differently next time is change all the data to dummy va
 ## Post-Imputation Modeling
 Note on this section: I ran through a lot of trial and error to essentially guess the parameters and hyperparameters that would cause for the best results. In my next iteration of this project, I'd like to approach model tuning with a more systematic approach (More on this further down).
 
-### glmnet()
+### GLMNet
 To continue my analysis with imputed data, I ran a GLMNet function with 10 repeats, centered, scaled, and with PCA with default values for alpha and lambda. The improvement in results was great, with the corresponding RMSE being 0.1739 .
 
 ### Random Forest
