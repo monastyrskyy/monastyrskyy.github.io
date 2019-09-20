@@ -189,4 +189,4 @@ One solution for this is to randomly choose a set amount of parameter combinatio
 
 ### Model Ensembling
 
-In perhaps the second or third iteration of this project, I'd like to learn more about model ensembling and implement it in this project.
+Perhaps in the second or third iteration of this project, I'd like to learn more about model ensembling and implement it in this project.
