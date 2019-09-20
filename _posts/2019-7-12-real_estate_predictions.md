@@ -131,6 +131,7 @@ train_v1$HouseStyle[!train$HouseStyle %in% c("2.5Fin", "2Story", "1Story", "SLvl
 # How many observations in each variable?
 table(train_processed_v1$HouseStyle)
 ```
+
 Dummy Variable|0 |1 |2 |
 |:---:|:---:|:---:|:---:|
 |Observation Count|216 |791 |453 |
