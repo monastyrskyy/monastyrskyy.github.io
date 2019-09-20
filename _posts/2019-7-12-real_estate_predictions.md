@@ -24,10 +24,6 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-**Think about dividing this up into several posts and have one single one at the end that summarizes and references each part of this post.**
-**Add an executive summary**
-
-
 ## Introduction
 In this project I take a dive into real estate data with the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="blank">House Prices: Advanced Regression Techniques</a> competition on Kaggle. This competition serves as a first step for beginners to "get their feet wet" with advanced regression and machine learning by predicting real estate prices based on a combination of qualitative and quantitative predictors.
 
