@@ -124,7 +124,7 @@ for column in data.columns:
 ## Statistical Inference
 The barplot visualization shows that some features stray further from the sample proportion of phishing websites than others. To develop some hypotheses about what features will be influential in model selection, I first filtered down to the ‘interesting’ features with the following method. For each category of each feature, I ran a 10,000 size bootstrap sample of the ‘result’ label variable. I then took this information to calculate a 99.9% confidence interval for the proportion that phishing websites made up of that group. If the overall proportion of phishing websites in the whole sample was outside of the 99.9% CI for at least two of the categories of a feature, I labeled that feature as ‘interesting’. The number of phishing websites that have these ‘interesting’ features will either be significantly higher or lower than the sample average, at 99.9% confidence. This might then suggest that these features will have a lot of influence when building models and may have high predictive power in whether a website is phishing or legitimate. Below is a list of the ‘interesting’ columns.<br/>
 
-```Python
+```python
 # Defining necessary functions to see which groups are interesting
 def one_minus_mean(data):
     result = 1 - np.mean(data)
