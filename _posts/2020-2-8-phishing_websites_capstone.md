@@ -65,7 +65,7 @@ I repeated this process for every feature in the dataset, resulting in 30 plots 
 
 Below I listed several other graphs where the bars tend to stray away from the overall sample proportion because these variables might have a lot of decision power in the prediction stage. While these visualizations served to get me familiar with the data, in a later stage I will apply more rigorous methods that will allow me to make stronger claims about which columns are important.<br/>
 
-```Python
+```r
 pal = ['#eb4c46', '#cccccc'] #choice of colors
 
 # overall sample proportion of phishing websites
@@ -195,7 +195,7 @@ To visualize the data within the ‘interesting’ columns, I want to display th
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
 
-```Python
+```r
 # Creating a hash table of every combination of interesting columns
 # Each key in hash table contains heatmap table of combinations of interesting columns
 
@@ -229,7 +229,7 @@ In this crosstab, each combination of each category is plotted and the number it
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png" alt="Picture"></div><br/>
 
-```Python
+```r
 # Scalable plotting function of the above plots
 
 def prop_phish_heatmap(heatmap_dict, interesting_columns):
