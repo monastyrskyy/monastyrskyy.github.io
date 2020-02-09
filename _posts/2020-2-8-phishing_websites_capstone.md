@@ -28,7 +28,8 @@ With the ever-expanding reach of digital technology, online security savviness o
 
 ## Data
 ### Data overview
-Data:<a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00327/ " target="blank">UCI Machine Learning (ML) Archive</a>
+Data:<a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00327/ " target="blank">UCI Machine Learning (ML) Archive</a><br/>
+
 Each of the datasets number rows contains an observation of one website as well as its phishing status, determined by an expert. Some 30 features of the dataset include “Redirect”, “Favicon”, and “URL_length”, each of which will be further explained in the report. The dataset is provided by the web browser company, and all variables collected were predetermined to be of at least some interest in deciding whether a website is a phishing website or not.<br/>
 
 ### Loading the data
@@ -54,7 +55,7 @@ Traditional methods for checking for outliers such as boxplots, histograms, and 
 ## Exploratory Data Analysis - Overview
 To get a good idea of what the data look like, I made a composite stacked bar graph showing the label variable distribution for each feature. Below is an example of one feature that I explain in detail in a later paragraph.<br/>
 
-picture goes here<br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png" alt="Picture"></div><br/>
 
 On the left is a stacked bar graph of the total counts of phishing vs legitimate websites within each of the two categories of the feature ‘url_contains_ip_address’, namely ‘T’ and ‘F’. This bar shows how the counts of ‘T’ and ‘F’ compare to each other, as well as how the distribution of phishing vs legitimate websites looks for each category.<br/>
 
@@ -64,7 +65,12 @@ I repeated this process for every feature in the dataset, resulting in 30 plots 
 
 Below I listed several other graphs where the bars tend to stray away from the overall sample proportion because these variables might have a lot of decision power in the prediction stage. While these visualizations served to get me familiar with the data, in a later stage I will apply more rigorous methods that will allow me to make stronger claims about which columns are important.<br/>
 
-Many pictures go here<br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
+
 
 ## Statistical Inference
 The barplot visualization shows that some features stray further from the sample proportion of phishing websites than others. To develop some hypotheses about what features will be influential in model selection, I first filtered down to the ‘interesting’ features with the following method. For each category of each feature, I ran a 10,000 size bootstrap sample of the ‘result’ label variable. I then took this information to calculate a 99.9% confidence interval for the proportion that phishing websites made up of that group. If the overall proportion of phishing websites in the whole sample was outside of the 99.9% CI for at least two of the categories of a feature, I labeled that feature as ‘interesting’. The number of phishing websites that have these ‘interesting’ features will either be significantly higher or lower than the sample average, at 99.9% confidence. This might then suggest that these features will have a lot of influence when building models and may have high predictive power in whether a website is phishing or legitimate. Below is a list of the ‘interesting’ columns.<br/>
@@ -79,11 +85,24 @@ Merely looking at a list of feature names doesn’t tell me too much, so the nex
 ## Exploratory Data Analysis - Closer Look
 To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean.<br/>
 
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
+
 In this crosstab, each combination of each category is plotted and the number it contains inside is the proportion of phishing websites of that group. Notice that this crosstab only compares two features: ‘sfh’ to ‘links_pointing_to_page’, whereas in my full analysis I want to compare each combination of features, and visually display the proportions of phishing websites, as shown below. The color switches from shades of blue to shades of red, depending on whether the proportion of phishing websites for each specific combination in the visualization is above or below the sample proportion of phishing websites. The darker the color, the bigger the absolute difference between the combination proportion and the sample proportion.<br/>
 
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png" alt="Picture"></div><br/>
 
 It’s interesting to note some patterns that emerge. For example, despite the number of links_pointing_to_page, the url_of_anchor has a clear pattern showing the websites with a small url_of_anchor portion tend to not be fishing websites. Another example is just how important sfh seems to be when the website contains an ‘about:blank’ section. From other heatmaps available in the Python Notebook, there are also some unexpected surprises in terms of trends, but most confirm what the bar graphs showed.<br/>
 
 To show the scalability of this visualization method, I graphed all the non-interesting columns against each other to look for patterns that might be surprising. It’s interesting to note that there are several combinations that are made up of only legitimate websites.<br/>
 
 Despite the versatility of this method, the machine learning portion of this report will be a far better measure of important columns along with the results of the model.<br/>
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div><br/>
