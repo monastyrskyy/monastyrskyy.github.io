@@ -65,15 +65,123 @@ I repeated this process for every feature in the dataset, resulting in 30 plots 
 
 Below I listed several other graphs where the bars tend to stray away from the overall sample proportion because these variables might have a lot of decision power in the prediction stage. While these visualizations served to get me familiar with the data, in a later stage I will apply more rigorous methods that will allow me to make stronger claims about which columns are important.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
+```Python
+pal = ['#eb4c46', '#cccccc'] #choice of colors
+
+# overall sample proportion of phishing websites
+prop_phish = pd.DataFrame((data.groupby('result').size())/(data.groupby('result').size().sum())).loc[-1, 0]
+
+# for loop that prints the viz for each feature
+for column in data.columns:
+    if column == 'result':
+        pass
+    else:
+        # Figure specs
+        fig = plt.figure(figsize=(14, 3), dpi=140)
+        fig.suptitle(column, fontsize=16, y=1.05)
+
+        # Divide the figure into a 1x2 grid, and give me the first section
+        ax1 = fig.add_subplot(121)
+
+        # Divide the figure into a 1x2 grid, and give me the second section
+        ax2 = fig.add_subplot(122)
+
+        # Left groupby and plot
+        g_count = data.groupby([column, 'result']).size().unstack('result') # count of each category
+        g_count.plot.barh(stacked = True, ax = ax1, color = pal).invert_xaxis() # barplot
+        ax1.yaxis.tick_right()
+        ax1.set_ylabel('')
+        ax1.set_yticklabels(data_dict[column].values())
+        ax1.axvline(0, color='#5868a8', linewidth=1.5, linestyle = '-.', label = 'Horizontal') # adding only for the legend (not visible line)
+        ax1.legend(labels=['% Phishing in Entire Sample', 'Phishing', 'Legitimate'])
+        ax1.set_title('Observed Counts')
+
+
+        # Right groupby and plot
+        g_count2 = data.groupby([column, 'result']).size().unstack(column)
+        p = g_count2.divide(g_count2.sum())
+        plot2 = p.transpose().plot.barh(stacked = True, ax = ax2, color = pal)
+        ax2.get_legend().remove()
+        ax2.axvline(prop_phish, color='#5868a8', linewidth=1.5, linestyle = '-.')
+        ticks = np.round(ax2.get_xticks()*100)
+        ax2.set_xticklabels(['{:}%'.format(j) for j in [str(i) for i in ticks]])
+        ax2.set_ylabel('')
+        ax2.set_yticklabels('')
+        ax2.set_title('Percent of Total')
+
+        fig.tight_layout()
+```
+
+<br><br/>
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png" alt="Picture"></div>
+
 
 
 ## Statistical Inference
 The barplot visualization shows that some features stray further from the sample proportion of phishing websites than others. To develop some hypotheses about what features will be influential in model selection, I first filtered down to the ‘interesting’ features with the following method. For each category of each feature, I ran a 10,000 size bootstrap sample of the ‘result’ label variable. I then took this information to calculate a 99.9% confidence interval for the proportion that phishing websites made up of that group. If the overall proportion of phishing websites in the whole sample was outside of the 99.9% CI for at least two of the categories of a feature, I labeled that feature as ‘interesting’. The number of phishing websites that have these ‘interesting’ features will either be significantly higher or lower than the sample average, at 99.9% confidence. This might then suggest that these features will have a lot of influence when building models and may have high predictive power in whether a website is phishing or legitimate. Below is a list of the ‘interesting’ columns.<br/>
+
+```Python
+# Defining necessary functions to see which groups are interesting
+def one_minus_mean(data):
+    result = 1 - np.mean(data)
+    return result
+
+
+# courtesy of https://campus.datacamp.com/courses/statistical-thinking-in-python-part-2/bootstrap-confidence-intervals?ex=6
+def bootstrap_replicate_1d(data, func):
+    return func(np.random.choice(data, size=len(data)))
+
+def draw_bs_reps(data, func, size=1):
+    """Draw bootstrap replicates."""
+
+    # Initialize array of replicates: bs_replicates
+    bs_replicates = np.empty(size)
+
+    # Generate replicates
+    for i in range(size):
+        bs_replicates[i] = bootstrap_replicate_1d(data, func)
+
+    return bs_replicates
+
+# changing this to be able to take mean of the bootstrap samples.
+data.result[data.result == -1] = 0
+
+
+# big checking function
+# bootstrap replicates
+# function automatically selects columns where the pop. prop. of phishing is outside the CI
+
+high_interesting_columns = []
+low_interesting_columns = []
+
+for i in data.columns[:30]:    # excluding the result variable
+    for j in set(data[i]):     # iterating over possible cateogies
+        loop_data = data.result[data[i] == j]    # getting result variable for each category of each feature
+        bs_replicates = draw_bs_reps(data=loop_data, func=one_minus_mean, size=10000)
+        ci = np.percentile(bs_replicates, [.05, 99.95])
+        if ((prop_phish < ci[0])): #interested in the high proportions
+            high_interesting_columns.append(i)
+        elif ((prop_phish > ci[1])): #low interesting columns
+            low_interesting_columns.append(i)
+
+    if high_interesting_columns != []:    # check for error when list is empty
+        if sum(np.array(high_interesting_columns) == i) == 1:    # removing any columns where only 1 feature was out of CI
+            high_interesting_columns.remove(i)
+    if low_interesting_columns != []:    # check for error when list is empty
+        if sum(np.array(low_interesting_columns) == i) == 1:    # removing any columns where only 1 feature was out of CI
+            low_interesting_columns.remove(i)
+
+high_interesting_columns = list(set(high_interesting_columns))    # removing duplicate entries
+low_interesting_columns = list(set(low_interesting_columns))
+
+print('Interesting columns with CI above sample proportion:', high_interesting_columns)
+print('Interesting columns with CI below sample proportion:', low_interesting_columns)
+```
+<br><br/>
 
 Interesting columns with CI above sample proportion:
 ['ssl_final_state', 'web_traffic', 'url_contains_sub_domain']
@@ -83,13 +191,78 @@ Interesting columns with CI below sample proportion:
 Merely looking at a list of feature names doesn’t tell me too much, so the next step would be to visualize the features somehow.<br/>
 
 ## Exploratory Data Analysis - Closer Look
-To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean.<br/>
+To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean, as well as the relevant code.<br/>
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
+
+```Python
+# Creating a hash table of every combination of interesting columns
+# Each key in hash table contains heatmap table of combinations of interesting columns
+
+# custom aggregation function
+def prop(series):
+    return round(sum(series)/len(series), 2)
+
+#scalable solution
+def heatmap_dict(heatmap_dict, interesting_columns):
+    heatmap_dict = {}
+
+    for i in range(len(interesting_columns)):
+        for j in range(i+1, len(interesting_columns)):
+            working_df = data[[interesting_columns[i], interesting_columns[j], 'result']].\
+                         groupby([interesting_columns[i], interesting_columns[j]]).agg(prop).unstack(interesting_columns[j])
+
+            working_df.columns = working_df.columns.droplevel() # remove 'result' from columns multindex
+
+            heatmap_dict[interesting_columns[i], interesting_columns[j]] = working_df
+
+    return heatmap_dict
+
+# Running the above function on both 'high' and 'low' interesting columns
+low_heatmap_dict = {}
+low_heatmap_dict = heatmap_dict(low_heatmap_dict, low_interesting_columns)
+high_heatmap_dict = {}
+high_heatmap_dict = heatmap_dict(high_heatmap_dict, high_interesting_columns)
+```
 
 In this crosstab, each combination of each category is plotted and the number it contains inside is the proportion of phishing websites of that group. Notice that this crosstab only compares two features: ‘sfh’ to ‘links_pointing_to_page’, whereas in my full analysis I want to compare each combination of features, and visually display the proportions of phishing websites, as shown below. The color switches from shades of blue to shades of red, depending on whether the proportion of phishing websites for each specific combination in the visualization is above or below the sample proportion of phishing websites. The darker the color, the bigger the absolute difference between the combination proportion and the sample proportion.<br/>
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png" alt="Picture"></div><br/>
+
+```Python
+# Scalable plotting function of the above plots
+
+def prop_phish_heatmap(heatmap_dict, interesting_columns):
+    for i in range(len(interesting_columns)-1):    #number of rows of entire heatmap
+
+        fig, axes = plt.subplots(nrows=1, ncols=len(interesting_columns)-1, figsize=(4,2), dpi = 180)    # num of columns with particular size
+        plt.subplots_adjust(wspace=0, hspace=0)    # space between subplots
+        cbar_ax = fig.add_axes([.91, .15, .01, .7])    # location of color bar
+
+        for j, (k, ax) in zip(range(i+1, len(interesting_columns)), enumerate(axes)):
+
+            im = sns.heatmap(heatmap_dict[interesting_columns[i], interesting_columns[j]], ax = axes[k+i], #puts blanks in beginning
+                        square=True, annot = True, cmap='coolwarm', center=prop_phish,
+                        yticklabels = list(data_dict[interesting_columns[i]].values()),    #legible labels
+                        xticklabels = list(data_dict[interesting_columns[j]].values()),
+                        cbar=k == 0, cbar_ax=None if k else cbar_ax, vmin = 0, vmax = 0.75) #colorbar details
+            ax.xaxis.set_label_position('top')
+
+            if ax in axes[1:9]:
+                axes[k+i].set_ylabel('')
+                axes[k+i].set_yticklabels('')
+                axes[k+i].tick_params(axis='y', length=0)   
+                # only keeps the y label for the first plot in each row
+
+        for l in range(0,i):
+                axes[l].axis('off')
+                # I got it to work.
+                # removes all labels from blank plots
+
+#Plotting
+prop_phish_heatmap(high_heatmap_dict, high_interesting_columns)
+prop_phish_heatmap(low_heatmap_dict, low_interesting_columns)    
+```
 
 It’s interesting to note some patterns that emerge. For example, despite the number of links_pointing_to_page, the url_of_anchor has a clear pattern showing the websites with a small url_of_anchor portion tend to not be fishing websites. Another example is just how important sfh seems to be when the website contains an ‘about:blank’ section. From other heatmaps available in the Python Notebook, there are also some unexpected surprises in terms of trends, but most confirm what the bar graphs showed.<br/>
 
@@ -97,12 +270,12 @@ To show the scalability of this visualization method, I graphed all the non-inte
 
 Despite the versatility of this method, the machine learning portion of this report will be a far better measure of important columns along with the results of the model.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png" alt="Picture"></div><br/>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div>
