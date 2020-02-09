@@ -1,6 +1,6 @@
 ---
-title: "College Scorecard Analysis Part 2"
-date: 2018-10-01
+title: "College Scorecard Analysis - Part 2"
+date: 2019-5-01
 excerpt: "In this project, I continue exploring the College Scorecard dataset and examine it for interesting patterns, trends, and insights."
 mathjax: "true"
 tags: [academic]
@@ -45,27 +45,48 @@ Some variables had **mostly missing** values (8,000 to 30,000 missing values).
 
   The cost of attendance as adjusted by income level may be missing because this is a hard and not objective measure to calculate. Each university may have their own formulas for calculating this value, and many may not even be interested in the cost of attendance by income level. Also because of the sensitivity of the data, universities may not always share it. Debt information and retention information also has mostly missing values for what I assume is the same reason.
 
-  Misc. “under_investagion”, “school_url” are some of the categories that have mostly missing values and aren’t explained by the above reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values could be missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Perhaps when colleges reported their data, they weren’t asked to provide their URL.
+  Misc. “under_investagion”, “school_url” are some of the categories that have mostly missing values and aren’t explained by the above reasons. From general experience, I assume that most schools aren’t under investigation and thus probably don’t keep any records about it. School URLs on the other hand, are fairly easy to find online and shouldn’t be hard to include. There are a number of reasons why the values could be missing. Perhaps it’s because most schools felt that they didn’t need to include a URL because a simple Google search will suffice. Also, perhaps when colleges reported their data, they weren’t asked to provide their URL.
 
 Relatively **few missing** values (0 to 8,000 missing values)
   - demographics.age_entry, default_rate_3_yr, pell_grant_rate, federal_loan_rate, part_time_share, program_percentage.agriculture, program_percentage.resources, program_percentage.architecture
 
-  These missing values sort themselves into categories that most universities would keep records of financial aid information, program percentages, and demographics data. All universities keep records of their financial aid information, so it is expected that there will be relatively few missing values in the columns that are related to financial aid, which is what we see in the data. Universities also keep a close record of the programs that they offer and how many students are enrolled in such programs. We would expect to see no missing values in columns related to university programs, yet we still see some. This is perhaps due to the fact that universities didn’t report anything for programs they don’t offer and they values got marked down as missing, whereas they should have been zeros.
+  These missing values sort themselves into categories that most universities would keep records of, namely - financial aid information, program percentages, and demographics data. All universities keep records of their financial aid information, so it is expected that there will be relatively few missing values in the columns that are related to financial aid, which is what we see in the data. Universities also keep a close record of the programs that they offer and how many students are enrolled in such programs. We would expect to see no missing values in columns related to university programs, yet we still see some. This is perhaps due to the fact that universities didn’t report anything for programs they don’t offer, and the values got marked down as missing.
 
-  Almost all university applications prompt the applicants to disclose their demographics information, so we expect to see few missing values in those columns. The potential explanations for missing values in the data is perhaps because a lot of applicants didn’t disclose their demographics data and were marked down as “unknown” and were not reported.
+  Almost all university applications prompt the applicants to disclose their demographics information, so we expect to see few missing values in these columns. The potential explanations for missing values in the data is perhaps because a lot of applicants didn’t disclose their demographics data and were marked down as “unknown” and were not reported.
 
 ## Student Populations
 
-In order to get an accurate measure of total student populations for each school, I added the “size” and “grad_student” fields together, because the data dictionary defines “size” as the total population of undergrads at each school. The student populations for each year are skewed right and have a median (~450 students) and mean (~2300 students) that are quite low compared to the max value (100,000+ students). Since the data are skewed right, it is important to look at both the mean and the median because the median is more representative of the smaller schools with low enrollment, and the mean is representative of the larger schools. The minimum value for each year is 0, which leads me to believe that it must have been a mistake or the school had zero students in that year. Upon further review, all the colleges that had zero students enrolled are real colleges that usually have very low enrollment (East West College of Natural Medicine, American Conservatory Theater, both with 0 students enrolled). The max value for each year seems to be awfully high as well, but upon further inspection, the schools that tend to be have high enrollment are online schools that don’t have any limitation in terms of capacity like the University of Phoenix – Online Campus (205,286 enrolled).
+In order to get an accurate measure of total student populations for each school, I added the “size” and “grad_student” fields together, because the data dictionary defines “size” as the total population of undergrads at each school. The student populations for each year are skewed right and have a median (~450 students) and mean (~2300 students) that are quite low compared to the max value (100,000+ students). *For a visual representation of the distribution of the data, please see the histogram of student populations for 2016.* Since the data are skewed right, it is important to look at both the mean and the median because the median is more representative of the smaller schools with low enrollment, and the mean is representative of the larger schools. The minimum value for each year is 0, which leads me to believe that it must have been a mistake or the school had zero students in that year. Upon further review, all the colleges that had zero students enrolled are real colleges that usually have very low enrollment (East West College of Natural Medicine, American Conservatory Theater, both with 0 students enrolled). The max value for each year seems to be awfully high as well, but upon further inspection, the schools that tend to be have high enrollment are online schools like the University of Phoenix – Online Campus (205,286 enrolled) that don't have any limitations in terms of capacity.
 
-Overall, the graphs mostly look the same across the years, so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year.
+Overall, the 5 number summaries look similar across the years (see below), so it is safe for us to assume that student populations didn’t increase by much, judging both by the mean and the median of each year.
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/1aa.2016_student_pop_hist.png" alt="2016 Student Populations"></div><br/>
+
+|Year   |    Summary   | | |Year   |    Summary   | | |Year   |    Summary     |
+|---    |---:   |:---    | |---    |---:   |:---    | |---    |---:   |:---    |
+|2012   |Min    |0       | |2013   |Min    |0       | |2014   |Min    |0       |
+|       |1st Q. |127     | |       |1st Q. |121     | |       |1st Q. |116     |
+|       |Median |452     | |       |Median |431     | |       |Median |406     |
+|       |Mean   |2377    | |       |Mean   |2333    | |       |Mean   |2332    |
+|       |3rd Q. |1992    | |       |3rd Q. |1922    | |       |3rd Q. |1890    |
+|       |Max    |205286  | |       |Max    |166816  | |       |Max    |151558  |
+|       |NA's   |706     | |       |NA's   |713     | |       |NA's   |713     |
 
 
-**TABLES GO HERE see #5d73af note 6/21 in planner**
+
+|Year   |    Summary   | | |Year   |    Summary     |
+|---    |---:   |:---    | |---    |---:   |:---    |
+|2015   |Min    |0       | |2016   |Min    |0       |
+|       |1st Q. |109     | |       |1st Q. |109     |
+|       |Median |377     | |       |Median |395     |
+|       |Mean   |2319    | |       |Mean   |2424    |
+|       |3rd Q. |1856    | |       |3rd Q. |2000    |
+|       |Max    |129615  | |       |Max    |100011  |
+|       |NA's   |734     | |       |NA's   |728     |
+
+To dive a little deeper into the data, we will now explore the relationship between graduate and undergraduate populations at each school. The graph below explores the relationship between undergraduate and graduate student populations. It appears that the two measures tend to be positively correlated, or in other words, schools with higher populations of undergraduate students also tend to have higher populations of graduate students. Overall, there are about 5.5 times more undergraduates than graduate students across all schools and all 5 years 2012-2016. As expected, despite there being more undergraduate students than graduate students on average, there are some schools that are the opposite. Urshan Graduate School of Theology, Charlotte School of Law, Daoist Traditions College of Chinese Medical Arts are some of the schools that have more graduate students than undergraduate students. The trend appears to be that professional and graduate only schools have more graduate students than undergraduate.
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/2.grad_vs_undergrad_v2.png" alt="Graduate vs Undergraduate Populations"></div><br/>
-
-To dive a little deeper into the data, we will now explore the relationship between graduate and undergraduate populations at each school. The graph on the left explores the relationship between undergraduate and graduate student populations. It appears that the two measures tend to be positively correlated, or in other words, schools with higher populations of undergraduates tend to have higher populations of graduate students. Overall, there are about 5.5 times more undergraduates than graduate students across all schools and all 5 years 2012-2016. As expected, despite there being more undergraduate students than graduate students on average, there are some schools that are the opposite. Urshan Graduate School of Theology, Charlotte School of Law, Daoist Traditions College of Chinese Medical Arts are some of the schools that have more graduate students than undergraduate students. The trend appears to be that professional and graduate only schools have more graduate students than undergraduate.
 
 ## Programs
 
@@ -73,14 +94,14 @@ In the dataset, each university reported the percentage of their students that a
 
 ## Tuitions
 
-To examine the differences in tuition across states, I found the mean tuition of each state, and I graphed it against the average number of colleges per state, for the average year (2012-16). The plot below shows that there is a wide range of mean tuitions, averaging from around $4,000 to $27,627 for in-state tuition per year. There is also a wide range of schools per state, ranging from 1 to 780, on average across the years 2012 to 2016. I chose to take the average of all values relevant to this plot across the years because in previous questions, we established that there is not a big difference in characteristics among the years. The plot above shows that states with slightly higher number of colleges tend to have higher tuitions as well (Adjusted R^2 = 0.07). One possible explanation for this is that a state that supports more schools has more expenses as well such as cost on infrastructure, cost of housing, cost of hiring enough professors and staff, and for this reason, there are higher costs associated with states that have more schools. As with any rule, some exceptions such as Rhode Island (upper left most point on the plot), that only has 26 schools but an average tuition of $27,627. It is possible that the schools in Rhode Island are more expensive because of the circumstances of Rhode Island such as most of the schools being private, less government funding for the education system, etc.
+To examine the differences in tuition across states, I found the mean tuition of each state, and I graphed it against the average number of colleges per state, for the average year (2012-16). The plot below shows that there is a wide range of mean tuitions per state, averaging from around $4,000 to $27,627 for in-state tuition per year. There is also a wide range of schools per state, ranging from 1 to 780, on average across the years 2012 to 2016. I chose to take the average of all values relevant to this plot across the years because in previous section, we established that there is not a big difference in characteristics among the years. The plot below shows that states with a slightly higher number of colleges tend to have higher tuitions as well (Adjusted R^2 = 0.07). One possible explanation for this is that a state that supports more schools has more expenses as well such as the cost of infrastructure, cost of housing, cost of hiring enough professors and staff, etc. For this reason, there are higher costs associated with states that have more schools. As with any rule, some exceptions such as Rhode Island exist (upper left most point on the plot), which only has 26 schools but an average tuition of $27,627. It is possible that the schools in Rhode Island are more expensive because of the particular circumstances of Rhode Island such as most of the schools being private, less government funding for the education system, etc.
 
 <div style="text-align:center">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="Graduate vs Undergraduate Populations">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3a.in_state_tuition.png" alt="In-State Tuition">
   <figcaption>The #5d73af line only shows the direction of correlation. Regression assumptions are not met.</figcaption>
 </div><br/>
 
-The trend for out of state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610 to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
+The trend for out-of-state tuition is very similar, with the same positive correlation (Adjusted R^2 = 0.05) for tuition vs. number of colleges, and the same outliers. The range of avg. out of state tuition is slightly wider at $3,610 to $30,389. But all in all, the in-state and out-of-state tuition trends are very similar.
 
 <div style="text-align:center">
   <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/3b.out_of_state_tuition.png" alt="Graduate vs Undergraduate Populations">
@@ -96,12 +117,14 @@ The question of diversity is a rather big question to analyze because there are 
 </div><br/>
 
 
-The above boxplots show the average distributions of the 3 ethnicities across all years and schools that have at least 10% of each group. The median for the Asian population is 14.88%, 18.77% for the Black population and 24.32% for the Hispanic. The data range from 10.01% across the groups to a biggest max value of 75%. The data for each group seems to be fairly spread out, meaning there are schools where each group is a majority of the population and the other two groups still comprise at least 10% each. The middle 50% of the data is the least spread out for the Asian group, with an IQR of only 8.73%, as compared to 13.85% for the Black population, and for 14.72% the Hispanic.
+The above boxplots show the average distributions of the 3 ethnicities across all years and schools that have at least 10% of each group. The median for the Asian population is 14.88%, 18.77% for the Black population, and 24.32% for the Hispanic. The data range from 10.01% across the groups to a max value of 75%. The data for each group seems to be fairly spread out, meaning there are schools where each group is a majority of the population and the other two groups still comprise at least 10% each. The middle 50% of the data is the least spread out for the Asian group, with an IQR of only 8.73%, as compared to 13.85% for the Black population, and for 14.72% the Hispanic.
 
-As for the specific universities that comprise this list, there are 150 in total, in 2016. 2016 has proven to be fairly similar to the other years across years. For the sake of brevity of this report, here are several examples of such colleges: College of Alameda, American Career College-Los Angeles, Bethesda University, California State University-East Bay, and Sofia University.
+As for the specific universities that comprise this list, there are 150 in total, in 2016. 2016 has proven to be fairly similar to the other years, as we established previously. For the sake of brevity of this report, here are several examples of such colleges: College of Alameda, American Career College-Los Angeles, Bethesda University, California State University-East Bay, and Sofia University.
 
 
 ## <a href="https://monastyrskyy.github.io/collegescorecards/" target="blank">Solutions to the Questions from Part 1</a>
+
+In this section I will answer two of the questions that I asked about the data in the first part of this report. Both of the questions interested me because they could easily be used by potential future students and new graduates to get a basic understanding of the context of the decision that they are making. For more details, please see the information below.
 
   1. Is there a relationship between the highest degree awarded and median earnings 10 years after start for each university?
 
@@ -109,7 +132,7 @@ As for the specific universities that comprise this list, there are 150 in total
     <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/5.degree_vs_earnings.png" alt="Diversity Boxplots">
   </div><br/>
 
-I thought asking this question could help a potential student decide what kind of degree he wanted to get in order to secure his future. To help answer this question, I took the average Median Earnings 10 years after Entry across the highest degrees each university offered. The salaries ranged from $24,036 for universities offering Associate’s Degrees as their highest degree to $45,232 for universities offering a Graduate degree as their highest degree. The median for the data is right around $33,516. Of course, it is important to be aware that correlation doesn’t always equal causation, and for this reason, the potential student shouldn’t simply jump at the first opportunity to attend a university offering graduate degrees. There could be confounding variables, like the program itself, the student’s work ethic, and the student’s past academic success, among others. Despite this, the bar graph above should help the potential student, at least start his research into what programs to apply to and give him a data-based foundation of the relationship between earnings and the highest degree offered at a school.
+I thought asking this question could help a potential student decide what kind of college he wanted to attend in order to secure his future. To help answer this question, I took the average Median Earnings 10 years after Entry across the highest degrees each university offered. The salaries ranged from $24,036 for universities offering Certificate Degrees as their highest degree to $45,232 for universities offering a Graduate degree as their highest degree. The median for the data is right around $33,516. Of course, it is important to be aware that correlation doesn’t always equal causation, and for this reason, the potential student shouldn’t simply jump at the first opportunity to attend a university offering graduate degrees. There could be confounding variables, like the program itself, the student’s work ethic, and the student’s past academic success, etc. Despite this, the bar graph above should help the potential student, at least start his research into what colleges to apply to and give him a data-based foundation of the relationship between earnings and the highest degree offered.
 
   2. Is there a relationship between the size of the university and faculty salary?
 
@@ -119,23 +142,27 @@ I thought asking this question could help a potential student decide what kind o
 
 To answer this question, I will focus on the most recent year, as it contains the most up-to-date information. In the year 2016, there seems to be a positive correlation between the size of the school and monthly faculty salary. The regression line was added simply to show the positive relationship between the variables, and is not meant to be analyzed further (it may break assumptions). This graph could help students who are looking to become faculty to decide what size of school to apply to based on the salary. Despite the apparent positive relationship between the two variables, it's important to note the cluster of colleges in the lower right corner of the graph that seem to be the exceptions. They are some of the largest colleges, but have relatively low faculty salaries. On the other hand, in the upper left hand corner, there are a few colleges that have some of the highest faculty salaries but are quite small in size.
 
-The average monthly faculty salaries range from $216 (perhaps a stipend) to $27,570. The range for the size of the colleges ranges from 0 (small private trade schools) to 100,011. As mentioned above, despite the positive relationship between school size and faculty salary, correlation is not always causation, and select faculty may make more money at a smaller school. This graph is only meant to be a starting point to further research.
+The average monthly faculty salaries range from $216 (perhaps a stipend) to $27,570. The range for the size of the colleges ranges from 0 (small private trade schools) to 100,011. As mentioned above, despite the positive relationship between school size and faculty salary, correlation is not always causation, and select faculty may make more money at a smaller school. This graph is only meant to be a starting point for further research.
 
-The above two questions showed some interesting results and confirmed my existing suspicions. It seems to be fair that students who attend a school with a higher degree than other schools will also earn more money later on. It also seems correct that bigger schools will pay their faculty more because there is more to do, and perhaps more money for the school to spend. As mentioned several times, these graphs that attempt to answer the questions I posed only show correlation, as it is very hard to show causation in an observational study. Correlations are not meaningless however, and they can be great starting points for further exploration, as was my intention.
+The above two questions showed some interesting results and confirmed my existing suspicions. It seems fair that students who attend a school with a higher degree than other schools will also earn more money later on. It also seems correct that bigger schools will pay their faculty more because there is more to do, and perhaps more money for the school to spend. As mentioned several times, these graphs that attempt to answer the questions I posed only show correlation, as it is very hard to show causation in an observational study. Correlations are not meaningless however, and they can be great starting points for further exploration, as was my intention.
 
 ## Additional Questions
 
-  1. Across all years, what does the gender distribution look like for the universities in the dataset?
+  - Across all years, what does the gender distribution look like for the universities in the dataset?
 
   <div style="text-align:center">
     <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/7.females_vs_years.png" alt="% Females Across Years">
   </div><br/>
 
-I wanted to explore this question because I was wondering what kind of diversity there was in terms of gender across universities. From this graph, it looks like the percent of females is right around 65% across all school across all years. While this is a simple graph, it accurately portrays percentage as the y-axis ranges from 0 to 1. There also don’t appear to be any changes in the number, nor any spikes or valleys worth exploring.
+I wanted to explore this question because I was wondering what kind of diversity there was in terms of gender across universities. From this graph, it looks like the percent of females is right around 65% across all school across all years. While this is a simple graph, it accurately portrays percentage as the y-axis. There also don’t appear to be any changes in the number, nor any spikes or valleys worth exploring.
 
-  2. Is there a difference in Median earnings 10 years after entry for majority female (65%+) and majority male (65%+) schools?
+  - Is there a difference in median earnings 10 years after entry for predominantly female (65%+) vs predominantly male (65%+) schools?
 
-From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900. All in all, it would be great to figure out the causes behind these differences and decide a course of action from there.
+  <div style="text-align:center">
+    <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male1.png" alt="Female vs Male Earnings 10 Years after Entry.">
+  </div><br/>
+
+From these two boxplots, comparing the median salaries for colleges that are at least 65% male vs female in size, it looks males have a higher median salary ($38,800 vs $24,800), but the females have a higher maximum value ($186,500 compared to the men’s’ $118,900). The spread looks similar, with the females having a little greater range from $9,100 to $186,500 compared to the men's $9,500 to $118,900.
 
 ## Analysis and Code
 
@@ -304,4 +331,39 @@ ggplot(degree, aes(x = reorder(Group.1, x), y = x)) +
   # Adding the earnings on top of each bar
   geom_text(aes(label=round(x,1)), vjust = -0.5) +
   ylim(c(NA, 50000))
+```
+
+<br><br/>
+
+**Predominantly Male vs Female Colleges**
+
+<div style="text-align:center">
+  <img src="{{ site.url }}{{ site.baseurl }}/images/2.college_scorecards/8.female_vs_male1.png" alt="Female vs Male Earnings 10 Years after Entry.">
+</div>
+```r
+# Defining colleges of interest
+women = card[card$demographics.women  > .65,]
+men = card[card$demographics.men  > .65,]
+
+require(scales) # Allows the use of full numbers instead of scientific notation
+
+women1 = ggplot(women, aes(y = earn_10_yrs_after_entry.median)) +
+  geom_boxplot(color = "#535a6d") +
+  ylab("Median Earnings 10 Years After Entry ($)") +
+  xlab("65%+ Female by Student Population")+
+  theme_hc()+
+  theme(axis.text.x = element_blank(),axis.ticks.x=element_blank())  +
+  ylim(c(0,200000))
+
+men1 = ggplot(men, aes(y = earn_10_yrs_after_entry.median)) +
+  geom_boxplot(color = "#535a6d") + ylab("") +
+  xlab("65%+ Male by Student Population")+
+  theme_hc()+
+  theme(axis.text.x = element_blank(),axis.ticks.x=element_blank()) +
+  ylim(c(0,200000))
+
+# Putting the plots next to each other using gridExtra
+library(gridExtra)
+
+grid.arrange(women1, men1, ncol = 2, top = "Earnings 10 Years After Entry")
 ```
