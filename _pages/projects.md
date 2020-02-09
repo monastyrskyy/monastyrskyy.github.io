@@ -7,13 +7,10 @@ header:
   image: "/images/header_thin.jpg"
 ---
 
-{% include base_path %}
-{% include group-by-array collection=site.posts field="tags" %}
-
-{% for tag in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
-  {% for post in posts %}
+{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'"  %}
+{% for year in postsByYear %}
+  <h2 id="{{ year.name | slugify }}" class="archive__subtitle">{{ year.name }}</h2>
+  {% for post in year.items %}
     {% include archive-single.html %}
   {% endfor %}
 {% endfor %}

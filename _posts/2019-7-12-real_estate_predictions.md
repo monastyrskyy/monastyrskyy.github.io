@@ -29,6 +29,7 @@ In this project I take a dive into real estate data with the <a href="https://ww
 
 As a machine learning novice, I thought this would be a great project to take on and learn more about linear regression, generalized linear modeling, random forests, parameter tuning, data imputation, and multicollinearity through R packages such as caret, XGBoost, mice, randomForest, and others.
 
+<<<<<<< HEAD
 {: .notice--info
 The process described below is my first attempt at the project and does not reflect my most up-to-date skills. To see my most recent attempt at building and tuning a model, please take a look at this post.
 }
@@ -37,6 +38,8 @@ The process described below is my first attempt at the project and does not refl
 ("~" because it's an ongoing competition)
 A great thing about Kaggle is due to its projects being structured as a competition, I could easily tell where how my skills compare to other aspiring data scientists and how I can improve.
 
+=======
+>>>>>>> 3d2b9f4834e0068cdfc6af6a761d0cc41ed73fa1
 ## Data Overview
 
 In this project, I use the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data" target="blank">Real Estate Data</a>, provided by Kaggle to up-and-coming data scientists looking for a real-world challenge, to analyze various quantitative and categorical predictors to predict housing prices. <a href="https://www.zillow.com/zestimate/" target="blank">Similar processes</a> are utilized by real estate companies to estimate the price of houses and inform their consumers about the value of a house based on factors such as its size, location, proximity to schools, etc.
