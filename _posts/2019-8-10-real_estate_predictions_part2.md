@@ -1,5 +1,5 @@
 ---
-title: "Real Estate Predictions - Kaggle"
+title: "Real Estate Predictions part 2 - Kaggle"
 date: 2019-8-10
 excerpt: "In this part of the project, I tune an XGBoost model using a recursive method, leading me to my most accurate prediction and a top ~30% spot on the leaderboard."
 mathjax: "true"
