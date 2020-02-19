@@ -193,7 +193,12 @@ Merely looking at a list of feature names doesn’t tell me too much, so the nex
 ## Exploratory Data Analysis - Closer Look
 To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean, as well as the relevant code.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6a.png" alt="Picture"></div>
+|sfh|-1|0|1|
+|links_pointing_to_page||||
+|:---:|:---:|:---:|:---:|
+|-1|0.62|0.56|0.79|
+|0|0.46|0.64|0.80|
+|1|0.54|0.69|0.77|
 
 ```r
 # Creating a hash table of every combination of interesting columns
