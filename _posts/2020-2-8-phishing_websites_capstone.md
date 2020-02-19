@@ -56,8 +56,6 @@ Traditional methods for checking for outliers such as boxplots, histograms, and 
 ## Exploratory Data Analysis - Overview
 To get a good idea of what the data look like, I made a composite stacked bar graph showing the label variable distribution for each feature. Below is an example of one feature that I explain in detail in a later paragraph.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png" alt="Picture"></div><br/>
-
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png)
 
 On the left is a stacked bar graph of the total counts of phishing vs legitimate websites within each of the two categories of the feature ‘url_contains_ip_address’, namely ‘T’ and ‘F’. This bar shows how the counts of ‘T’ and ‘F’ compare to each other, as well as how the distribution of phishing vs legitimate websites looks for each category.<br/>
@@ -116,11 +114,6 @@ for column in data.columns:
 ```
 
 <br><br/>
-
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png" alt="Picture"></div>
 
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)
@@ -242,7 +235,6 @@ In this crosstab, each combination of each category is plotted and the number it
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png" alt="Picture"></div><br/>
 
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png)
 
 ```r
 # Scalable plotting function of the above plots
@@ -285,15 +277,6 @@ To show the scalability of this visualization method, I graphed all the non-inte
 
 Despite the versatility of this method, the machine learning portion of this report will be a far better measure of important columns along with the results of the model.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png" alt="Picture"></div>
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div>
 
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png)
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png)
