@@ -307,7 +307,7 @@ I then did a comprehensive GridSearch with 5 CV folds of the parameter sequence 
 </figure>
 
 <figure>
-  <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png" alt="Picture"></div><br/>
+  <a><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png" alt="Picture"></a>
 </figure>
 
 Across the logistic x-axis are the 100 possible values that C can take on. On the y-axis is the score of the resulting function. For each possible C value I got the train scores and validation scores through the validation_curve() function with 5 CV folds. This resulted in a score for each possible C value of the following:<br/>
