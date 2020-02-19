@@ -373,7 +373,6 @@ The best XGBoost model, whose parameters are shown above produces an AUC score o
 
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download18.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download18.png)
 
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download18a.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download18a.png)
 
 
 The figure above shows the ROC curves of all the models I tried in this section. The dotted line shows the ROC curve of a model that guesses randomly between the two categories: phishing and legitimate. Then in blue is the tuned Log Regression model, followed by the RF model, and the untuned and tuned XGBoost model. Note that even the untuned XGBoost model performed better than the tuned RF and tuned Logistic Regression models. This implies that at least for this classification problem, the XGBoost model is a great choice. Also note that the tuned XGBoost produced slightly better results than the untuned model, but the two ROC curves almost look identical. This seems to be an example of the widely known phenomenon of the law of diminishing marginal returns, in which with every additional unit of input, output becomes ever decreasingly favorable. In the case of tuning an already good model, this means that by putting in an additional hour of work into tuning the model, only slight positive changes will happen to the model’s performance.<br/>
