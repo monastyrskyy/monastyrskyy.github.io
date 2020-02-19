@@ -193,7 +193,7 @@ Merely looking at a list of feature names doesn’t tell me too much, so the nex
 ## Exploratory Data Analysis - Closer Look
 To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean, as well as the relevant code.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6a.png" alt="Picture"></div>
 
 ```r
 # Creating a hash table of every combination of interesting columns
@@ -300,12 +300,12 @@ I then did a comprehensive GridSearch with 5 CV folds of the parameter sequence 
 
 Across the logistic x-axis are the 100 possible values that C can take on. On the y-axis is the score of the resulting function. For each possible C value I got the train scores and validation scores through the validation_curve() function with 5 CV folds. This resulted in a score for each possible C value of the following:<br/>
 
-**Validation data scores**<br/>
+- **Validation data scores**
   - Min - lower value of orange band
   - Mean - orange line
   - Max - higher value of orange band
 
-**Train data scores**<br/>
+- **Train data scores**
   - Min - lower value of blueband
   - Mean - blueline
   - Max - higher value of blue band<br/>
