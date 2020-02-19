@@ -301,14 +301,6 @@ To tune the C parameter, one of the main hyperparameters to tune in logistic reg
 
 I then did a comprehensive GridSearch with 5 CV folds of the parameter sequence and found the optimal C value of 0.7925. To make sure I picked the proper C value, I ran a RandomizedSearchCV of the same sequence as above and plotted it against the score of the resulting model. Below is a figure showing this.<br/>
 
-<figure>
-	<a href="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_b.jpg"><img src="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg"></a>
-</figure>
-
-<figure>
-  <a><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png" alt="Picture"></a>
-</figure>
-
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png)
 
 Across the logistic x-axis are the 100 possible values that C can take on. On the y-axis is the score of the resulting function. For each possible C value I got the train scores and validation scores through the validation_curve() function with 5 CV folds. This resulted in a score for each possible C value of the following:<br/>
