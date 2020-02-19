@@ -193,7 +193,7 @@ Merely looking at a list of feature names doesn’t tell me too much, so the nex
 ## Exploratory Data Analysis - Closer Look
 To visualize the data within the ‘interesting’ columns, I want to display the proportion of phishing websites within each combination of categories for each combination of features. Below is a crosstab example of what I mean, as well as the relevant code.<br/>
 
-<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div><br/>
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download6.png" alt="Picture"></div>
 
 ```r
 # Creating a hash table of every combination of interesting columns
@@ -281,11 +281,10 @@ Despite the versatility of this method, the machine learning portion of this rep
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div>
 
 ## Machine Learning and Results
-
 I tried the following ML models: untuned and tuned Logistic Regression, untuned and tuned Random Forest (RF), and untuned and tuned XGBoost models. I also used a combination of GridSearchCV and RandomizedSearchCV to tune the models. Each step provided me with a better fitting model, the procedure and results of which I discuss below. Additionally, I compare the models to each other at the end of this section.<br/>
 
 ### Initial Considerations
-Because the data is entirely categorical, there is no colinearity between the features to worry about. Also for this same reason, there are no greatly varied scales from variable to variable, and as I will show in the following section, the two label categories are balanced. My assumption for this project is that this dataset is randomly picked, or in another way representative of the population of interest.<br/>
+Because the data is entirely categorical, there is no collinearity between the features to worry about. Also for this same reason, there are no greatly varied scales from variable to variable, and as I will show in the following section, the two label categories are balanced. My assumption for this project is that this dataset is randomly picked, or in another way representative of the population of interest.<br/>
 
 ### Initial Train/Test Split
 I created a train/test split for the data with a test size of 30%, meaning I used 70% of my data to train and tune my models with Cross-Validation (CV) splits and held 30% of the data untouched to then give a final test of the model. I used a stratified train/test split to make sure that both the train and test splits had the same proportion of phishing websites. The result was that 55.699% of the train set was phishing and 55.683% of the test set was phishing - a close enough result for my purposes.<br/>
@@ -293,45 +292,77 @@ I created a train/test split for the data with a test size of 30%, meaning I use
 
 ## Models
 ### Logistic Regression
-To tune the C parameter, one of the main hyperparameters to tune in logistic regression, which is defined as “Inverse of regularization strength” on the scikit website, I set up a sequence of numbers in the following logspace np.logspace(-10, 10, 100). On the scikit learn website, the definition of logspace is as follows: “the sequence starts at base**start (base to the power of start) and ends with base**stop”, with the specified amount of elements in the sequence. For my purposes, I set up a sequence that starts at 10**(-10), and ends at 10**(10), with 100 equally spaced numbers. This sequence gave me a lot of options to try out and zoom in on the best for my data.
+To tune the C parameter, one of the main hyperparameters to tune in logistic regression, which is defined as “Inverse of regularization strength” on the scikit website, I set up a sequence of numbers in the following logspace np.logspace(-10, 10, 100). On the scikit learn website, the definition of logspace is as follows: “the sequence starts at base^start (base to the power of start) and ends with base^stop”, with the specified amount of elements in the sequence. For my purposes, I set up a sequence that starts at 10^(-10), and ends at 10^(10), with 100 equally spaced numbers. This sequence gave me a lot of options to try out and zoom in on the best for my data.<br/>
+
 I then did a comprehensive GridSearch with 5 CV folds of the parameter sequence and found the optimal C value of 0.7925. To make sure I picked the proper C value, I ran a RandomizedSearchCV of the same sequence as above and plotted it against the score of the resulting model. Below is a figure showing this.<br/>
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download17.png" alt="Picture"></div><br/>
 
 Across the logistic x-axis are the 100 possible values that C can take on. On the y-axis is the score of the resulting function. For each possible C value I got the train scores and validation scores through the validation_curve() function with 5 CV folds. This resulted in a score for each possible C value of the following:<br/>
 
-- Validation data scores:
+**Validation data scores**<br/>
   - Min - lower value of orange band
-Mean - orange line
-Max - higher value of orange band
-Train data scores
-Min - lower value of blueband
-Mean - blueline
-Max - higher value of blue band
-Red dot - Optimal function picked through GridSearchCV
-Green dots - optimal functions picked by performing 10 RandomizedSearchCV
-Note there aren’t 10 dots, meaning some dots lie on top of each other<br/>
+  - Mean - orange line
+  - Max - higher value of orange band
+
+**Train data scores**<br/>
+  - Min - lower value of blueband
+  - Mean - blueline
+  - Max - higher value of blue band<br/>
+
+- Red dot - Optimal function picked through GridSearchCV
+- Green dots - optimal functions picked by performing 10 RandomizedSearchCV
+  - Note there aren’t 10 dots, meaning some dots lie on top of each other<br/>
 
 One interesting observation from the above graph is that even though RandomizedSearcCV doesn’t take as much computing power, it also might not produce consistent results because it doesn’t search the whole parameter grid. GridSearchCV, on the other hand, picks the optimal value but is more computationally expensive. Depending on the problem at hand, it might be useful to use RandomizedSearchCV (i.e. when quick “good enough” results are needed), or it might be useful to use GridSearchCV(i.e. when every last bit of model performance is necessary at the cost of computational effort).<br/>
 
 Another interesting observation of the above graph is that the orange line along with its band is not fully below the blue line with its band. If this were the case, I would know that my model is overfitting as it is consistently underperforming on new data. Luckily, this is not the case for me. The validation band is broader than the train band, and the validation line is slightly below the train line. This is expected for two reasons: the variety and unknown nature of  new data accounts for the wide band, and the new data being new accounts for the model’s drop in performance.<br/>
 
-*Logistic Regression Results*
+*Logistic Regression Results*<br/>
 To compare Logistic Regression with other methods, the best Area Under the ROC Curve (AUC) that I got with Logistic regression was 0.9788 .
 
 ### Random Forest Classifier
 The next model I tried was the Random Forest (RF) Classifier. Now that I have introduced the general concepts of parameter tuning through GridSearch and RandomziedSearchCV, I won’t spend much time talking about them here. I built a parameter grid of the following parameters:<br/>
 
+```r
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
+```<br/>
+
 For each parameter, I picked a variety of values, all of which are available in the Jupyter notebook for this project. Because of the large amount of possible parameters, I used RandomizedSearchCV to save some time but still come up with a usable result. <br/>
 
-*RF Classifier Results*
+*RF Classifier Results*<br/>
 After all the tuning, the best AUC score was 0.995 .<br/>
 
 ### XGBoost
 The final model I tried was the XGBoost model, a model with many parameters requiring the most tuning out of any model I tried. Because of the large amount of parameters, I tuned them one to three at a time, got the results and tuned the next batch of parameters. The final tuned model had the following parameters:<br/>
 
+```r
+tuned_xgb = XGBClassifier(learning_rate =0.11, #tuned
+                          n_estimators=2000,
+                          max_depth=13, #tuned
+                          min_child_weight=0, #tuned
+                          gamma=0, #tuned
+                          subsample=0.775, #tuned
+                          colsample_bytree=0.9, #tuned
+                          objective= 'binary:logistic',
+                          nthread=4,
+                          scale_pos_weight=1,
+                          reg_alpha = 1e-05, #tuned
+                          reg_lambda = 1, #tuned
+                          seed=27)
+```
+
 *XGBoost Results*
 The best XGBoost model, whose parameters are shown above produces an AUC score of 0.9969, the best so far.<br/>
 
 ### Comparing All Models
+
+<div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download18.png" alt="Picture"></div><br/>
 
 The figure above shows the ROC curves of all the models I tried in this section. The dotted line shows the ROC curve of a model that guesses randomly between the two categories: phishing and legitimate. Then in blue is the tuned Log Regression model, followed by the RF model, and the untuned and tuned XGBoost model. Note that even the untuned XGBoost model performed better than the tuned RF and tuned Logistic Regression models. This implies that at least for this classification problem, the XGBoost model is a great choice. Also note that the tuned XGBoost produced slightly better results than the untuned model, but the two ROC curves almost look identical. This seems to be an example of the widely known phenomenon of the law of diminishing marginal returns, in which with every additional unit of input, output becomes ever decreasingly favorable. In the case of tuning an already good model, this means that by putting in an additional hour of work into tuning the model, only slight positive changes will happen to the model’s performance.<br/>
 
