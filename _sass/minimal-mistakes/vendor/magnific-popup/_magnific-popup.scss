@@ -31,8 +31,8 @@
 // 1. Default Settings
 ////////////////////////
 
-$mfp-overlay-color:                   #f2f2f2 !default; //playing around with this, used to be #0b0b0b
-$mfp-overlay-opacity:                 0.8 !default;
+$mfp-overlay-color:                   #0b0b0b !default;
+$mfp-overlay-opacity:                 0.2 !default; //changes, used to be 0.8
 $mfp-shadow:                          0 0 8px rgba(0, 0, 0, 0.6) !default; // shadow on image or iframe
 $mfp-popup-padding-left:              8px !default; // Padding from left and from right side
 $mfp-popup-padding-left-mobile:       6px !default; // Same as above, but is applied when width of window is less than 800px
