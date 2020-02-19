@@ -58,6 +58,8 @@ To get a good idea of what the data look like, I made a composite stacked bar gr
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png" alt="Picture"></div><br/>
 
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download1.png)
+
 On the left is a stacked bar graph of the total counts of phishing vs legitimate websites within each of the two categories of the feature ‘url_contains_ip_address’, namely ‘T’ and ‘F’. This bar shows how the counts of ‘T’ and ‘F’ compare to each other, as well as how the distribution of phishing vs legitimate websites looks for each category.<br/>
 
 On the right is a stacked bar that shows the proportion of legitimate websites for each of the categories of the feature shown. By changing the x-axis from counts to percentage I hope to make it easy to see the difference in proportions of phishing websites for each category ‘T’ and ‘F’. I also add a reference line representing what proportion phishing websites make up of the original data in order to show not only how the categories compare to each other but also to the sample average.<br/>
@@ -119,6 +121,11 @@ for column in data.columns:
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png" alt="Picture"></div>
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png" alt="Picture"></div>
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png" alt="Picture"></div>
+
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download4.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download5.png)
 
 
 
@@ -235,6 +242,8 @@ In this crosstab, each combination of each category is plotted and the number it
 
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png" alt="Picture"></div><br/>
 
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download7.png)
+
 ```r
 # Scalable plotting function of the above plots
 
@@ -285,6 +294,16 @@ Despite the versatility of this method, the machine learning portion of this rep
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png" alt="Picture"></div>
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png" alt="Picture"></div>
 <div style="text-align:center"><img src="{{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png" alt="Picture"></div>
+
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download8.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download9.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download10.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download11.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download12.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download13.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download14.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download15.png)
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download16.png)
 
 ## Machine Learning and Results
 I tried the following ML models: untuned and tuned Logistic Regression, untuned and tuned Random Forest (RF), and untuned and tuned XGBoost models. I also used a combination of GridSearchCV and RandomizedSearchCV to tune the models. Each step provided me with a better fitting model, the procedure and results of which I discuss below. Additionally, I compare the models to each other at the end of this section.<br/>
