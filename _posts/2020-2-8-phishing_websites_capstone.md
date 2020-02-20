@@ -375,7 +375,7 @@ tuned_xgb = XGBClassifier(learning_rate =0.11, #tuned
                           seed=27)
 ```
 
-*XGBoost Results*
+*XGBoost Results*<br/>
 The best XGBoost model, whose parameters are shown above produces an AUC score of 0.9969, the best so far.<br/>
 
 ### Comparing All Models
