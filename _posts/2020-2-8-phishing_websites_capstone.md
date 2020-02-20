@@ -24,12 +24,16 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
+#### Links
+<a href="https://github.com/monastyrskyy/bootcamp_repo/blob/master/Capstone_1_Phishing/Capstone%201%20-%20Phishing%20Websites.ipynb" target="blank">Full Code Repo</a><br/>
+<a href="https://github.com/monastyrskyy/bootcamp_repo/tree/master/Capstone_1_Phishing/datasets" target="blank">Data and Data Dictionary Repo</a><br/>
+
 ## Problem Statement (Mock)
 With the ever-expanding reach of digital technology, online security savviness of the average internet user must expand, too. For this reason, a web browser company has asked its data science team to predict whether a website is “phishing” for information from vulnerable users. The company aims to use the findings from the team’s report to display a redirect message to its users indicating that they are clicking on a link that may potentially steal their information.<br/>
 
 ## Data
 ### Data overview
-Data:<a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00327/ " target="blank">UCI Machine Learning (ML) Archive</a><br/>
+Data: <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/00327/ " target="blank">UCI Machine Learning (ML) Archive</a><br/>
 
 Each of the datasets number rows contains an observation of one website as well as its phishing status, determined by an expert. Some 30 features of the dataset include “Redirect”, “Favicon”, and “URL_length”, each of which will be further explained in the report. The dataset is provided by the web browser company, and all variables collected were predetermined to be of at least some interest in deciding whether a website is a phishing website or not.<br/>
 
@@ -113,7 +117,6 @@ for column in data.columns:
         fig.tight_layout()
 ```
 
-<br><br/>
 
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download2.png)
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)]({{ site.url }}{{ site.baseurl }}/images/6.phishing_capstone/download3.png)
@@ -182,7 +185,7 @@ low_interesting_columns = list(set(low_interesting_columns))
 print('Interesting columns with CI above sample proportion:', high_interesting_columns)
 print('Interesting columns with CI below sample proportion:', low_interesting_columns)
 ```
-<br><br/>
+
 
 Interesting columns with CI above sample proportion:
 ['ssl_final_state', 'web_traffic', 'url_contains_sub_domain']
@@ -200,6 +203,8 @@ To visualize the data within the ‘interesting’ columns, I want to display th
 |-1|0.62|0.56|0.79|
 |0|0.46|0.64|0.80|
 |1|0.54|0.69|0.77|
+
+<br/>
 
 ```r
 # Creating a hash table of every combination of interesting columns
@@ -230,6 +235,7 @@ low_heatmap_dict = heatmap_dict(low_heatmap_dict, low_interesting_columns)
 high_heatmap_dict = {}
 high_heatmap_dict = heatmap_dict(high_heatmap_dict, high_interesting_columns)
 ```
+
 
 In this crosstab, each combination of each category is plotted and the number it contains inside is the proportion of phishing websites of that group. Notice that this crosstab only compares two features: ‘sfh’ to ‘links_pointing_to_page’, whereas in my full analysis I want to compare each combination of features, and visually display the proportions of phishing websites, as shown below. The color switches from shades of blue to shades of red, depending on whether the proportion of phishing websites for each specific combination in the visualization is above or below the sample proportion of phishing websites. The darker the color, the bigger the absolute difference between the combination proportion and the sample proportion.<br/>
 
@@ -270,6 +276,7 @@ def prop_phish_heatmap(heatmap_dict, interesting_columns):
 prop_phish_heatmap(high_heatmap_dict, high_interesting_columns)
 prop_phish_heatmap(low_heatmap_dict, low_interesting_columns)    
 ```
+
 
 It’s interesting to note some patterns that emerge. For example, despite the number of links_pointing_to_page, the url_of_anchor has a clear pattern showing the websites with a small url_of_anchor portion tend to not be fishing websites. Another example is just how important sfh seems to be when the website contains an ‘about:blank’ section. From other heatmaps available in the Python Notebook, there are also some unexpected surprises in terms of trends, but most confirm what the bar graphs showed.<br/>
 
@@ -340,7 +347,7 @@ random_grid = {'n_estimators': n_estimators,
                'min_samples_leaf': min_samples_leaf,
                'bootstrap': bootstrap}
 ```
-<br/>
+
 
 For each parameter, I picked a variety of values, all of which are available in the Jupyter notebook for this project. Because of the large amount of possible parameters, I used RandomizedSearchCV to save some time but still come up with a usable result. <br/>
 
