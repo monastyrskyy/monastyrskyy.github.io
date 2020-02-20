@@ -24,11 +24,11 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-#### Links
-<a href="https://github.com/monastyrskyy/bootcamp_repo/blob/master/Capstone_1_Phishing/Capstone%201%20-%20Phishing%20Websites.ipynb" target="blank">Full Code Repo</a><br/>
-<a href="https://github.com/monastyrskyy/bootcamp_repo/tree/master/Capstone_1_Phishing/datasets" target="blank">Data and Data Dictionary Repo</a><br/>
-
 ## Problem Statement (Mock)
+
+<a href="https://github.com/monastyrskyy/bootcamp_repo/blob/master/Capstone_1_Phishing/Capstone%201%20-%20Phishing%20Websites.ipynb" target="blank">Full Code Repo</a><br/>
+<a href="https://github.com/monastyrskyy/bootcamp_repo/tree/master/Capstone_1_Phishing/datasets" target="blank">Data and Dictionary Repo</a><br/>
+
 With the ever-expanding reach of digital technology, online security savviness of the average internet user must expand, too. For this reason, a web browser company has asked its data science team to predict whether a website is “phishing” for information from vulnerable users. The company aims to use the findings from the team’s report to display a redirect message to its users indicating that they are clicking on a link that may potentially steal their information.<br/>
 
 ## Data
