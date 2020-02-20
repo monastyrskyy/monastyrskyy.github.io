@@ -9,4 +9,4 @@ I'm a Business Intelligence Analyst at UC Davis. For the past 2+ years, I've wor
 
 Competencies: Python (pandas, numpy, matplotlib, seaborn), R, SQL, Tableau (server administration, visualization), ETL workflows, Drupal.
 
-Feel free to contact me through <a href="https://www.linkedin.com/in/m-monast/" target="blank">LinkedIn</a><br/>.
+Feel free to contact me through <a href="https://www.linkedin.com/in/m-monast/" target="blank">LinkedIn</a>.
