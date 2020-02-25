@@ -4,6 +4,8 @@ date: 2020-2-8
 excerpt: "This is the first Capstone Project of my 6-month Springboard Data Science Career Track Bootcamp. In this project I analyze a dataset of website features in order to predict whether the website is phishing or legitimate."
 mathjax: "true"
 tags: [bootcamp, python, machine learning]
+header:
+  image: "/images/6.phishing_capstone/download17_header.png"
 #classes: wide # frontmatter that should make the page wider.
 toc: true
 toc_sticky: true
