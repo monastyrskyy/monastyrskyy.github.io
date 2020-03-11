@@ -24,11 +24,6 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-Sample that should work.
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/GTSRB_Result_Viz/GTSRB?:embed=yes&:display_count=yes&:showVizHome=no" width = '650' height = '450'></iframe>
+<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DualMapDash?:embed=yes&:device=desktop&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
 
-How does Tableau handle this? and Vice versa?
-
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DualMapDash?:embed=yes&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
-
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DimensionToggleDash?:embed=yes&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
+<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DimensionToggleDash?:embed=yes&:device=desktop&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
