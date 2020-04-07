@@ -24,11 +24,6 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DualMapDash?:embed=yes&:device=desktop&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
-
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DimensionToggleDash?:embed=yes&:device=desktop&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe>
-
-
 ## Problem statement
 
 I want to give those looking to sell their used cars the opportunity to get an idea of how much their car is worth based on a lot of data from a car sales website. The user will interact with a web app hosted through AWS to input his or her car’s features and will then receive an estimate for how much the model thinks the car is worth.<br/>
@@ -46,6 +41,7 @@ In total, the data consists of over 50,000 data points. There are a lot of dupli
 
 The subModel feature had 35,893 missing values, and the badge feature had 5,082 missing values. Because there was no information that I was likely to gather from mostly missing columns, I deleted the subModel feature. For reference subModel of a car is a way of delimiting the car beyond just make and model; thus - subModel. Badge only had around 5000 missing values, so I will likely impute them later. It’s also possible that this variable will have multicollinearity with other variables, so I might delete it later.<br/>
 
+## Exploratory Data Analysis
 ### Where are the cars?
 
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/Capstone2EDA/DualMapDash?:embed=yes&:device=desktop&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no" width = '650' height = '450'></iframe><br/>
@@ -71,6 +67,8 @@ I will be looking at currentPrice as the label. There are two: listPrice and cur
 
 ### Numerical Variables
 
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/1.pre_cleaning_corr_scatter.png)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/1.pre_cleaning_corr_scatter.png)<br/>
+
 This plot is very large and overwhelming, but I'm only really looking for multicollinearity between features that may mess up a lot of future modeling. There looks to be a high correlation between mpdCity and mpgHighway, something that I will have to account for in the future. It's possible that keeping just one will yield better results.<br/>
 
 A few other things stand out too. For example There is a cluster of cars on the high end of mgpCity and mpgHighway. These are likely hybrid cars that will have to be accounted for, as they are outliers. Analogously, there are cars that have 0 mgpCity and 0 mpgHighway readings. At first glance, these are likely electric cars, but I will doublecheck.<br/>
@@ -87,7 +85,13 @@ There are also 272 cars in the data where their currentPrice is zero. This is pr
 
 There are ten cars that have a mileage of over 150,000 miles and a price of over $201,000. These cars are by nature influential and may harm my models because the bulk of the data is well inside of this range. For this reason, I will remove them. I feel comfortable doing this because there are only 10 data points here and they are not useful in predicting cars at a much lower price range, such as $20,000.<br/>
 
+### Removing Small Cells
+
+In this section, I remove some of the smallest cells in the data. By this I mean, any grouping or combination of groups that doesn't have many members. The reason for doing this is that small cell sizes tend to have a negative effect on a model's predictive abilities. As a rule of thumb, I will keep only the groups in which there are more than a dozen (12) members.<br/>
+
 Now with the big influential points removed, it's easier to look at the trends between the numeric variables. To start, there are some visible clusters of cars that may be easy to explain. For example mpgCity and mpgHighway have high end clusters, likely as a result of hybrid cars. There are also some cars from the year 2008, which might be influential. there also appears to be a cluster of dealerships with a very high amount of reviews, likely as a result of them being very good or very bad.<br/>
+
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/2.post_cleaning_corr_scatter.png)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/2.post_cleaning_corr_scatter.png)<br/>
 
 ### Suspicious dealerships
 
@@ -98,6 +102,8 @@ After a review of a sample of these dealerships, the reviews seemed genuine and 
 Some other patterns stand out too. For example as mileage goes up, currentPrice seems to go down exponentially, somewhat expectedly. Note that there is a wide variation of prices at low mileages, but at high mileages, prices are exclusively low.<br/>
 
 The other variables don't show very high correlations between each other and the target variable. This will be further investigated below with the same correlation plot, but one that better shows the correlations.<br/>
+
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap)<br/>
 
 The graph above confirms some of the patterns that emerged from the correlation matrix. mpgCity and mpgHighway have a correlation coefficient of 0.9 which can be devastating for some modeling techniques such as linear regression. Year and mileage are negatively correlated at -0.6, as expected. All other correlations are fairly small and are unlikely to cause trouble in modeling. There is also a relatively high positive correlation between year and currentPrice of 0.2, which makes sense, as newer cars would cost more.<br/>
 
