@@ -89,9 +89,9 @@ There are ten cars that have a mileage of over 150,000 miles and a price of over
 
 In this section, I remove some of the smallest cells in the data. By this I mean, any grouping or combination of groups that doesn't have many members. The reason for doing this is that small cell sizes tend to have a negative effect on a model's predictive abilities. As a rule of thumb, I will keep only the groups in which there are more than a dozen (12) members.<br/>
 
-Now with the big influential points removed, it's easier to look at the trends between the numeric variables. To start, there are some visible clusters of cars that may be easy to explain. For example mpgCity and mpgHighway have high end clusters, likely as a result of hybrid cars. There are also some cars from the year 2008, which might be influential. there also appears to be a cluster of dealerships with a very high amount of reviews, likely as a result of them being very good or very bad.<br/>
-
 [![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/2.post_cleaning_corr_scatter.png)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/2.post_cleaning_corr_scatter.png)<br/>
+
+Now with the big influential points removed, it's easier to look at the trends between the numeric variables. To start, there are some visible clusters of cars that may be easy to explain. For example mpgCity and mpgHighway have high end clusters, likely as a result of hybrid cars. There are also some cars from the year 2008, which might be influential. there also appears to be a cluster of dealerships with a very high amount of reviews, likely as a result of them being very good or very bad.<br/>
 
 ### Suspicious dealerships
 
@@ -103,7 +103,7 @@ Some other patterns stand out too. For example as mileage goes up, currentPrice 
 
 The other variables don't show very high correlations between each other and the target variable. This will be further investigated below with the same correlation plot, but one that better shows the correlations.<br/>
 
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap)<br/>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap.png)]({{ site.url }}{{ site.baseurl }}/images/7.car_capstone/3.post_cleaning_corr_heatmap.png)<br/>
 
 The graph above confirms some of the patterns that emerged from the correlation matrix. mpgCity and mpgHighway have a correlation coefficient of 0.9 which can be devastating for some modeling techniques such as linear regression. Year and mileage are negatively correlated at -0.6, as expected. All other correlations are fairly small and are unlikely to cause trouble in modeling. There is also a relatively high positive correlation between year and currentPrice of 0.2, which makes sense, as newer cars would cost more.<br/>
 
