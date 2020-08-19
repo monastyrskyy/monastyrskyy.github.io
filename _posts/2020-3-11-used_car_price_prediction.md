@@ -1,7 +1,7 @@
 ---
-title: "Scraped Car Price Prediction Model and Webapp"
+title: "Scraped Car Price Data Exploration"
 date: 2020-3-11
-excerpt: "From setting up automatic scraping scripts to refresh the data to hosting a webapp that allows users to predict their own price, this post delves into every detail of the process."
+excerpt: "This post delves into every detail of the data analytics process."
 mathjax: "true"
 tags: [bootcamp, python, machine learning, web scraping, webapp, automatic ]
 #classes: wide # frontmatter that should make the page wider.
@@ -26,7 +26,7 @@ defaults:
 
 ## Problem statement
 
-I want to give those looking to sell their cars the opportunity to get an idea of how much their car is worth based on a lot of data from a car sales website. The user will interact with a web app hosted through AWS to input his or her car’s features and will then receive an estimate for how much the car is worth.<br/>
+I want to give those looking to sell their cars the opportunity to get an idea of how much their car is worth based on analyzing a wide variety of data from a car sales website.<br/>
 
 ## Data
 ### Data overview
