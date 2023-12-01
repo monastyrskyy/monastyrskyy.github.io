@@ -1,5 +1,5 @@
 ---
-title: "Scraped Car Price Data Exploration"
+title: "Scraped Car Price Data Exploration" 
 date: 2020-3-11
 excerpt: "This post delves into every detail of the data analytics process."
 mathjax: "true"
