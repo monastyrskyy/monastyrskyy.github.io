@@ -1,9 +1,9 @@
 ---
-title: "Scraped Car Price Data Exploration"
+title: "Scraped Car Price Data Exploration" 
 date: 2020-3-11
 excerpt: "This post delves into every detail of the data analytics process."
 mathjax: "true"
-tags: [bootcamp, python, machine learning, web scraping, webapp, automatic ]
+tags: [bootcamp, python, machine learning, web scraping, automatic]
 #classes: wide # frontmatter that should make the page wider.
 toc: true
 toc_sticky: true
@@ -24,9 +24,9 @@ defaults:
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-## Problem statement
+## Overview
 
-I want to give those looking to sell their cars the opportunity to get an idea of how much their car is worth based on analyzing a wide variety of data from a car sales website.<br/>
+I analyze a wide variety of data from a car sales website.<br/>
 
 ## Data
 ### Data overview
