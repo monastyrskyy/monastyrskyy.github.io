@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Maksym Monastyrskyy"
 title_separator          : "-"
 name                     : "Maksym Monastyrskyy"
-description              : "Data Science Portfolio"
+description              : "Data Project Portfolio"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -109,7 +109,7 @@ author:
   name             : "Maksym Monastyrskyy"
   avatar           : "/images/headshot_copy.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Science Portfolio"
-  location         : "Greater Sacramento Area, CA"
+  location         : "Berlin, Germany"
   email            :
   links:
     - label: "Email"
