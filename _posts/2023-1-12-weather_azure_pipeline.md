@@ -429,7 +429,5 @@ In some way, data pipelines, or automated processes in general, remind me of the
 
 Looking ahead, the focus is on creating a simple Flask dashboard. This dashboard will give us a quick look at what's happening with the data trends in Berlin, updating once per day.
 
-Stay tuned for more updates as we keep improving our data processing setup on Azure.
-
 ## Known Bugs
 It looks like the sunrise and sunset times are not correct. They should be converted to a time object, not a datetime object. More digging to be done here.
