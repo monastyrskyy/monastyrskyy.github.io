@@ -304,44 +304,33 @@ Episode Processing:
 ### Airflow within Docker
 #### All the DAGs
 
-### Front end 
-#### Submit a phrase
+## Front end 
+
+### Nouns and Articles
+<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_articles.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_articles.gif)
+
+### Nouns and Plurals
+<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_plurals.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_plurals.gif)
+
+### Verbs and Tenses
+<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/verbs_and_tenses.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/verbs_and_tenses.gif)
+
+
+### Phrase submission
 Here you can submit a phrase (in either English or German), and get just the translation back, or the translation, along with some sample sentences that use the submitted word or phrase.
-    <div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-    [![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/submit_a_phrase.png)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/submit_a_phrase.png)
-
-
+<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_submission.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_submission.gif)
 
 
 ### Phrase flashcards
-nah, this should be replaced with a gif - for linux
-Step 1: Install Peek
-Open a terminal window.
+<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
+[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards.gif)
 
-Run the following commands based on your Linux distribution:
 
-For Ubuntu/Debian:
 
-bash
-Code kopieren
-sudo add-apt-repository ppa:peek-developers/stable
-sudo apt update
-sudo apt install peek
-For Fedora:
-
-bash
-Code kopieren
-sudo dnf install peek
-For Arch Linux:
-
-bash
-Code kopieren
-sudo pacman -S peek
-
-| ![Image 1]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard1.png) | ![Image 2]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard2.png) |
-|:---------------------------------------------:|:---------------------------------------------:|
-| ![Image 1]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard3.png) | ![Image 2]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard4.png) |
-| ![Image 1]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard5.png) | ![Image 2]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards/phrase_flashcard6.png) |
 
 
 
