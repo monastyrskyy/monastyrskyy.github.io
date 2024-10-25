@@ -27,6 +27,8 @@ defaults:
 
 # Podcast Transcription and Language Learning App
 
+Explore how AI-driven transcriptions of German podcasts are being produced, stored, and used to help improve German language skills. This initiative shows how AI, cloud, and open source orchestration technology can enhance learning through precise transcription, data storage, and process automation.
+
 In my journey of learning the German language, nothing has been as helpful as consuming German language content such as books, videos, and podcasts. One of the most helpful ways to learn useful everyday vocab, phrases, and sentence structure is hearing everyday conversation, and nothing is more filled with everyday conversation than long-form podcasts. The trouble is not a lot of podcasts come with subtitles, making it hard to tell what is being said. 
 
 As a solution, I have discovered whisper AI, an open source model developed and published by OpenAI. One can download this model, and run audio files through it, and have them transcribed. 
