@@ -242,7 +242,8 @@ WHERE daily_refresh_paused = 'N'
 
 The XML files get written into the **xml container** on the **Azure Blob Storage Account**, with versioning enabled, so the files can be later analyzed for differences, if desired.
 
-</br>
+-------
+<br>
 
 ### 2. **reading_in_rss_and_writing_to_sql** Function App
 This function runs every 20 minutes.
@@ -266,7 +267,8 @@ conn.execute(insert_query, {
 })
 ```
 
-</br>
+-------
+<br>
 
 ### 3. **rss_refresh_daily** Function App
 This function runs every 20 minutes
@@ -285,5 +287,7 @@ WHERE id = {episode[0]};
 This function can easily be scaled up to run more often and download more episodes. Because the bottleneck for me was the transcription process (to be described below), I didn't need this app to be more efficient than it was.
 
 >If this project were to take on a more Production-level approach, it would be need to be cleaned up and optimized.
+-------
+<br>
 
 >to be continued...
