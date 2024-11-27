@@ -236,7 +236,8 @@ It looks in the **rss_urls** table to find each podcast's RSS URL link. It then 
 
 Below is the query that finds the podcasts to be refreshed:
 ```
-SELECT podcast_name, rss_url FROM dbo.rss_urls WHERE daily_refresh_paused = 'N'
+SELECT podcast_name, rss_url FROM dbo.rss_urls 
+WHERE daily_refresh_paused = 'N'
 ```
 
 The XML files get written into the **xml container** on the **Azure Blob Storage Account**, with versioning enabled, so the files can be later analyzed for differences, if desired.
@@ -275,7 +276,9 @@ It looks for the most recent not-yet-downloaded episode in a randomly chosen pod
 Once an episode is downloaded, the appropriate flags in the **rss_schema.rss_feed** table get updated:
 
 ```
-UPDATE rss_schema.rss_feed SET download_flag_azure = 'Y', download_dt_azure = GETDATE() WHERE id = {episode[0]};                
+UPDATE rss_schema.rss_feed 
+SET download_flag_azure = 'Y', download_dt_azure = GETDATE() 
+WHERE id = {episode[0]};                
 ```
 
 
