@@ -174,6 +174,7 @@ The SQL Server component is comprised of several tables. They are used to keep t
   | daily_refresh_paused | Indicates if daily refresh of the RSS file is paused | varchar   | null                |
   | last_parsed          | Date the podcast was last parsed                     | date      | null                |
   | podcast_id           | Unique identifier for the podcast            | int (Primary Key) | not null            |
+  
   <div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
   [![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/1.rss_urls.png)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/1.rss_urls.png)  
 
@@ -207,6 +208,7 @@ The SQL Server component is comprised of several tables. They are used to keep t
   | schon_gehoert_flag         | Indicates whether I already listened to the episode   | No                       | varchar                | null     |
   | verbs_extraction_flag      | Verb extraction status flag                | No                       | varchar                | null     |
   | verbs_extraction_dt        | Verb extraction completion date            | No                       | datetime               | null     |
+  
   <div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
   [![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/2.rss_feed.png)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/2.rss_feed.png)  
 
