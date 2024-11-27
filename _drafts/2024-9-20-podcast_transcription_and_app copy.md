@@ -25,6 +25,12 @@ defaults:
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
+{% include video id="J5x5vhn6UUs" provider="youtube" %}
+>_Note: the video has some small issues that I will call out here, as I finish the page._
+- At 5:50, I say that all files are refreshed. In reality only the ones that have been flagged to be refreshed are refreshed.
+- At 14:15, I say that the model goes through about an hour's worth of content in a few minutes. I am using a model optimized for speed available here: [insanely-fast-whisper](https://github.com/Vaibhavs10/insanely-fast-whisper). The base model on which it is based is much slower.
+
+
 # Podcast Transcription and Language Learning App
 
 Explore how AI-driven transcriptions of German podcasts are being produced, stored, and used to help improve German language skills. This initiative shows how AI, cloud, and open source orchestration technology can enhance learning through precise transcription, data storage, and process automation.
@@ -164,172 +170,24 @@ The next step is to explain the function apps. There are three in total:
 
 All other processing happens locally. 
 
-The most up-to-date code with logging and error handling is available here, and dependencies too: <a href="https://github.com/monastyrskyy/rss-parse-function-app-python/blob/main/function_app.py" target="_blank">Code for the RSS Function App</a>
-
-Below is the most recent code, as of this writing, with comprehensive expalanations in the comments.
-
-### Function 1: rss_refresh_daily
-```python
-'''
-The script runs automatically daily at 3:00 AM.
-
-Setup:
-1. Database Connection: Connect to the SQL database using SQLAlchemy.
-2. Execute a SQL query to select podcast names and RSS URLs where `daily_refresh_paused` is 'N'.
-
-Podcast Processing:
-1. Sanitize the podcast name to create a safe filename.
-2. Download RSS Feed: Send an HTTP GET request to the RSS URL, and save the response content as an XML file in a temporary local directory.
-3. Refresh the Azure Blob Storage content: Upload the local X
-
-Podcast Processing:
-1. Sanitize the podcast name to create a safe filename.
-2. Download RSS Feed: Send an HTTP GET request to the RSS URL, and save the response content as an XML file in a temporary local directory.
-3. Refresh the Azure Blob Storage content: Upload the local XML file to Azure, overwriting the blob if it already exists.
-'''
-
-# The script runs automatically daily at 3:00 AM.
-@app.schedule(schedule="0 0 3 * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False)
-def rss_refresh_daily(myTimer: func.TimerRequest) -> None:
-    logging.info('Starting rss_refresh_daily')
-
-    # Setting up connection to Azure
-    credential = DefaultAzureCredential()
-    key_vault_name = os.environ["MyKeyVault"]
-    key_vault_uri = f"https://{key_vault_name}.vault.azure.net/"
-    client = SecretClient(vault_url=key_vault_uri, credential=credential)
-    logging.info(f"Connected to client: {client}")
-    server_name = client.get_secret("SQLServerName").value
-    database_name = client.get_secret("DBName").value
-    username = client.get_secret("SQLUserName").value
-    password = client.get_secret("SQLPass").value
-    storage_account_name = client.get_secret("storageAccountName").value
-    storage_account_key = client.get_secret("storageAccountKey").value
-    logging.info("Fetched database connection details from Key Vault successfully.")
-    connection_string = f"mssql+pymssql://{username}:{password}@{server_name}/{database_name}"
-
-    # Connect to SQL Database using SQLAlchemy
-    try:
-        engine = create_engine(connection_string)
-        with engine.connect() as conn:
-            query = text("SELECT podcast_name, rss_url FROM dbo.rss_urls WHERE daily_refresh_paused = 'N'")
-            result = conn.execute(query)
-            podcasts = result.fetchall()
-
-        logging.info(f"RSS URLs and podcast names fetched from SQL Database successfully: {podcasts}")
-    except Exception as e:
-        logging.error(f"Failed to fetch RSS URLs and podcast names from SQL Database. Error: {str(e)}")
-        raise
-
-    # Download and process each podcast
-    for podcast_name, rss_url in podcasts:
-        safe_podcast_name = podcast_name.replace(' ', '_')
-        try:
-            # Download the podcast to the function app's storage
-            local_filename = os.path.join("/tmp", f"{safe_podcast_name}.xml")
-            response = requests.get(rss_url)
-            with open(local_filename, 'wb') as file:
-                file.write(response.content)
-            logging.info(f"XML file downloaded to {local_filename}")
-
-            # Upload to Azure Blob Storage
-            blob_service_client = BlobServiceClient(account_url=f"https://{storage_account_name}.blob.core.windows.net/", credential=credential)
-            blob_client = blob_service_client.get_blob_client(container="xml", blob=f"{safe_podcast_name}.xml")
-            with open(local_filename, "rb") as data:
-                blob_client.upload_blob(data, overwrite=True)
-            logging.info("XML file has been uploaded to blob storage successfully.")
-
-            # Clean up local file
-            os.remove(local_filename)
-            logging.info("Local XML file cleaned up successfully.")
-        except Exception as e:
-            logging.error(f"Failed to process podcast '{podcast_name}' with URL '{rss_url}'. Error: {str(e)}")
-            continue
-
-    logging.info("Function completed successfully.")
-```
-
-
-### Function 2: reading_in_rss_and_writing_to_sql
-
-```
-The script runs automatically every 20 minutes.
-
-Setup:
-1. Database Connection: Connect to the SQL database using SQLAlchemy.
-2. Blob Storage Connection: Initialize the Blob Service 
-3. Create a helper function to insert RSS items into the rss_feed table, with checks to prevent duplicates.
-
-Blob Processing:
-1. Iterate over each RSS file in the Azure container.
-2. Parse the RSS file to extract podcast metadata and episodes.
-3. For each item in the RSS feed, extract details and insert them into the database using the helper function.
-```
-
-
-
-### Funcation 3: mp3_download
-```
-The script runs automatically every 20 minutes.
-
-Setup:
-1. Database Connection: Connect to the SQL database using SQLAlchemy.
-2. Blob Storage Connection: Initialize the Blob Service 
-3. Episode Selection: Execute a SQL query to select episodes that haven't been downloaded yet.
-
-Episode Processing:
-1. Clean and prepare the podcast and episode titles for use in file paths.
-2. Download the MP3 file from the episode's RSS URL.
-3. Upload the MP3 file to Azure Blob Storage.
-4. Update the database to mark the episode as downloaded.
-```
-
-
-
-
-<br><br>
-<br><br>
-<br><br>
-
-<br><br>
-<br><br>
-<br><br>
-
-<br><br>
-<br><br>
-<br><br>
- 
+The code for all three functions is available here: <a href="https://github.com/monastyrskyy/rss-parse-function-app-python/blob/main/function_app.py" target="_blank">Code for the RSS Function App</a>
 
 
   
-### Local
-### Airflow within Docker
-#### All the DAGs
+## Local Setup - Airflow
 
-## Front end 
-
-### Nouns and Articles
-<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_articles.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_articles.gif)
-
-### Nouns and Plurals
-<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_plurals.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/nouns_and_plurals.gif)
-
-### Verbs and Tenses
-<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/verbs_and_tenses.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/verbs_and_tenses.gif)
+Airflow is running on my local Linux machine within a Docker container.
+The Dockerfile is available here: [Dockerfile](https://github.com/monastyrskyy/airflow-docker/blob/main/Dockerfile)
+The docker-compose.yaml file is available here: [docker-compose.yaml](https://github.com/monastyrskyy/airflow-docker/blob/main/docker-compose.yaml)
 
 
-### Phrase submission
-Here you can submit a phrase (in either English or German), and get just the translation back, or the translation, along with some sample sentences that use the submitted word or phrase.
-<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_submission.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_submission.gif)
+In order to keep the orchestration scripts separate from the processing scripts, I had the following structure:
 
+airflow_docker/
+├── dags/                 # a folder containing the orchestration scripts
+└── external_scripts/     # a folder containing the data processing scripts
 
-### Phrase flashcards
-<div align="center" style="color:gray;"><small>(click to zoom in)</small></div>
-[![foobar]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards.gif)]({{ site.url }}{{ site.baseurl }}/images/9.language_app/phrase_flashcards.gif)
+Each DAG was used only to trigger the running of each script. The main scripts are shown below:
 
 
 
@@ -346,15 +204,6 @@ Here you can submit a phrase (in either English or German), and get just the tra
 
 
 
-  
-
-
-
-
-
-
-
-  
 
 
 
