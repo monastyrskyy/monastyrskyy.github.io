@@ -43,7 +43,7 @@ The model, while imperfect, is very good at telling what is being said even in n
 
 The following is my attempt to automatically download, transcribe and parse podcast episodes using a data pipeline. I want a hands off approach, where all I have to do is add a podcast's RSS link to my app, and receive the transcriptions for all episodes (new and exisiting) through a front end.
 
-## Technical Overview
+# Technical Overview
 
 The standardization that exists in the world of podcasting makes this process possible. At the heart of the system is the RSS file. An RSS file is a standardized set of metadata about the podcast and its episodes. It contains information such as the podcast and epside titles, descriptions, publish dates, and most crucially links to the .mp3 files of the podcast episodes themselves.
 
