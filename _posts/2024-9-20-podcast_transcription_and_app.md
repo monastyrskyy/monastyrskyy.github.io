@@ -236,7 +236,7 @@ This function runs every day at 3:00 AM
 It looks in the **rss_urls** table to find each podcast's RSS URL link. It then follows that link and downloads the RSS XML file anew, effectively refreshing the RSS Feed file everyday. If a podcast has the **daily_refresh_paused flag** set to 'N', that podcast's XML file does not get refreshed.
 
 Below is the query that finds the podcasts to be refreshed:
-``` SQL
+```
 SELECT podcast_name, rss_url 
 FROM dbo.rss_urls 
 WHERE daily_refresh_paused = 'N'
@@ -254,7 +254,7 @@ It selects a random RSS Feed file from the **xml** container and parses it, item
 
 Below is the query that inserts the parsed data into the **rss_schema.rss_feed** table. It also shows some of the episode level metadata that is gathered. 
 
-``` Python
+```
 insert_query = text("""
     INSERT INTO rss_schema.rss_feed (
       title, 
@@ -294,7 +294,7 @@ It looks for the most recent not-yet-downloaded episode in a randomly chosen pod
 
 Once an episode is downloaded, the appropriate flags in the **rss_schema.rss_feed** table get updated:
 
-``` SQL
+```
 UPDATE rss_schema.rss_feed 
 SET download_flag_azure = 'Y', download_dt_azure = GETDATE() 
 WHERE id = {episode[0]};                
