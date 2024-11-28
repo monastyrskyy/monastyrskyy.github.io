@@ -43,11 +43,11 @@ The model, while imperfect, is very good at telling what is being said even in n
 
 The following is my attempt to automatically download, transcribe and parse podcast episodes using a data pipeline. I want a hands off approach, where all I have to do is add a podcast's RSS link to my app, and receive the transcriptions for all episodes (new and exisiting) through a front end.
 
-# Technical Overview
-
 The standardization that exists in the world of podcasting makes this process possible. At the heart of the system is the RSS file. An RSS file is a standardized set of metadata about the podcast and its episodes. It contains information such as the podcast and epside titles, descriptions, publish dates, and most crucially links to the .mp3 files of the podcast episodes themselves.
 
 The goal of this project is to set up an automatic process that would parse these RSS files, refresh them daily to look for new episodes, store the episode and podcast data in a relational database, transcribe the episodes, for a given podcast. **Everything revoles around the RSS files.**
+
+# Technical Overview - Cloud Setup
 
 The parsing of the RSS file will be done on Azure with the use of Function Apps; the storage of the data will be done on Azure Container Blob Storage; the storage of the podcast and episode metadata will be on a Azure-hosted relational database; and the transcription will be done using whisper AI on my local machine because of cost concerns (it is far cheaper to run these models locally than on the cloud).
 
@@ -98,7 +98,7 @@ For reference, here is what a sample RSS file might look like:
 
 <br>
 
-## Cloud Setup - Object (Blob) Storage
+## Object (Blob) Storage
 The relevant files for this project will in part be stored in an Azure Blob Storage account with the following structure:
 ```
 Storage Account
@@ -159,7 +159,7 @@ The .txt file contains all the same transcription data, just without the timesta
 
 <br>
 
-## Cloud Setup - Azure SQL Server
+## Azure SQL Server
 
 The SQL Server component is comprised of several tables. They are used to keep track of the processing of the RSS files and also the individual episodes.
 
@@ -219,7 +219,7 @@ The SQL Server component is comprised of several tables. They are used to keep t
 
 
 
-## Cloud Setup - Azure Function Apps
+## Azure Function Apps
 
 The next step is to explain the function apps. There are three in total:
 - The **rss_refresh_daily** script refreshes the RSS files, by downloading the RSS file again.
@@ -305,5 +305,79 @@ This function can easily be scaled up to run more often and download more episod
 
 -------
 <br>
+
+# Technical Overview - Local Setup
+
+Now we'll dive into the local setup. As I mentioned before, it is effectively free to run open source models locally, disregarding the cost of the computer and utilities.
+
+To orchestrate this process, I used another open source tool called `Airflow`. This tool allows the user to schedule scripts to run on an interval. This is useful for this project because I wanted to regularly pull down the newly downloaded episodes from `Azure Blob Storage`, transcribe them, and parse them for nouns and verbs. Everything but the transcription will be run by `Airflow` inside a `Docker container`. The following sections will go into the setup of each.
+
+## Docker
+
+`Airflow` is running on my local `Linux machine` within a `Docker container`. This section will delve into the `Docker container` setup, and the next section will continue with the `Airflow` setup.
+- The `Dockerfile` is available here: [Dockerfile](https://github.com/monastyrskyy/airflow-docker/blob/main/Dockerfile)  
+  A version explaining the file in detail is shown below.
+  ```
+  # Downloading this version of Airflow
+  # This provides a pre-configured environment for running Airflow.
+  FROM apache/airflow:2.9.3
+
+  # Set the timezone environment variable
+  # This ensures timestamps and logs are in the correct timezone.
+  ENV TZ=Europe/Berlin
+
+  # Add root user if it's missing
+  RUN echo "root:x:0:0:root:/root:/bin/bash" >> /etc/passwd
+
+  # Install git and other dependencies
+  USER root
+  RUN apt-get update && apt-get install -y git && apt-get clean
+
+  # Switch back to the airflow user
+  USER airflow
+
+  # Install the additional Python packages
+
+  # A library used to interact with Azure Blob Storage
+  RUN pip install azure-storage-blob 
+
+  # A library for managing environment variables using .env files
+  RUN pip install python-dotenv
+
+  # A library for working with databases in Python 
+  # and for connecting to MS SQL Server databases, respectively
+  RUN pip install sqlalchemy pymssql
+
+  # Updates pip, setuptools, and wheel to their latest versions
+  RUN pip install -U pip setuptools wheel
+
+  # NLP library used to identify German verbs and nouns
+  RUN pip install -U spacy
+  RUN python -m spacy download de_dep_news_trf
+
+  # Used to work with dataframes in Python
+  RUN pip install pandas
+  ```
+
+- The `docker-compose.yaml` file is available here: [docker-compose.yaml](https://github.com/monastyrskyy/airflow-docker/blob/main/docker-compose.yaml)
+
+  An important part of the file to call out is the `volumes` section, which mounts directories from the host system onto the container. This allows the container to access files from the host system, making it possible to share data between the host and the container.
+
+  ```
+  volumes:
+    .....
+      - /home/maksym/Documents/whisper:/home/maksym/Documents/whisper
+    .....
+  ```
+  The line above mounts the directory `/home/maksym/Documents/whisper` from the host to the same path inside the container. This would allow the scripts to be triggered and run inside `Docker` by `Airflow`. The benefit of keeping the path the same is when doing development directly on the host machine, no file paths would need to be changed.
+
+## Airflow
+In order to keep the orchestration scripts separate from the processing scripts, I had the following structure:
+```
+airflow_docker/
+├── dags/              # contains the orchestration scripts
+└── external_scripts/  # contains the data processing scripts
+```
+Each `DAG` (Directed Acrylic Graph, or in other words 'Orchestration Job') was used only to trigger each processing script. The main scripts will be shown below.
 
 >to be continued...
